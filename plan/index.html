@@ -4,77 +4,103 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kayaan Shield GTM Plan</title>
-<meta name="description" content="The full GTM plan for Kayaan Shield by Arfaan Jeddy: who to win first, how to reach them, the ARR math and a 90-day roadmap.">
-<meta property="og:title" content="Kayaan Shield GTM Plan">
-<meta property="og:description" content="Who to win first, how to reach them, the ARR math and a 90-day roadmap.">
+<meta name="description" content="The full GTM plan for Kayaan Shield by Arfaan Jeddy: research, who to win first, three plays, the acquisition engine, the ARR math and a 90-day roadmap.">
+<meta property="og:title" content="Kayaan Shield GTM Plan · Arfaan Jeddy">
+<meta property="og:description" content="Research, who to win first, three plays, the acquisition engine, the ARR math and a 90-day roadmap.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Same memo system as the summary: one column, hairline rules, Kayaan orange, one dark block. */
+/* Memo system shared with the summary, plus a sticky section rail so the longer plan stays easy to move through. */
 :root{
   --bg:#ffffff; --soft:#fff7f2; --ink:#0c0c0d; --muted:#5a5a63; --subtle:#8a8a94; --line:#ececee; --line-2:#d9d9de;
-  --brand:#fe5200; --brand-ink:#b33600; --night:#0c0c0d; --night-muted:#9a9aa3; --night-line:#26262a; --ok:#17803d; --ok-soft:#e8f6ec; --bad:#c2410c; --bad-soft:#fff1ec;
+  --brand:#fe5200; --brand-ink:#b33600; --night:#0c0c0d; --night-muted:#9a9aa3; --night-line:#26262a;
+  --ok:#17803d; --ok-soft:#e8f6ec; --warn:#b45309; --warn-soft:#fdf3e7; --bad:#c2410c; --bad-soft:#fff1ec; --chip:#f2f2f4;
   --display:"Archivo","Geist",ui-sans-serif,system-ui,sans-serif; --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;
-  padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px));padding-block:56px 64px}
-.memo{max-width:780px;margin:0 auto}
+  padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px));padding-block:48px 64px}
 a{color:var(--ink);text-decoration-color:var(--brand);text-underline-offset:3px;text-decoration-thickness:1.5px}
 :focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
 b{font-weight:600}
 p{margin:0}
 
-.top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--subtle);padding-bottom:14px;border-bottom:1px solid var(--line)}
-.top span:first-child{display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
-.top svg{width:11px;height:11px;color:var(--brand)}
-.top a{color:var(--subtle);text-decoration:none}
-.top a:hover{color:var(--ink)}
+.wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;align-items:start}
 
-h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.6vw,38px);line-height:1.08;letter-spacing:-.025em;margin:28px 0 12px;text-wrap:balance}
+/* rail */
+.rail{position:sticky;top:calc(24px + env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:14px}
+.rail .back{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);text-decoration:none}
+.rail .back:hover{color:var(--ink)}
+.rail .who{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em;line-height:1.15}
+.rail .who small{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-ink);margin-top:6px}
+.rail nav{display:flex;flex-direction:column;border-left:1px solid var(--line)}
+.rail nav a{display:flex;gap:10px;align-items:baseline;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;text-decoration:none;color:var(--muted);font-size:13.5px;line-height:1.3}
+.rail nav a span{font-family:var(--mono);font-size:10.5px;color:var(--subtle);min-width:16px}
+.rail nav a:hover{color:var(--ink)}
+.rail nav a.on{color:var(--ink);border-left-color:var(--brand);font-weight:600}
+.rail nav a.on span{color:var(--brand)}
+.rail .contact{font-family:var(--mono);font-size:10.5px;color:var(--subtle);line-height:1.7;user-select:all}
+
+/* main */
+main{min-width:0;max-width:820px}
+.top{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-ink);padding-bottom:12px;border-bottom:2px solid var(--ink);position:relative}
+.top::after{content:"";position:absolute;left:0;bottom:-2px;width:72px;height:2px;background:var(--brand)}
+.top span:last-child{color:var(--subtle)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.4vw,40px);line-height:1.08;letter-spacing:-.025em;margin:24px 0 12px;text-wrap:balance}
 h1 em{font-style:normal;color:var(--brand)}
-.dek{color:var(--muted);font-size:16px;max-width:64ch}
+.dek{color:var(--muted);font-size:16px;max-width:66ch}
 .dek b{color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:22px;border-block:1px solid var(--line)}
+.facts div{padding:12px 12px 12px 0}
+.facts div+div{padding-left:12px;border-left:1px solid var(--line)}
+.facts strong{display:block;font-family:var(--display);font-weight:800;font-size:22px;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.facts strong.o{color:var(--brand)}
+.facts span{display:block;margin-top:6px;font-size:12px;color:var(--muted);line-height:1.35}
 
-.toc{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:20px;padding-block:12px;border-block:1px solid var(--line);font-size:13px}
-.toc a{text-decoration:none;color:var(--muted)}
-.toc a span{font-family:var(--mono);font-size:11px;color:var(--brand);margin-right:5px}
-.toc a:hover{color:var(--ink)}
+section{margin-top:56px;scroll-margin-top:24px}
+.sh{display:flex;align-items:baseline;gap:10px;margin:0 0 6px;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-ink)}
+.sh::after{content:"";flex:1;height:1px;background:var(--line);transform:translateY(-3px)}
+h2{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.18;letter-spacing:-.015em;margin:0 0 12px;text-wrap:balance}
+.short{display:flex;gap:10px;align-items:baseline;background:var(--soft);border:1px solid #ffdcc7;border-radius:10px;padding:10px 14px;margin-bottom:18px;font-size:14.5px}
+.short b{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-ink);white-space:nowrap}
+h3{font-family:var(--display);font-weight:700;font-size:16px;margin:22px 0 8px;letter-spacing:-.005em}
 
-section{margin-top:40px;scroll-margin-top:20px}
-h2{display:flex;align-items:baseline;gap:10px;margin:0 0 6px;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-ink)}
-h2::after{content:"";flex:1;height:1px;background:var(--line);transform:translateY(-3px)}
-h3{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.2;letter-spacing:-.015em;margin:0 0 14px;text-wrap:balance}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);padding:0 12px 8px 0;border-bottom:1px solid var(--ink);white-space:nowrap}
+td{padding:9px 12px 9px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted);line-height:1.45}
+td b{color:var(--ink)}
+td:first-child{color:var(--ink)}
+td.r,th.r{text-align:right}
+tr.win td{background:var(--soft)}
+tr.win td:first-child{box-shadow:inset 3px 0 0 var(--brand);padding-left:12px}
+.sub{display:block;color:var(--subtle);font-size:12px;margin-top:2px}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.p-lead{background:var(--brand);color:#fff}.p-par{background:var(--soft);color:var(--brand-ink);border:1px solid #ffd2b8}.p-later{background:var(--chip);color:var(--muted)}
+.p-bad{background:var(--bad-soft);color:var(--bad)}
 
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .col h4{margin:0 0 8px;font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--subtle)}
 ul.ticks{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 ul.ticks li{padding:8px 0 8px 18px;border-bottom:1px solid var(--line);font-size:14px;color:var(--muted);position:relative}
 ul.ticks li b{color:var(--ink)}
 ul.ticks li::before{content:"";position:absolute;left:2px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--ok)}
-ul.ticks.fix li::before{background:var(--brand)}
+ul.ticks.o li::before{background:var(--brand)}
 
-.tw{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14px}
-th{text-align:left;font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);padding:0 12px 8px 0;border-bottom:1px solid var(--ink)}
-td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted);line-height:1.45}
-td b{color:var(--ink)}
-td:first-child{color:var(--ink)}
-tr.win td{background:var(--soft)}
-tr.win td:first-child{box-shadow:inset 3px 0 0 var(--brand);padding-left:12px}
-.pill{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;white-space:nowrap}
-.p-lead{background:var(--brand);color:#fff}.p-par{background:var(--soft);color:var(--brand-ink);border:1px solid #ffd2b8}.p-later{background:#f2f2f4;color:var(--muted)}
-
-.steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.steps li{display:grid;grid-template-columns:34px 190px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.steps .n{font-family:var(--mono);font-size:11.5px;color:var(--brand)}
-.steps b{font-family:var(--display);font-weight:700;font-size:15px}
-.steps span{color:var(--muted);font-size:14px}
-.plays li{grid-template-columns:96px 190px 1fr}
-.plays .n .pill{color:#fff}
-.plays .n .p-par{color:var(--brand-ink)}.plays .n .p-later{color:var(--muted)}
+.play{border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:14px}
+.play.lead{border-color:#ffc7a6;box-shadow:inset 3px 0 0 var(--brand)}
+.play header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.play header b{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em}
+.play .why{color:var(--muted);font-size:14.5px;margin-bottom:12px}
+.play dl{display:grid;grid-template-columns:130px 1fr;margin:0;border-top:1px solid var(--line)}
+.play dt,.play dd{padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.play dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--subtle);padding-top:10px}
+.play dd{margin:0;color:var(--muted)}
+.play dd b{color:var(--ink)}
+.play q{quotes:"“" "”";color:var(--ink)}
 
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
 .chip{display:inline-flex;align-items:baseline;gap:6px;border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;font-size:13px;color:var(--muted);white-space:nowrap}
@@ -93,13 +119,18 @@ tr.win td:first-child{box-shadow:inset 3px 0 0 var(--brand);padding-left:12px}
 .arr p{margin-top:14px;padding-top:12px;border-top:1px solid var(--night-line);font-size:12px;color:#7c7c86}
 .arr p b{color:#d6d6da;font-weight:500}
 
+.bars{display:grid;grid-template-columns:150px 1fr 56px;gap:7px 12px;align-items:center;font-size:13px;color:var(--muted)}
+.bars i{display:block;height:14px;border-radius:0 4px 4px 0;background:var(--brand);min-width:3px}
+.bars i.lt{background:#ffb48a}
+.bars em{font-style:normal;text-align:right;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+
 .phases{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.phases div{padding:14px 16px}
-.phases div+div{border-left:1px solid var(--line)}
+.phases > div{padding:14px 16px}
+.phases > div+div{border-left:1px solid var(--line)}
 .phases small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
 .phases b{display:block;font-family:var(--display);font-weight:700;font-size:16px;margin:4px 0 6px}
-.phases p{font-size:13.5px;color:var(--muted)}
-.gate{margin-top:6px;font-size:12.5px;color:var(--ink);font-family:var(--mono)}
+.phases ul{margin:0;padding-left:16px;font-size:13.5px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+.gate{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line-2);font-size:12px;color:var(--ink);font-family:var(--mono)}
 
 .xp td.co{width:170px}
 .xp td.co b{display:block;font-family:var(--display);font-weight:700;font-size:14.5px}
@@ -108,103 +139,213 @@ tr.win td:first-child{box-shadow:inset 3px 0 0 var(--brand);padding-left:12px}
 .xp td.num small{display:block;font-family:var(--sans);font-weight:400;font-size:11.5px;color:var(--subtle);margin-top:2px;white-space:normal}
 .xp tr.k td.num{color:var(--brand)}
 
-.end{margin-top:40px;padding-top:16px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
-.links{display:flex;gap:18px;flex-wrap:wrap;font-weight:600;font-size:14px}
-.contact{font-family:var(--mono);font-size:11.5px;color:var(--subtle);user-select:all}
+ol.src{margin:0;padding-left:18px;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+ol.src a{color:var(--muted)}
+.next{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+.next a{text-decoration:none;color:var(--subtle);font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+.next a:hover{color:var(--brand)}
+.end{margin-top:48px;padding-top:16px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:14px}
 .disc{margin-top:10px;font-size:11.5px;color:var(--subtle)}
 
-@media (max-width:680px){
-  body{padding-block:32px 48px}
+@media (max-width:980px){
+  body{padding-top:0}
+  .wrap{grid-template-columns:1fr;gap:0}
+  .rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);margin:0 calc(-1 * max(20px, env(safe-area-inset-left,0px)));padding:10px max(20px, env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);gap:8px}
+  .rail .who,.rail .contact{display:none}
+  .rail nav{flex-direction:row;overflow-x:auto;border-left:0;gap:4px;scrollbar-width:none}
+  .rail nav::-webkit-scrollbar{display:none}
+  .rail nav a{border:1px solid var(--line);border-radius:999px;padding:5px 10px;margin:0;white-space:nowrap;font-size:12.5px}
+  .rail nav a.on{border-color:var(--brand);background:var(--soft)}
+  main{max-width:none;padding-top:28px}
+}
+@media (max-width:640px){
+  .facts{grid-template-columns:1fr 1fr}
+  .facts div:nth-child(3){padding-left:0;border-left:0}
+  .facts div:nth-child(n+3){border-top:1px solid var(--line)}
   .cols,.phases{grid-template-columns:1fr}
-  .phases div+div{border-left:0;border-top:1px solid var(--line)}
-  .steps li{grid-template-columns:28px 1fr;gap:2px 10px}
-  .steps span{grid-column:2}
-  .plays li{grid-template-columns:1fr}
-  .plays li span{grid-column:1}
+  .phases > div+div{border-left:0;border-top:1px solid var(--line)}
+  .play dl{grid-template-columns:1fr}
+  .play dt{border-bottom:0;padding-bottom:0}
   .arr .row{grid-template-columns:1fr 1fr;gap:14px 0}
   .arr .row div:nth-child(3){padding-left:0;border-left:0}
-  .tw table{min-width:560px}
+  .tw table{min-width:600px}
+  .tw table.xp{min-width:0}
   .xp tr td{display:block;width:auto!important;text-align:left!important;padding-right:0}
   .xp td.co,.xp td.what{border-bottom:0;padding-bottom:2px}
+  .bars{grid-template-columns:110px 1fr 44px}
 }
 @media print{
-  @page{size:1040px 1346px;margin:44px 52px}
+  @page{size:1100px 1424px;margin:44px 52px}
   html{padding:0}
   body{padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .memo{max-width:none}
-  section{break-inside:avoid}
+  .wrap{display:block}
+  .rail,.next{display:none}
+  main{max-width:none}
+  .play,tr,.arr,.phases{break-inside:avoid}
+  h2,h3,.sh{break-after:avoid}
 }
 </style>
 </head>
 <body>
-<main class="memo">
+<div class="wrap">
 
-  <div class="top"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>Full plan · Arfaan Jeddy for Kayaan</span><a href="../">← Summary</a></div>
-
-  <h1>Shield's message is right. The gap is <em>getting it in front of the right brokers.</em></h1>
-  <p class="dek">Since <i>Montgomery v. Caribe</i> (Supreme Court, 9 to 0, May 14, 2026), brokers can be sued for picking an unsafe carrier. Shield already records proof of care on every load. This plan turns that into a repeatable path to <b>pilots and ARR</b>.</p>
-
-  <nav class="toc" aria-label="Sections">
-    <a href="#found"><span>01</span>What I found</a><a href="#who"><span>02</span>Who to win first</a><a href="#gap"><span>03</span>Where Kayaan wins</a><a href="#plays"><span>04</span>Three plays</a><a href="#engine"><span>05</span>The engine</a><a href="#example"><span>06</span>One account</a><a href="#arr"><span>07</span>ARR math</a><a href="#roadmap"><span>08</span>90 days</a><a href="#risks"><span>09</span>Risks</a><a href="#me"><span>10</span>Why me</a>
+<aside class="rail">
+  <a class="back" href="../">← One-page summary</a>
+  <div class="who">Arfaan Jeddy<small>Full GTM plan · Kayaan Shield</small></div>
+  <nav aria-label="Sections">
+    <a href="#found"><span>01</span>What I found</a>
+    <a href="#who"><span>02</span>Who to win first</a>
+    <a href="#gap"><span>03</span>Where Kayaan wins</a>
+    <a href="#plays"><span>04</span>Three plays</a>
+    <a href="#engine"><span>05</span>The engine</a>
+    <a href="#example"><span>06</span>One account</a>
+    <a href="#arr"><span>07</span>The ARR math</a>
+    <a href="#test"><span>08</span>First 30 days</a>
+    <a href="#roadmap"><span>09</span>90-day roadmap</a>
+    <a href="#risks"><span>10</span>Risks</a>
+    <a href="#me"><span>11</span>Why me</a>
+    <a href="#sources"><span>12</span>Sources</a>
   </nav>
+  <div class="contact">linkedin.com/in/arfaanj<br>github.com/arfujj</div>
+</aside>
+
+<main>
+  <div class="top"><span>Full plan · Arfaan Jeddy for Kayaan</span><span>Nov 2026</span></div>
+  <h1>Shield's message is right. The gap is <em>getting it in front of the right brokers.</em></h1>
+  <p class="dek">Since <i>Montgomery v. Caribe</i> (Supreme Court, 9 to 0, May 14, 2026), a broker can be sued for picking an unsafe carrier. Shield already records proof of care on every load. This plan turns that into a repeatable path to <b>pilots and ARR</b>, starting with the brokers who feel the ruling most.</p>
+  <div class="facts">
+    <div><strong>9 to 0</strong><span>Montgomery ruling, May 14, 2026</span></div>
+    <div><strong>25,081</strong><span>active broker authorities (FMCSA, Nov 20)</span></div>
+    <div><strong>10 to 75</strong><span>staff: the brokers to win first</span></div>
+    <div><strong class="o">~$66K</strong><span>ARR by day 90, base case (estimate)</span></div>
+  </div>
 
   <section id="found">
-    <h2>01 · What I found</h2>
-    <h3>A strong product with a few fixable funnel leaks.</h3>
+    <div class="sh">01 · What I found</div>
+    <h2>A sharp product with a few fixable funnel leaks.</h2>
+    <p class="short"><b>In short</b>Kayaan has real advantages. A few site claims and one generic calendar link are likely costing pilots.</p>
     <div class="cols">
       <div class="col"><h4>Working for you</h4>
         <ul class="ticks">
-          <li><b>Operator founders</b> who still run trucks.</li>
-          <li><b>A driver app</b> already in drivers' hands. Most broker tools have no driver relationship.</li>
-          <li><b>Per-load pricing</b>, live in 48 hours, named TMS list.</li>
+          <li><b>Operator founders.</b> The CEO is a second-generation fleet owner who still runs trucks.</li>
+          <li><b>A driver app in drivers' hands</b> (KAY, live since Aug 2025). Most broker tools have no driver relationship.</li>
+          <li><b>Per-load pricing</b>, no seats, live in 48 hours, a named TMS list.</li>
           <li><b>The site already leads with Montgomery</b> and the audit trail.</li>
         </ul></div>
-      <div class="col"><h4>Quick fixes</h4>
-        <ul class="ticks fix">
-          <li><b>Four stories on two sites.</b> Lead with Shield only.</li>
-          <li><b>"Only platform that verifies the human."</b> Highway, E3, Verified Carrier and Arthur now do driver checks.</li>
-          <li><b>"$35 to 60B" theft stat.</b> CargoNet recorded about $725M in 2025. Use the real number.</li>
-          <li><b>One open calendar for every button.</b> Add a short intake form.</li>
+      <div class="col"><h4>Worth fixing in week one</h4>
+        <ul class="ticks o">
+          <li><b>Four stories on two sites</b> (voice booking, Shield, Autopilot, autonomous brokerage). Lead with Shield.</li>
+          <li><b>One calendar link for every button</b>, with 15, 20 or 30 minute demos depending on the page. Add an intake form.</li>
+          <li><b>No case study or price range</b> yet, so buyers can't sanity-check before booking.</li>
+          <li><b>SOC 2 wording differs</b> between pages ("in progress" vs "compliance").</li>
         </ul></div>
     </div>
+    <h3>Two claims a freight veteran would question</h3>
+    <div class="tw"><table>
+      <tr><th>Claim on the site</th><th>What the public record shows</th><th>Status</th></tr>
+      <tr><td><b>"The only platform that verifies the human at the dock"</b></td><td>Highway (Know Your Driver), E3 via Transfix, Verified Carrier and Arthur all market driver checks.</td><td><span class="pill p-bad">Contested</span></td></tr>
+      <tr><td><b>Cargo theft costs "$35 to 60B a year"</b></td><td>Verisk and CargoNet recorded about $725M in 2025 US and Canada losses.</td><td><span class="pill p-bad">Contested</span></td></tr>
+    </table></div>
+    <div class="next"><span></span><a href="#who">Next: who to win first →</a></div>
   </section>
 
   <section id="who">
-    <h2>02 · Who to win first</h2>
-    <h3>Established brokerages with 10 to 75 people.</h3>
+    <div class="sh">02 · Who to win first</div>
+    <h2>Established brokerages with 10 to 75 people.</h2>
+    <p class="short"><b>In short</b>Big 3PLs already have well-funded AI vendors. New brokers don't have the volume. The middle is exposed and underserved.</p>
     <div class="tw"><table>
-      <tr><th>Segment</th><th>Why or why not</th><th>Verdict</th></tr>
-      <tr class="win"><td><b>10 to 75 person brokers</b><br><span style="color:var(--subtle);font-size:12.5px">2+ yrs authority, 50 to 300 loads a week</span></td><td>Exposed after Montgomery, real load volume, no compliance team, owner or VP Ops decides in weeks.</td><td><span class="pill p-lead">Start here</span></td></tr>
-      <tr><td>Large 3PLs</td><td>Long security reviews and well-funded agent vendors (HappyRobot, Augment, Vooma) already there.</td><td><span class="pill p-later">Later</span></td></tr>
-      <tr><td>New broker authorities</td><td>Easy to reach, but too few loads and high churn.</td><td><span class="pill p-later">Later</span></td></tr>
-      <tr><td>Owner-operators (KAY)</td><td>Crowded and low revenue per account. Better used as a referral source (play 3).</td><td><span class="pill p-par">Channel</span></td></tr>
+      <tr><th>Segment</th><th>Pain</th><th>Sales cycle</th><th>Reach</th><th>Competition</th><th>Verdict</th></tr>
+      <tr class="win"><td><b>Established brokers</b><span class="sub">10 to 75 staff, 2+ yrs, 50 to 300 loads/wk</span></td><td>High: Montgomery, theft, check calls</td><td>2 to 6 weeks</td><td>Owner or VP Ops</td><td>Medium</td><td><span class="pill p-lead">Start here</span></td></tr>
+      <tr><td>Mid-market 3PLs<span class="sub">75 to 500 staff</span></td><td>High</td><td>3 to 9 months</td><td>Committees</td><td>High: HappyRobot, Augment, Vooma</td><td><span class="pill p-later">Later</span></td></tr>
+      <tr><td>New broker authorities<span class="sub">under 1 year</span></td><td>Medium</td><td>Fast</td><td>Easy</td><td>Low</td><td><span class="pill p-later">Low volume</span></td></tr>
+      <tr><td>Shippers</td><td>Medium</td><td>6 to 12 months</td><td>Hard</td><td>Medium</td><td><span class="pill p-later">Later</span></td></tr>
+      <tr><td>Fleets and owner-operators (KAY)</td><td>Medium</td><td>Fast</td><td>Easy</td><td>Very high: DAT, Truckstop, CloudTrucks</td><td><span class="pill p-par">Channel</span></td></tr>
     </table></div>
+    <div class="cols" style="margin-top:18px">
+      <div class="col"><h4>Who decides</h4>
+        <ul class="ticks o">
+          <li><b>Under 25 staff:</b> the owner or President.</li>
+          <li><b>25 to 75 staff:</b> COO or VP Operations, with the carrier compliance lead as champion.</li>
+          <li><b>At insurance renewal:</b> the CFO joins.</li>
+        </ul></div>
+      <div class="col"><h4>What makes them buy now</h4>
+        <ul class="ticks o">
+          <li>A recent theft or double-brokering hit</li>
+          <li>Insurance renewal in the next 90 days</li>
+          <li>Hiring carrier sales or track and trace reps</li>
+          <li>A shipper asking about fraud controls</li>
+        </ul></div>
+    </div>
+    <div class="next"><a href="#found">← What I found</a><a href="#gap">Next: where Kayaan wins →</a></div>
   </section>
 
   <section id="gap">
-    <h2>03 · Where Kayaan wins</h2>
-    <h3>Don't replace their tools. Add what happens after the rate con.</h3>
+    <div class="sh">03 · Where Kayaan wins</div>
+    <h2>Don't replace their tools. Add what happens after the rate con.</h2>
+    <p class="short"><b>In short</b>The market split into carrier vetting and enterprise AI agents. Nobody owns per-load proof of care for the small broker.</p>
     <div class="tw"><table>
-      <tr><th>Tool they may have</th><th>What it does</th><th>Kayaan's angle</th></tr>
-      <tr><td><b>Highway, Carrier411</b></td><td>Checks the carrier at onboarding</td><td>Keep them. Shield covers the load itself, after booking.</td></tr>
-      <tr><td><b>Verified Carrier, E3, Arthur</b></td><td>Checks the driver at pickup</td><td>Shield covers the whole load: driver, truck, pickup, transit, POD, sealed file.</td></tr>
-      <tr><td><b>HappyRobot, Augment, Vooma</b></td><td>AI agents for large brokerages</td><td>Different buyer. Shield is focused and live in days for small brokers.</td></tr>
+      <tr><th>Company</th><th>Who it serves</th><th>What it does</th><th>Kayaan's angle</th></tr>
+      <tr><td><b>Highway</b></td><td>Brokers of all sizes</td><td>Carrier identity and onboarding; Know Your Driver</td><td>Complement: Shield covers the load after booking</td></tr>
+      <tr><td><b>Carrier411</b></td><td>Small brokers</td><td>Carrier monitoring and credit</td><td>Complement: Shield starts where it ends</td></tr>
+      <tr><td><b>Verified Carrier, E3, Arthur</b></td><td>Brokers, shippers</td><td>Driver check at pickup</td><td>Shield covers the whole load in one file</td></tr>
+      <tr><td><b>Numeo</b></td><td>Brokers, dispatchers</td><td>Ongoing carrier verification</td><td>Per-load proof file, not just carrier status</td></tr>
+      <tr><td><b>HappyRobot, Augment, Vooma</b></td><td>Large brokers and 3PLs</td><td>AI agents across the desk</td><td>Different buyer; Shield is live in days for small brokers</td></tr>
+      <tr><td><b>FleetWorks, Parade</b></td><td>Brokers</td><td>Load covering, capacity</td><td>Different job: before booking, not after</td></tr>
+      <tr><td><b>DAT, Truckstop</b></td><td>Brokers and carriers</td><td>Load boards with risk signals</td><td>Data sources to plug in, not rivals</td></tr>
     </table></div>
+    <h3>Why a broker adds Kayaan</h3>
+    <ul class="ticks o">
+      <li><b>Liability:</b> "reasonable care" is now the question in court. Shield's file answers it, load by load.</li>
+      <li><b>Labor:</b> check calls and chasing paperwork are the hours a 15-person desk can't spare.</li>
+      <li><b>Fraud moved downstream:</b> Highway's 2026 reports tie about 40% of stolen loads to compromised communications after booking.</li>
+    </ul>
+    <p class="fine">Placement reflects public positioning, not a feature audit. I don't claim a competitor lacks a feature unless a source shows it.</p>
+    <div class="next"><a href="#who">← Who to win first</a><a href="#plays">Next: three plays →</a></div>
   </section>
 
   <section id="plays">
-    <h2>04 · Three plays</h2>
-    <h3>One to lead with, one in parallel, one to build.</h3>
-    <ol class="steps plays">
-      <li><span class="n"><span class="pill p-lead">Lead</span></span><b>The Reasonable Care Readout</b><span>"Send me 10 carriers you used last week. In 24 hours you get a one-page check: safety ratings, authority age, insurance, recent contact changes." Then: run Shield on your next 20 loads.</span></li>
-      <li><span class="n"><span class="pill p-par">Parallel</span></span><b>Renewal Desk</b><span>Insurance agents now need insurable broker clients. They introduce brokers before renewal, and the 20-load file goes into the renewal.</span></li>
-      <li><span class="n"><span class="pill p-later">Build</span></span><b>Verified Once</b><span>A driver verified once can reuse it on any Kayaan load, and can send "I'm Kayaan Verified" to other brokers, bringing them in.</span></li>
-    </ol>
+    <div class="sh">04 · Three plays</div>
+    <h2>One to lead with, one in parallel, one to build.</h2>
+    <p class="short"><b>In short</b>Lead with a free carrier readout that shows value before any demo. Add insurance agents as a warm channel. Build a driver network loop later.</p>
+    <article class="play lead">
+      <header><span class="pill p-lead">Lead</span><b>The Reasonable Care Readout</b></header>
+      <p class="why">The Montgomery case turned on a carrier with a conditional safety rating, which anyone can check in public data. Most brokers have never looked at their recent carriers that way.</p>
+      <dl>
+        <dt>Who</dt><dd>Owner or VP Ops at 10 to 75 person brokers, picked by the engine.</dd>
+        <dt>The offer</dt><dd><q>Send me 10 carriers you used last week. In 24 hours you get a one-page check: safety ratings, authority age, insurance on file, recent contact changes.</q></dd>
+        <dt>Then</dt><dd>A 20-minute demo on <b>their own carriers</b>, then Shield on their next 20 loads with success goals signed up front.</dd>
+        <dt>Success signal</dt><dd>3%+ positive replies, 8+ readouts requested in the first month.</dd>
+        <dt>Risk and fix</dt><dd>Brokers may not share carrier lists with a stranger. Fallback: a readout on carriers posting lanes into their city, plus agent-introduced readouts.</dd>
+      </dl>
+    </article>
+    <article class="play">
+      <header><span class="pill p-par">Parallel</span><b>Renewal Desk</b></header>
+      <p class="why">Since the ruling, insurers are asking brokers how they vet carriers before they renew. Agents need clients who look insurable.</p>
+      <dl>
+        <dt>Who</dt><dd>Transportation insurance agents with broker clients.</dd>
+        <dt>The offer</dt><dd>A free carrier-selection review for their clients before renewal. The 20-load Reasonable Care File goes into the renewal.</dd>
+        <dt>Why it converts</dt><dd>Warm introductions with a deadline attached.</dd>
+        <dt>Success signal</dt><dd>1+ agent partner and 3+ introductions by day 45.</dd>
+        <dt>Risk and fix</dt><dd>Agents may avoid recommending vendors. Position it as an educational review, with no referral fees.</dd>
+      </dl>
+    </article>
+    <article class="play">
+      <header><span class="pill p-later">Build</span><b>Verified Once</b></header>
+      <p class="why">Drivers hate repeating ID checks for every broker. Kayaan is rare in having both a driver app and a broker product.</p>
+      <dl>
+        <dt>How it works</dt><dd>A driver verifies once (with consent) and reuses it on any Kayaan-protected load. They can send "I'm Kayaan Verified" to other brokers, which brings those brokers in.</dd>
+        <dt>Success signal</dt><dd>3+ broker demo requests from 10 participating carriers.</dd>
+        <dt>Risk and fix</dt><dd>Biometric privacy rules. Counsel review first, explicit opt-in, minimal data stored.</dd>
+      </dl>
+    </article>
+    <p class="fine">Not recommended now: paid ads, generic content, or cold AI voice calls (legal risk and the wrong first impression for a fraud-prevention brand).</p>
+    <div class="next"><a href="#gap">← Where Kayaan wins</a><a href="#engine">Next: the engine →</a></div>
   </section>
 
   <section id="engine">
-    <h2>05 · The engine</h2>
-    <h3>Public data in, qualified pilots out. A person approves every first message.</h3>
+    <div class="sh">05 · The engine</div>
+    <h2>Public data in, qualified pilots out. A person approves every first message.</h2>
+    <p class="short"><b>In short</b>Pull every active broker, score them on fit and buying signals, draft personal outreach, and learn every week from what converts.</p>
     <div class="flow">
       <span class="chip"><strong>25,081</strong>brokers from FMCSA</span><span class="to">→</span>
       <span class="chip">buying signals</span><span class="to">→</span>
@@ -217,27 +358,69 @@ tr.win td:first-child{box-shadow:inset 3px 0 0 var(--brand);padding-left:12px}
       <span class="chip h">qualify call</span><span class="to">→</span>
       <span class="chip">learn weekly</span>
     </div>
-    <p class="fine">Signals: hiring dispatch staff, theft or impersonation news, insurance renewal, visits to the pilot page. Every score shows its reasons. No scraping, no cold AI calls. A working scoring prototype is already built.</p>
+    <h3>How each account is scored</h3>
+    <div class="tw"><table>
+      <tr><th>Signal</th><th>Rule</th><th class="r">Points</th></tr>
+      <tr><td><b>Company size</b></td><td>10 to 75 staff (76 to 200 scores lower)</td><td class="r">up to 15</td></tr>
+      <tr><td><b>Hiring</b></td><td>Carrier sales, track and trace or compliance role posted in the last 30 days</td><td class="r">15</td></tr>
+      <tr><td><b>Theft or impersonation</b></td><td>Public mention in the last 90 days</td><td class="r">15</td></tr>
+      <tr><td><b>Authority age</b></td><td>2 to 15 years</td><td class="r">10</td></tr>
+      <tr><td><b>Supported TMS</b></td><td>McLeod, Turvo, Revenova, Alvys, Ascend and others</td><td class="r">10</td></tr>
+      <tr><td><b>Freight type</b></td><td>Dry van, reefer or power only</td><td class="r">10</td></tr>
+      <tr><td><b>Insurance renewal</b></td><td>Within 3 months (from an agent partner)</td><td class="r">10</td></tr>
+      <tr><td><b>Engagement</b></td><td>Visits to the pilot or readout page</td><td class="r">up to 10</td></tr>
+      <tr><td><b>High-theft lanes</b></td><td>Based in or shipping into CA, TX, IL, GA, FL, NJ</td><td class="r">5</td></tr>
+      <tr><td><b>Ruled out</b></td><td>Authority not active, under 5 or over 500 staff, already in pipeline</td><td class="r">0</td></tr>
+    </table></div>
+    <h3>Example output</h3>
+    <div class="tw"><table>
+      <tr><th>Account (fictional)</th><th class="r">Score</th><th>Top reasons</th><th>Contact</th></tr>
+      <tr><td><b>Gulf Bend Freight</b><span class="sub">TX · 48 staff · reefer</span></td><td class="r"><b>75</b></td><td>Impersonation mention, renewal in 2 months, Turvo</td><td>COO</td></tr>
+      <tr><td><b>Prairie Line Logistics</b><span class="sub">IL · 22 staff · dry van</span></td><td class="r"><b>60</b></td><td>Hiring a carrier sales rep, lanes into CA and TX</td><td>Owner</td></tr>
+      <tr><td><b>Copper Mesa Brokers</b><span class="sub">AZ · 14 staff · flatbed</span></td><td class="r">44</td><td>Hiring track and trace, TMS unknown</td><td>Owner</td></tr>
+    </table></div>
+    <div class="cols" style="margin-top:18px">
+      <div class="col"><h4>Automated</h4>
+        <ul class="ticks">
+          <li>Data pulls, enrichment and scoring</li>
+          <li>Account briefs and first drafts</li>
+          <li>Sorting replies and building readouts</li>
+          <li>Pipeline updates and the weekly report</li>
+        </ul></div>
+      <div class="col"><h4>Always a person</h4>
+        <ul class="ticks o">
+          <li>Approving every first message</li>
+          <li>Checking every readout before it's sent</li>
+          <li>Every call, demo and pilot scope</li>
+          <li>Anything sent to an insurance agent</li>
+        </ul></div>
+    </div>
+    <p class="fine">Built with Python, Postgres, FMCSA's public data, licensed contact data, Claude for drafts, and a CRM. No scraping, no cold texts or AI calls. A working scoring prototype already exists.</p>
+    <div class="next"><a href="#plays">← Three plays</a><a href="#example">Next: one account →</a></div>
   </section>
 
   <section id="example">
-    <h2>06 · One account, start to finish</h2>
-    <h3>From a hiring signal to a signed broker in 30 days.</h3>
+    <div class="sh">06 · One account, start to finish</div>
+    <h2>From a hiring signal to a signed broker in 30 days.</h2>
+    <p class="short"><b>In short</b>The demo runs on the broker's own carriers, and the pilot ends with a file they need for renewal.</p>
     <div class="tw"><table>
-      <tr><th style="width:70px">Day</th><th>What happens</th></tr>
-      <tr><td><b>0</b></td><td>A 22-person Illinois broker posts a "carrier sales rep" job. Score: 60.</td></tr>
-      <tr><td><b>1</b></td><td>Approved email: "Before you hire the next rep, send me 10 carriers you used last week."</td></tr>
-      <tr><td><b>4</b></td><td>Readout sent: 1 carrier with a conditional rating, 2 with recent contact changes.</td></tr>
-      <tr><td><b>6</b></td><td>20-minute demo on their own carriers. Pilot goals signed.</td></tr>
-      <tr><td><b>8 to 27</b></td><td>20-load pilot, with a check-in at day 14.</td></tr>
-      <tr><td><b>30</b></td><td>Review with their Reasonable Care File. Signed per-load agreement.</td></tr>
+      <tr><th style="width:70px">Day</th><th>What happens</th><th>Who</th></tr>
+      <tr><td><b>0</b></td><td>A 22-person Illinois broker posts a "carrier sales rep" job. Score: 60.</td><td>Engine</td></tr>
+      <tr><td><b>1</b></td><td>Approved email: "Before you hire the next rep, send me 10 carriers you used last week."</td><td>Me</td></tr>
+      <tr><td><b>4</b></td><td>Readout sent: 1 carrier with a conditional rating, 2 with recent contact changes.</td><td>Engine + me</td></tr>
+      <tr><td><b>6</b></td><td>20-minute demo on their carriers. Pilot goals signed: 90%+ loads with a complete file, 75%+ check calls automated.</td><td>Founder</td></tr>
+      <tr><td><b>8 to 27</b></td><td>20-load pilot, with a midpoint report at day 14.</td><td>Me + team</td></tr>
+      <tr><td><b>28</b></td><td>Review with their Reasonable Care File, ready to send to their insurance agent.</td><td>Founder</td></tr>
+      <tr><td><b>30</b></td><td>Signed per-load agreement. Goal: 100 paid loads in month one.</td><td>Founder</td></tr>
     </table></div>
     <p class="fine">Example account is fictional, for illustration.</p>
+    <div class="next"><a href="#engine">← The engine</a><a href="#arr">Next: the ARR math →</a></div>
   </section>
 
   <section id="arr">
-    <h2>07 · The ARR math</h2>
-    <h3>What one person running this engine could produce.</h3>
+    <div class="sh">07 · The ARR math</div>
+    <h2>What one person running this engine could produce.</h2>
+    <p class="short"><b>In short</b>About 5 pilots and 1 to 2 new brokers a month in the base case. The biggest levers are loads per broker and pilot-to-paid rate.</p>
     <div class="arr">
       <div class="row">
         <div><strong>~13</strong><span>qualified meetings a month</span></div>
@@ -245,58 +428,158 @@ tr.win td:first-child{box-shadow:inset 3px 0 0 var(--brand);padding-left:12px}
         <div><strong>~$50K</strong><span>new ARR a month (1 to 2 brokers at ~$30K ARR)</span></div>
         <div><strong>~$66K</strong><span>ARR run rate by day 90</span></div>
       </div>
-      <p><b>Base-case estimate.</b> Assumes ~500 protected loads a month per broker at ~$5 a load. I'll replace it with your real numbers in a day.</p>
+      <p><b>Base-case estimate.</b> Assumes ~500 protected loads a month per broker at ~$5 a load. Every number here is an assumption until I have your data.</p>
     </div>
-    <div style="margin-top:18px">
-      <div class="flow">
-        <span class="chip"><strong>300</strong>brokers in the first test</span><span class="to">→</span>
-        <span class="chip"><strong>10</strong>meetings</span><span class="to">→</span>
-        <span class="chip"><strong>4</strong>pilots</span><span class="to">→</span>
-        <span class="chip h"><strong>Day 30</strong>keep or change the offer</span>
-      </div>
-      <p class="fine">First 30 days: half the brokers get the readout offer, half get the current offer, so we know which works.</p>
+    <h3>Monthly funnel, base case</h3>
+    <div class="bars">
+      <span>Brokers contacted</span><i style="width:100%"></i><em>350</em>
+      <span>Positive replies</span><i style="width:12%"></i><em>12</em>
+      <span>Agent introductions</span><i class="lt" style="width:6%"></i><em>6</em>
+      <span>Qualified meetings</span><i style="width:13%"></i><em>13</em>
+      <span>Demos held</span><i style="width:11%"></i><em>11</em>
+      <span>Pilots started</span><i style="width:5%"></i><em>5</em>
+      <span>Pilots completed</span><i style="width:3.3%"></i><em>3.3</em>
+      <span>New paying brokers</span><i style="width:1.6%"></i><em>1.6</em>
     </div>
+    <h3>Three scenarios</h3>
+    <div class="tw"><table>
+      <tr><th>Per month</th><th class="r">Cautious</th><th class="r">Base</th><th class="r">Strong</th></tr>
+      <tr><td>Positive reply rate</td><td class="r">2.5%</td><td class="r">3.5%</td><td class="r">5%</td></tr>
+      <tr><td>Qualified meetings</td><td class="r">5</td><td class="r"><b>13</b></td><td class="r">25</td></tr>
+      <tr><td>Pilots started</td><td class="r">1.3</td><td class="r"><b>5</b></td><td class="r">12</td></tr>
+      <tr><td>New paying brokers</td><td class="r">0.3</td><td class="r"><b>1.6</b></td><td class="r">5</td></tr>
+      <tr><td>ARR per broker</td><td class="r">$14K</td><td class="r"><b>$30K</b></td><td class="r">$50K</td></tr>
+      <tr><td>ARR run rate by day 90</td><td class="r">$6K</td><td class="r"><b>$66K</b></td><td class="r">$357K</td></tr>
+    </table></div>
+    <p class="fine">If the first month looks like the cautious case, we change the offer and lean on insurance agents before adding volume.</p>
+    <h3>What I'd ask you for to make this real</h3>
+    <ul class="ticks o">
+      <li>Per-load pricing and volume tiers quoted in pilots</li>
+      <li>Every demo since launch, with its source and outcome</li>
+      <li>Loads per month for current customers</li>
+      <li>Which TMS integrations are live today</li>
+    </ul>
+    <div class="next"><a href="#example">← One account</a><a href="#test">Next: first 30 days →</a></div>
+  </section>
+
+  <section id="test">
+    <div class="sh">08 · First 30 days</div>
+    <h2>One controlled test that answers one question: does the readout create pilots?</h2>
+    <p class="short"><b>In short</b>300 brokers, split in two. Half get the readout offer, half get the current offer. Day 30 decides what we scale.</p>
+    <div class="flow">
+      <span class="chip"><strong>300</strong>brokers</span><span class="to">→</span>
+      <span class="chip"><strong>150</strong>readout offer</span>
+      <span class="chip"><strong>150</strong>current offer</span><span class="to">→</span>
+      <span class="chip h"><strong>Day 30</strong>keep or change</span>
+    </div>
+    <div class="tw" style="margin-top:16px"><table>
+      <tr><th>By day 30</th><th class="r">Keep going</th><th class="r">Rethink</th></tr>
+      <tr><td>Positive reply rate (readout group)</td><td class="r">3%+</td><td class="r">under 1.5%</td></tr>
+      <tr><td>Readouts requested</td><td class="r">8+</td><td class="r">under 3</td></tr>
+      <tr><td>Qualified meetings, all sources</td><td class="r">10+</td><td class="r">under 4</td></tr>
+      <tr><td>Pilots started with signed goals</td><td class="r">4+</td><td class="r">under 2</td></tr>
+      <tr><td>Readout group vs current offer</td><td class="r">1.5x more meetings</td><td class="r">no better</td></tr>
+      <tr><td>Insurance agents willing to partner</td><td class="r">1+</td><td class="r">0 of 3</td></tr>
+    </table></div>
+    <p class="fine">Pilot-to-paid is read at day 45 to 60, since pilots take about three weeks.</p>
+    <div class="next"><a href="#arr">← The ARR math</a><a href="#roadmap">Next: 90-day roadmap →</a></div>
   </section>
 
   <section id="roadmap">
-    <h2>08 · The first 90 days</h2>
-    <h3>Prove it, sharpen it, then make it repeatable.</h3>
+    <div class="sh">09 · 90-day roadmap</div>
+    <h2>Prove it, sharpen it, then make it repeatable.</h2>
+    <p class="short"><b>In short</b>Each month ends with a go or no-go, so we only scale what's working.</p>
     <div class="phases">
-      <div><small>Days 1 to 30</small><b>Prove</b><p>Site fixes, 5 customer calls, engine live, first 300 brokers, first readouts and demos.</p><p class="gate">Go: 10+ meetings, 4+ pilots</p></div>
-      <div><small>Days 31 to 60</small><b>Sharpen</b><p>Keep the signals that convert, tighten the pilot, first pilots turn into paying brokers.</p><p class="gate">Go: half of pilots convert</p></div>
-      <div><small>Days 61 to 90</small><b>Repeat</b><p>More volume, 2 to 4 insurance agent partners, first case study, a playbook anyone can run.</p><p class="gate">Go: 3+ paying brokers</p></div>
+      <div><small>Days 1 to 30</small><b>Prove</b>
+        <ul><li>Wk 1: site fixes, intake form, 5 customer calls</li><li>Wk 2: engine live, readout template</li><li>Wk 3: test launched, 3 agents briefed</li><li>Wk 4: first readouts and demos</li></ul>
+        <p class="gate">Go: 10+ meetings, 4+ pilots</p></div>
+      <div><small>Days 31 to 60</small><b>Sharpen</b>
+        <ul><li>Keep the signals that convert</li><li>Pilot playbook and day-14 report</li><li>Test messages by trigger</li><li>First pilots convert to paid</li></ul>
+        <p class="gate">Go: half of pilots convert, first load in 48h</p></div>
+      <div><small>Days 61 to 90</small><b>Repeat</b>
+        <ul><li>More outreach volume</li><li>2 to 4 insurance agent partners</li><li>First case study</li><li>A playbook anyone can run</li></ul>
+        <p class="gate">Go: 3+ paying brokers, 3+ pilots live</p></div>
     </div>
+    <h3>Who owns what</h3>
+    <div class="tw"><table>
+      <tr><th>Person</th><th>Owns</th></tr>
+      <tr><td><b>Me</b></td><td>The engine, outreach, readouts, weekly report, pilot follow-through</td></tr>
+      <tr><td><b>CEO</b></td><td>Demos, insurance agent relationships, closing</td></tr>
+      <tr><td><b>Product and engineering</b></td><td>Integration readiness, the Reasonable Care File export, Verified Once</td></tr>
+    </table></div>
+    <div class="next"><a href="#test">← First 30 days</a><a href="#risks">Next: risks →</a></div>
   </section>
 
   <section id="risks">
-    <h2>09 · Risks</h2>
-    <h3>What could slow this down, and how we'd know early.</h3>
+    <div class="sh">10 · Risks</div>
+    <h2>The biggest risk isn't the channel. It's pilots going live fast.</h2>
+    <p class="short"><b>In short</b>Every risk has a number we watch and a target, so problems show up early.</p>
     <div class="tw"><table>
-      <tr><th>Risk</th><th>How we watch it</th></tr>
-      <tr><td><b>Pilots go live slowly</b></td><td>Only accept TMSs that are live today. Target: first load within 48 hours.</td></tr>
-      <tr><td><b>Drivers skip verification</b></td><td>Track completion per load. Target: 85%+.</td></tr>
-      <tr><td><b>Liability message over-promises</b></td><td>Say "documented process," never "protects you from lawsuits." Counsel reviews the copy.</td></tr>
-      <tr><td><b>Emails land in spam</b></td><td>Separate sending domains, low daily volume, every message human-approved.</td></tr>
+      <tr><th>Risk</th><th>How we watch it</th><th>Target</th></tr>
+      <tr><td><b>Pilots go live slowly</b></td><td>Only accept TMSs that are live today; track time to first protected load</td><td>48 hours</td></tr>
+      <tr><td><b>Drivers skip verification</b></td><td>Completion rate and drop-off step per load</td><td>85%+</td></tr>
+      <tr><td><b>Liability message over-promises</b></td><td>Say "documented process," never "protects you from lawsuits"; counsel reviews copy</td><td>Signed off</td></tr>
+      <tr><td><b>Readout seen as a free product</b></td><td>Readout uses public data only; monitoring stays in Shield</td><td>35%+ to meetings</td></tr>
+      <tr><td><b>Emails land in spam</b></td><td>Separate domains, low daily volume, human-approved copy</td><td>Spam under 0.1%</td></tr>
+      <tr><td><b>Highway expands into this</b></td><td>Position as an add-on; log every loss reason</td><td>Under 30% lost to it</td></tr>
     </table></div>
+    <div class="next"><a href="#roadmap">← 90-day roadmap</a><a href="#me">Next: why me →</a></div>
   </section>
 
   <section id="me">
-    <h2>10 · Why me</h2>
-    <h3>I've built and run each part of this, and I measure it in ARR.</h3>
+    <div class="sh">11 · Why me</div>
+    <h2>I've built and run each part of this, and I measure it in ARR.</h2>
+    <p class="short"><b>In short</b>Outbound engines, funnels and data pipelines at real scale, plus a working start on this one.</p>
     <div class="tw"><table class="xp">
-      <tr class="k"><td class="co"><b>Appointive</b><small>GTM Engineering Lead · 2024 to now</small></td><td class="what">Built the outbound engine end to end (n8n, Clay, Apollo, CRM): <b>13,000+</b> leads qualified, <b>~30,000</b> emails a month, <b>5 to 6</b> calls booked a day, 10 paying clients.</td><td class="num">$216K to $276K<small>ARR built</small></td></tr>
+      <tr class="k"><td class="co"><b>Appointive</b><small>GTM Engineering Lead · 2024 to now</small></td><td class="what">Built the outbound engine end to end (n8n, Clay, Apollo, CRM): <b>13,000+</b> leads qualified, <b>~30,000</b> emails a month, <b>~22</b> positive replies and <b>5 to 6</b> calls booked a day, 10 paying clients.</td><td class="num">$216K to $276K<small>ARR built</small></td></tr>
       <tr class="k"><td class="co"><b>Sterling Periodontics</b><small>Marketing Analyst · 2026 to now</small></td><td class="what">Built tracking (GA4, Tag Manager, calls, forms) and GoHighLevel follow-up; guide <b>$180K+</b> a year in ads; ~300 leads and 35 consults a month, at about <b>$386K a month</b> in revenue.</td><td class="num">~$4.6M<small>ARR ($386K a month)</small></td></tr>
       <tr><td class="co"><b>DXC Technology</b><small>Data Analyst · 2022 to 2024</small></td><td class="what">Dashboards for 4 enterprise accounts; SQL and Python pipelines <b>40%</b> faster; anomaly alerts lifted SLA compliance <b>25%</b>.</td><td class="num">40%<small>faster pipelines</small></td></tr>
       <tr><td class="co"><b>ChiEAC</b><small>Data Analyst · 2026</small></td><td class="what">Found <b>3</b> underserved segments across 12 neighborhoods, guiding expansion into 6 new ones.</td><td class="num">3<small>segments found</small></td></tr>
       <tr><td class="co"><b>For Kayaan</b><small>Already done</small></td><td class="what">Pulled all 25,081 active brokers from FMCSA, built a working lead-scoring tool, and modeled the ARR math above.</td><td class="num">Day 1<small>ready</small></td></tr>
     </table></div>
+    <div class="next"><a href="#risks">← Risks</a><a href="#sources">Next: sources →</a></div>
+  </section>
+
+  <section id="sources">
+    <div class="sh">12 · Sources</div>
+    <h2>Where the facts come from.</h2>
+    <ol class="src">
+      <li><a href="https://www.scotusblog.com/2026/05/court-rules-freight-brokers-can-face-negligent-hiring-suits-under-state-law/" target="_blank" rel="noopener">SCOTUSblog: Montgomery v. Caribe Transport II (May 2026)</a></li>
+      <li><a href="https://www.theinsurer.com/e-and-s/news/montgomery-ruling-creating-capacity-issue-for-freight-broker-contingent-2026-09-17/" target="_blank" rel="noopener">The Insurer: broker liability capacity after Montgomery (Sept 2026)</a></li>
+      <li><a href="https://freightwaves.com/news/compromised-communications-linked-to-40-of-stolen-loads-in-highway-fraud-report" target="_blank" rel="noopener">FreightWaves: Highway Q3 fraud report</a></li>
+      <li><a href="https://highway.com/products/know-your-driver" target="_blank" rel="noopener">Highway: Know Your Driver</a></li>
+      <li><a href="https://www.freightwaves.com/news/transfix-integrates-e3-driver-fraud-screening-into-tms" target="_blank" rel="noopener">FreightWaves: Transfix integrates E3 driver screening</a></li>
+      <li><a href="https://www.fleetowner.com/safety/news/55371676/verified-carrier-launches-verified-pickup-for-driver-level-freight-verification" target="_blank" rel="noopener">FleetOwner: Verified Carrier launches Verified Pickup</a></li>
+      <li><a href="https://www.yu.edu/news/katz/ai-startup-seeks-transform-trucking-through-voice-technology" target="_blank" rel="noopener">Yeshiva University: Kayaan driver app coverage (Apr 2026)</a></li>
+      <li><a href="https://catalog.data.gov/dataset/carrier-all-with-history" target="_blank" rel="noopener">FMCSA public carrier and broker data (queried Nov 20, 2026)</a></li>
+      <li><a href="https://freight.kayaan.ai/" target="_blank" rel="noopener">freight.kayaan.ai</a> and <a href="https://www.kayaan.ai/" target="_blank" rel="noopener">kayaan.ai</a></li>
+    </ol>
   </section>
 
   <div class="end">
-    <div class="links"><a href="../">← Back to the summary</a></div>
-    <span class="contact">linkedin.com/in/arfaanj · github.com/arfujj</span>
+    <a href="../">← Back to the one-page summary</a>
+    <a href="#found">Back to top ↑</a>
   </div>
-  <p class="disc">Prepared independently from public sources. Not affiliated with Kayaan. Kayaan ARR figures are estimates.</p>
+  <p class="disc">Prepared independently by Arfaan Jeddy from public sources. Not affiliated with Kayaan. Kayaan ARR figures are estimates.</p>
 </main>
+</div>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.rail nav a'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.classList.remove('on');});
+        var a=map[e.target.id];
+        if(a){a.classList.add('on');if(window.innerWidth<=980){a.scrollIntoView({block:'nearest',inline:'center'});}}
+      }
+    });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  document.querySelectorAll('main section[id]').forEach(function(s){io.observe(s);});
+})();
+</script>
 </body>
 </html>
