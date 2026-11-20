@@ -232,6 +232,31 @@ svg.map{width:100%;max-width:580px;height:auto;display:block;background:var(--ca
   .slide [style*="margin-top:auto"]{margin-top:0!important}
 }
 @media (max-width:620px){.slide{padding-block:56px}.big{font-size:38px}.toc{grid-template-columns:1fr}}
+
+/* sleek pass: fewer website effects, tighter rhythm */
+.ann,.grid-bg,.glow,.slide.dk::before,.slide.dk::after{display:none!important}
+.nav{position:static;background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none}
+.nav .in{padding-block:14px}
+.pills{background:none;border:0;padding:0;gap:0}
+.pills a{padding:4px 10px;font-size:13px}
+.hero{background:#fff;border-bottom:1px solid var(--border)}
+.hero.plan .in{padding-block:40px 36px;max-width:1040px}
+.hero h1{font-size:clamp(30px,4vw,44px);margin:14px 0 12px}
+.hero p.sub{font-size:16px;margin-bottom:18px}
+.toc{margin-top:26px;gap:8px}
+.toc a{padding:10px 12px;border-radius:10px}
+.toc a:hover{transform:none}
+.in{max-width:1040px}
+.slide{padding-block:52px}
+.slide.tint{background:#fcfcfc}
+.slide h1{font-size:clamp(28px,3.4vw,40px)}
+.slide h2{font-size:clamp(22px,2.4vw,30px)}
+.body{margin-top:26px}
+.card{border-radius:12px;padding:16px 18px}
+.tw{border-radius:12px}
+.big{font-size:38px}
+.btn{padding:8px 14px;font-size:13.5px}
+.btn:hover{transform:none}
 /* responsive */
 @media (max-width:980px){
   .pills{display:none}

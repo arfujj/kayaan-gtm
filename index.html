@@ -8,347 +8,194 @@
 <meta property="og:title" content="Arfaan Jeddy for Kayaan">
 <meta property="og:description" content="A growth plan for Kayaan Shield: the idea, a 30-day test, the ARR math, and why I can run it.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Visual language follows freight.kayaan.ai: white and warm-tint surfaces, ink text, one orange, mono labels, faint grids, a dark band with an orange glow. */
+/* A tight memo in Kayaan's palette: one narrow column, hairline rules, one orange, one dark block. */
 :root{
-  --bg:#ffffff; --soft:#fff7f2; --tint:#fff1e8; --ink:#0c0c0d; --muted:#5a5a63; --subtle:#8a8a94;
-  --border:#ececee; --border-strong:#d9d9de; --brand:#fe5200; --brand-ink:#b33600; --brand-glow:#ff7a3a; --brand-2:#e7842a;
-  --night:#0c0c0d; --night-2:#161618; --night-line:#26262a; --night-text:#e9e9ec; --night-muted:#9a9aa3;
+  --bg:#ffffff; --soft:#fff7f2; --ink:#0c0c0d; --muted:#5a5a63; --subtle:#8a8a94; --line:#ececee; --line-2:#d9d9de;
+  --brand:#fe5200; --brand-ink:#b33600; --night:#0c0c0d; --night-muted:#9a9aa3; --night-line:#26262a;
   --display:"Archivo","Geist",ui-sans-serif,system-ui,sans-serif; --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-.in{max-width:1120px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
-.mono{font-family:var(--mono)}
-:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px));padding-block:56px 64px}
+.memo{max-width:720px;margin:0 auto}
+a{color:var(--ink);text-decoration-color:var(--brand);text-underline-offset:3px;text-decoration-thickness:1.5px}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
+b{font-weight:600}
 
-/* announcement bar */
-.ann{background:var(--night);color:#d6d6da;font-size:13px}
-.ann .in{display:flex;gap:10px 16px;align-items:center;justify-content:center;flex-wrap:wrap;padding-block:9px;text-align:center}
-.ann .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--brand);text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
-.ann a{color:#fff;text-decoration:underline;text-decoration-color:var(--brand);text-underline-offset:3px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--subtle);padding-bottom:14px;border-bottom:1px solid var(--line)}
+.top span:first-child{display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
+.top svg{width:11px;height:11px;color:var(--brand)}
 
-/* nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.82);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--border)}
-.nav .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
-.brand{display:flex;flex-direction:column;line-height:1.1;text-decoration:none}
-.brand b{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.02em}
-.brand b i{font-style:normal;color:var(--brand)}
-.brand small{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--subtle);text-transform:uppercase;margin-top:3px}
-.pills{display:flex;gap:2px;background:var(--soft);border:1px solid var(--border);border-radius:999px;padding:4px}
-.pills a{font-size:13.5px;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:999px}
-.pills a:hover{background:#fff;color:var(--ink)}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;transition:transform .15s ease,background .15s ease}
-.btn:hover{transform:translateY(-1px)}
-.btn.dark{background:var(--ink);color:#fff}
-.btn.ghost{border:1px solid var(--border-strong);background:#fff;color:var(--ink)}
-.btn.orange{background:var(--brand);color:#fff}
-.btn .ar{transition:transform .15s ease}.btn:hover .ar{transform:translateX(2px)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.6vw,38px);line-height:1.08;letter-spacing:-.025em;margin:28px 0 12px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--brand)}
+.dek{margin:0;color:var(--muted);font-size:16px;max-width:62ch}
+.dek b{color:var(--ink)}
 
-/* pill eyebrow */
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-ink);background:var(--tint);border:1px solid #ffd9c2;border-radius:999px;padding:5px 12px}
-.eyebrow svg{width:12px;height:12px}
-.cap{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--subtle)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);margin:26px 0 0;border-block:1px solid var(--line)}
+.kpis div{padding:14px 14px 14px 0}
+.kpis div+div{padding-left:14px;border-left:1px solid var(--line)}
+.kpis strong{display:block;font-family:var(--display);font-weight:800;font-size:24px;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpis strong.o{color:var(--brand)}
+.kpis span{display:block;margin-top:6px;font-size:12px;color:var(--muted);line-height:1.35}
 
-/* hero */
-.hero{position:relative;overflow:hidden;background:var(--soft);border-bottom:1px solid var(--border)}
-.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);opacity:.7;pointer-events:none}
-.glow{position:absolute;border-radius:50%;filter:blur(64px);pointer-events:none}
-.hero .glow.a{width:420px;height:420px;right:-80px;top:-60px;background:radial-gradient(circle,#ffb48a,transparent 70%);opacity:.75}
-.hero .glow.b{width:360px;height:360px;left:-120px;bottom:-140px;background:radial-gradient(circle,#ffc48a,transparent 70%);opacity:.5}
-.hero .in{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center;padding-block:72px 80px}
-.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,5.6vw,66px);line-height:1.02;letter-spacing:-.03em;margin:18px 0 18px;text-wrap:balance}
-.grad{background:linear-gradient(92deg,var(--brand) 0%,var(--brand-glow) 55%,var(--brand-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.sub{font-size:18px;color:var(--muted);max-width:56ch;margin:0 0 26px}
-.hero p.sub b{color:var(--ink);font-weight:600}
-.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.hero .cap{margin-top:22px}
+section{margin-top:34px}
+h2{display:flex;align-items:baseline;gap:10px;margin:0 0 12px;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-ink)}
+h2::after{content:"";flex:1;height:1px;background:var(--line);transform:translateY(-3px)}
+p{margin:0}
 
-.panel{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:0 1px 0 var(--border),0 30px 60px -30px rgba(254,82,0,.28);overflow:hidden}
-.panel .bar{display:flex;align-items:center;gap:6px;padding:12px 14px;border-bottom:1px solid var(--border);background:#fcfcfd}
-.panel .bar i{width:10px;height:10px;border-radius:50%;display:block}
-.panel .bar span{margin-left:10px;font-family:var(--mono);font-size:11px;color:var(--subtle);letter-spacing:.06em}
-.kpi{display:grid;grid-template-columns:1fr 1fr;}
-.kpi div{padding:20px 20px 18px;border-bottom:1px solid var(--border)}
-.kpi div:nth-child(odd){border-right:1px solid var(--border)}
-.kpi strong{display:block;font-family:var(--display);font-weight:800;font-size:34px;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.kpi strong.o{color:var(--brand)}
-.kpi span{display:block;font-size:13px;color:var(--muted);margin-top:8px;line-height:1.4}
-.panel .foot{padding:12px 16px;font-family:var(--mono);font-size:11px;color:var(--subtle);letter-spacing:.04em;display:flex;align-items:center;gap:8px}
-.live{width:8px;height:8px;border-radius:50%;background:#28c840;box-shadow:0 0 0 4px rgba(40,200,64,.15)}
-
-/* sections */
-section.s{padding-block:88px}
-section.s.tint{background:var(--soft);border-block:1px solid var(--border)}
-.head{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:760px;margin-bottom:40px}
-.head h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-.025em;margin:0;text-wrap:balance}
-.head p{margin:0;color:var(--muted);font-size:17px;max-width:62ch}
-
-.idea{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.quote{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.25;letter-spacing:-.015em;margin:0;text-wrap:pretty}
-.quote .hl{color:var(--brand)}
-.facts{display:flex;flex-direction:column;gap:12px}
-.fact{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:#fff}
-.fact .ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--tint);color:var(--brand);display:grid;place-items:center}
-.fact .ic svg{width:18px;height:18px}
-.fact b{display:block;font-size:15px}
-.fact span{font-size:14.5px;color:var(--muted)}
-
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:st}
-.step{position:relative;background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.step .n{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--brand)}
-.step h3{margin:0;font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-.01em}
-.step p{margin:0;font-size:14.5px;color:var(--muted)}
-.step q{quotes:"“" "”";color:var(--ink)}
-.step::after{content:"";position:absolute;right:-10px;top:30px;width:6px;height:6px;border-top:2px solid var(--border-strong);border-right:2px solid var(--border-strong);transform:rotate(45deg)}
-.step:last-child::after{display:none}
-.wk{margin-top:16px;display:block;padding:14px 18px;border-radius:14px;background:var(--tint);border:1px solid #ffdcc7;font-size:14.5px;color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:34px 180px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.steps .n{font-family:var(--mono);font-size:11.5px;color:var(--brand)}
+.steps b{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.005em}
+.steps span{color:var(--muted);font-size:14px}
+.wk{margin-top:10px;font-size:13.5px;color:var(--muted)}
 .wk b{color:var(--ink)}
 
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:18px;background:#fff;overflow:hidden}
-.stats div{padding:24px 22px;border-right:1px solid var(--border)}
-.stats div:last-child{border-right:0}
-.stats strong{display:block;font-family:var(--display);font-weight:800;font-size:44px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.stats span{display:block;margin-top:10px;font-size:14px;color:var(--muted);line-height:1.4}
-.note{margin-top:14px;font-size:14px;color:var(--subtle)}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.chip{display:inline-flex;align-items:baseline;gap:7px;border:1px solid var(--line-2);border-radius:999px;padding:6px 12px;font-size:13.5px;color:var(--muted);white-space:nowrap}
+.chip strong{font-family:var(--display);font-weight:800;font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
+.chip.o{border-color:#ffc7a6;background:var(--soft)}
+.chip.o strong{color:var(--brand)}
+.to{color:var(--line-2);font-size:14px}
+.fine{margin-top:10px;font-size:12.5px;color:var(--subtle)}
 
-/* dark band */
-.dark{position:relative;overflow:hidden;background:var(--night);color:var(--night-text)}
-.dark .grid-bg{background-image:linear-gradient(var(--night-line) 1px,transparent 1px),linear-gradient(90deg,var(--night-line) 1px,transparent 1px);opacity:.55}
-.dark .glow.a{width:520px;height:520px;left:-160px;top:-180px;background:radial-gradient(circle,rgba(254,82,0,.55),transparent 70%)}
-.dark .glow.b{width:460px;height:460px;right:-140px;bottom:-200px;background:radial-gradient(circle,rgba(231,132,42,.4),transparent 70%)}
-.dark .in{position:relative}
-.dark .eyebrow{background:rgba(254,82,0,.12);border-color:rgba(254,82,0,.4);color:#ff9a4a}
-.dark .head p{color:var(--night-muted)}
-.arr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.arr div{background:rgba(255,255,255,.03);border:1px solid var(--night-line);border-radius:16px;padding:24px 22px}
-.arr strong{display:block;font-family:var(--display);font-weight:800;font-size:clamp(36px,4.4vw,52px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.arr span{display:block;margin-top:12px;color:var(--night-muted);font-size:14.5px}
-.dark .note{color:#7c7c86}
-.dark .note b{color:var(--night-text);font-weight:600}
+.arr{background:var(--night);color:#f2f2f4;border-radius:14px;padding:20px 22px}
+.arr .row{display:grid;grid-template-columns:repeat(3,1fr)}
+.arr .row div{padding-right:16px}
+.arr .row div+div{padding-left:16px;border-left:1px solid var(--night-line)}
+.arr strong{display:block;font-family:var(--display);font-weight:800;font-size:30px;line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.arr .row div:first-child strong{color:#ff7a3a}
+.arr span{display:block;margin-top:8px;font-size:12.5px;color:var(--night-muted);line-height:1.4}
+.arr p{margin-top:14px;padding-top:12px;border-top:1px solid var(--night-line);font-size:12px;color:#7c7c86}
+.arr p b{color:#d6d6da;font-weight:500}
 
-/* why me */
-.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
-.proof div{border:1px solid var(--border);border-radius:16px;padding:20px;background:#fff}
-.proof strong{display:block;font-family:var(--display);font-weight:800;font-size:28px;line-height:1.05;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.proof strong.o{color:var(--brand)}
-.proof span{display:block;margin-top:8px;font-size:13.5px;color:var(--muted);line-height:1.4}
-.xp{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:18px;background:#fff;overflow:hidden}
-.xp article{display:grid;grid-template-columns:230px 1fr 190px;gap:8px 28px;padding:22px 24px;border-bottom:1px solid var(--border);align-items:start}
-.xp article:last-child{border-bottom:0;background:var(--soft)}
-.xp h3{margin:0;font-family:var(--display);font-weight:700;font-size:18px;line-height:1.2}
-.xp .role{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--subtle);text-transform:uppercase;margin-top:6px;line-height:1.5}
-.xp p{margin:0;font-size:15px;color:var(--muted)}
-.xp p b{color:var(--ink);font-weight:600}
-.xp .maps{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-ink);background:var(--tint);border:1px solid #ffdcc7;border-radius:10px;padding:8px 10px;line-height:1.45}
+.xp{width:100%;border-collapse:collapse;font-size:13.5px}
+.xp td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}
+.xp tr:first-child td{border-top:1px solid var(--line)}
+.xp td.co{width:170px;padding-right:14px}
+.xp td.co b{display:block;font-family:var(--display);font-weight:700;font-size:14.5px}
+.xp td.co small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--subtle);text-transform:uppercase;margin-top:3px}
+.xp td.what{color:var(--muted)}
+.xp td.what b{color:var(--ink)}
+.xp td.num{width:124px;text-align:right;padding-left:14px;font-family:var(--display);font-weight:800;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.xp td.num small{display:block;font-family:var(--sans);font-weight:400;font-size:11.5px;color:var(--subtle);margin-top:2px;white-space:normal}
+.xp tr.k td.num{color:var(--brand)}
 
-/* closing */
-.cta{position:relative;overflow:hidden;border-radius:24px;border:1px solid var(--border);background:linear-gradient(180deg,#fff, var(--soft));padding:48px clamp(22px,5vw,56px);display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center}
-.cta .glow.a{width:360px;height:360px;right:-90px;top:-120px;background:radial-gradient(circle,#ffb48a,transparent 70%);opacity:.7}
-.cta h2{position:relative;font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,42px);line-height:1.08;letter-spacing:-.025em;margin:12px 0 10px}
-.cta p{position:relative;margin:0;color:var(--muted)}
-.cta .row{position:relative;justify-content:flex-end}
-.contact{font-family:var(--mono);font-size:13px;color:var(--muted);user-select:all}
-footer{padding-block:28px 40px;color:var(--subtle);font-size:13px}
-footer .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.end{margin-top:34px;padding-top:16px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.links{display:flex;gap:18px;flex-wrap:wrap;font-weight:600;font-size:14px}
+.contact{font-family:var(--mono);font-size:11.5px;color:var(--subtle);user-select:all}
+.disc{margin-top:12px;font-size:11.5px;color:var(--subtle)}
 
-/* responsive */
-@media (max-width:980px){
-  .pills{display:none}
-  .hero .in{grid-template-columns:1fr;padding-block:52px 56px;gap:36px}
-  .idea{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr 1fr}
-  .step::after{display:none}
-  .proof{grid-template-columns:1fr 1fr}
-  .xp article{grid-template-columns:1fr;gap:10px}
-  .xp .maps{justify-self:start}
-  .cta{grid-template-columns:1fr}
-  .cta .row{justify-content:flex-start}
-}
-@media (max-width:620px){
-  section.s{padding-block:60px}
-  .steps,.arr{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr 1fr}
-  .stats div:nth-child(2){border-right:0}
-  .stats div:nth-child(-n+2){border-bottom:1px solid var(--border)}
-  .stats strong{font-size:36px}
-  .nav .btn{padding:8px 14px}
-  .brand small{display:none}
+@media (max-width:640px){
+  body{padding-block:32px 48px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpis div:nth-child(3){padding-left:0;border-left:0}
+  .kpis div:nth-child(n+3){border-top:1px solid var(--line)}
+  .steps li{grid-template-columns:28px 1fr;gap:2px 10px}
+  .steps span{grid-column:2}
+  .arr .row{grid-template-columns:1fr;gap:14px}
+  .arr .row div+div{padding-left:0;border-left:0;padding-top:14px;border-top:1px solid var(--night-line)}
+  .xp tr td{display:block;width:auto!important;text-align:left!important;padding-left:0!important}
+  .xp td.co{border-bottom:0;padding-bottom:2px}
+  .xp td.what{border-bottom:0;padding-block:2px}
+  .xp tr:first-child td{border-top:0}
+  .xp tr:first-child td.co{border-top:1px solid var(--line)}
 }
 @media print{
-  @page{size:1280px 1656px;margin:0}
+  @page{size:1040px 1346px;margin:40px 48px}
   html{padding:0}
-  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .nav,.ann{display:none}
-  section.s{padding-block:40px}
-  .head{margin-bottom:24px}
-  .xp article{padding:14px 20px}
-  .hero .in{padding-block:56px 60px}
-  .step,.xp article,.stats,.arr,.proof,.cta,.fact{break-inside:avoid}
-  #route,#me{break-before:page}
-  #me{padding-bottom:24px}
-  .btn:hover{transform:none}
-  .grad{background:none!important;-webkit-text-fill-color:var(--brand);color:var(--brand)}
-  .hero .in{grid-template-columns:1.25fr .9fr;gap:48px}
-  .idea{grid-template-columns:1fr 1fr}
-  .steps{grid-template-columns:repeat(4,1fr)}
-  .stats{grid-template-columns:repeat(4,1fr)}
-  .stats div{border-bottom:0!important;border-right:1px solid var(--border)!important}
-  .stats div:last-child{border-right:0!important}
-  .arr{grid-template-columns:repeat(3,1fr)}
-  .proof{grid-template-columns:repeat(4,1fr)}
-  .xp article{grid-template-columns:230px 1fr 190px;gap:8px 28px}
-  .cta{grid-template-columns:1.3fr 1fr}
-  .cta .row{justify-content:flex-end}
+  body{padding:0;font-size:12.5px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .memo{max-width:none}
+  h1{margin-top:18px;font-size:31px}
+  section{margin-top:22px}
+  .kpis{grid-template-columns:repeat(4,1fr);margin-top:18px}
+  .steps li{grid-template-columns:34px 170px 1fr;padding:7px 0}
+  .arr .row{grid-template-columns:repeat(3,1fr)}
+  .xp td{padding:7px 0}
+  .end{margin-top:14px;padding-top:10px}
+  section{margin-top:16px}
+  h1{margin:12px 0 8px}
+  .kpis div{padding-block:9px}
+  .arr{padding:14px 18px}
+  .arr p{margin-top:10px;padding-top:8px}
+  .disc{margin-top:6px}
+  .steps span,.xp,.wk{font-size:12.5px}
+  .kpis span,.arr span{font-size:11.5px}
+  .xp td.co{width:150px}
+  .dek{font-size:14.5px}
+  .top{padding-bottom:10px}
 }
 </style>
 </head>
 <body>
+<main class="memo">
 
-<div class="ann"><div class="in">
-  <span class="k"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>For Kayaan Freight · Nov 2026</span>
-  <span>A growth plan for Shield, built from public data. <a href="plan/">Read the full plan →</a></span>
-</div></div>
+  <div class="top"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>Arfaan Jeddy · for Kayaan</span><span>Nov 2026</span></div>
 
-<nav class="nav" aria-label="Page"><div class="in">
-  <a class="brand" href="#top"><b>ARFAAN JEDDY <i>×</i> KAYAAN</b><small>GTM plan · Shield</small></a>
-  <div class="pills"><a href="#idea">Idea</a><a href="#route">The plan</a><a href="#test">30-day test</a><a href="#arr">ARR</a><a href="#me">Why me</a></div>
-  <a class="btn dark" href="plan/">Full plan <span class="ar" aria-hidden="true">→</span></a>
-</div></nav>
+  <h1>Shield already proves care. I'd put it in front of <em>the brokers who need it.</em></h1>
+  <p class="dek">Your site makes the <i>Montgomery</i> case well. What I'd add is <b>distribution</b>: a repeatable way to find the right brokers, get them into the 20-load pilot, and turn pilots into ARR.</p>
 
-<header class="hero" id="top">
-  <div class="grid-bg"></div><div class="glow a"></div><div class="glow b"></div>
-  <div class="in">
-    <div>
-      <span class="eyebrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>Founding GTM plan</span>
-      <h1>Shield already proves care. Let's put it in front of <span class="grad">25,081 brokers.</span></h1>
-      <p class="sub">Your site makes the Montgomery case well. What I'd add is <b>distribution</b>: a repeatable engine that finds the brokers who need Shield most, gets them into the 20-load pilot, and turns pilots into ARR.</p>
-      <div class="row">
-        <a class="btn dark" href="#route">See the plan <span class="ar" aria-hidden="true">→</span></a>
-        <a class="btn ghost" href="plan/">Open the full plan</a>
-      </div>
-      <div class="cap">By Arfaan Jeddy · 30-day test · every number labeled</div>
+  <div class="kpis">
+    <div><strong>25,081</strong><span>active brokers in FMCSA data, pulled Nov 20</span></div>
+    <div><strong>10 to 75</strong><span>staff: the brokerages to win first</span></div>
+    <div><strong>30 days</strong><span>to a go or no-go on the first channel</span></div>
+    <div><strong class="o">~$66K</strong><span>ARR by day 90, base case (estimate)</span></div>
+  </div>
+
+  <section>
+    <h2>The plan</h2>
+    <ol class="steps">
+      <li><span class="n">01</span><b>Find the right brokers</b><span>Score FMCSA's public broker list for hiring, theft and insurance-renewal signals.</span></li>
+      <li><span class="n">02</span><b>Get them to answer</b><span>Lead with a free 24-hour safety check on 10 carriers they used last week, then offer Shield on 20 loads.</span></li>
+      <li><span class="n">03</span><b>Turn pilots into ARR</b><span>Agree on success goals up front. Each pilot ends with a file the broker hands to their insurance agent.</span></li>
+      <li><span class="n">04</span><b>Add a referral channel</b><span>Insurance agents send brokers to Kayaan before renewal.</span></li>
+    </ol>
+    <p class="wk"><b>Week one:</b> one clear message on the site, two claims fixed, and an intake form so demos go to real prospects.</p>
+  </section>
+
+  <section>
+    <h2>First 30 days</h2>
+    <div class="flow">
+      <span class="chip"><strong>300</strong>brokers contacted</span><span class="to">→</span>
+      <span class="chip"><strong>10</strong>meetings</span><span class="to">→</span>
+      <span class="chip"><strong>4</strong>pilots with agreed goals</span><span class="to">→</span>
+      <span class="chip o"><strong>Day 30</strong>keep or cut</span>
     </div>
-    <div class="panel" aria-label="Plan at a glance">
-      <div class="bar"><i style="background:#fe5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>plan_at_a_glance</span></div>
-      <div class="kpi">
-        <div><strong>25,081</strong><span>active broker authorities in FMCSA data, pulled Nov 20, 2026</span></div>
-        <div><strong class="o">10 to 75</strong><span>staff: the brokerages to win first</span></div>
-        <div><strong>30 days</strong><span>to a go or no-go on the first channel</span></div>
-        <div><strong class="o">~$66K</strong><span>ARR run rate by day 90 in the base case (estimate)</span></div>
-      </div>
-      <div class="foot"><span class="live"></span>Prototype scoring tool already built</div>
-    </div>
-  </div>
-</header>
+    <p class="fine">About $2,500 in tools plus a few hours of founder time. Targets, not promises.</p>
+  </section>
 
-<main>
-<section class="s" id="idea"><div class="in">
-  <div class="head"><span class="eyebrow">The idea</span><h2>Sell the proof of care to the brokers who feel the ruling most.</h2></div>
-  <div class="idea">
-    <p class="quote">Since <i>Montgomery</i>, a broker can be sued for picking an unsafe carrier. Shield records, on every load, that the broker checked the carrier, the driver and the truck. <span class="hl">That record is the product</span> for brokerages with 10 to 75 people and nobody doing compliance.</p>
-    <div class="facts">
-      <div class="fact"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M5 7h14M7 7l-3 7h6L7 7Zm10 0-3 7h6l-3-7Z"/></svg></div><div><b>9 to 0, May 14, 2026</b><span>Negligent-selection claims against brokers are no longer preempted.</span></div></div>
-      <div class="fact"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><div><b>Insurers are tightening</b><span>Underwriters now ask brokers how they vet carriers before they renew.</span></div></div>
-      <div class="fact"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg></div><div><b>Fraud moved after the rate con</b><span>Highway's 2026 reports tie about 40% of stolen loads to compromised communications.</span></div></div>
-    </div>
-  </div>
-</div></section>
-
-<section class="s tint" id="route"><div class="in">
-  <div class="head"><span class="eyebrow">What I'd do for you</span><h2>Four steps from a public list to a paying broker.</h2></div>
-  <div class="steps">
-    <article class="step"><span class="n">STEP 01</span><h3>Find the right brokers</h3><p>Build the list from FMCSA's public broker data, then pick out the ones hiring dispatch staff, hit by theft, or close to an insurance renewal.</p></article>
-    <article class="step"><span class="n">STEP 02</span><h3>Get them to answer</h3><p>Lead with something useful: <q>Send me 10 carriers you used last week and I'll send back a free safety check in 24 hours.</q> Then offer Shield on 20 loads.</p></article>
-    <article class="step"><span class="n">STEP 03</span><h3>Turn pilots into ARR</h3><p>Agree on success goals before each pilot. Each pilot ends with a short Reasonable Care File the broker can hand to their insurance agent.</p></article>
-    <article class="step"><span class="n">STEP 04</span><h3>Add a referral channel</h3><p>Insurance agents need their broker clients to look safe. They can send brokers to Kayaan before renewal.</p></article>
-  </div>
-  <div class="wk"><b>Week one:</b>&nbsp;sharpen the site to one message, swap two claims a freight veteran would doubt, and add a short intake form so demo time goes to real prospects.</div>
-</div></section>
-
-<section class="s" id="test"><div class="in">
-  <div class="head"><span class="eyebrow">The first 30 days</span><h2>One small, controlled test before any big spend.</h2><p>About $2,500 in tools and a few hours of founder time for demos.</p></div>
-  <div class="stats">
-    <div><strong>300</strong><span>brokers contacted, split into two test groups</span></div>
-    <div><strong>10</strong><span>qualified meetings booked</span></div>
-    <div><strong>4</strong><span>pilots started with agreed goals</span></div>
-    <div><strong style="color:var(--brand)">Day 30</strong><span>keep what worked, cut what didn't</span></div>
-  </div>
-  <p class="note">These are targets, not promises. If the test misses them, we change the offer before spending more.</p>
-</div></section>
-
-<section class="s dark" id="arr">
-  <div class="grid-bg"></div><div class="glow a"></div><div class="glow b"></div>
-  <div class="in">
-    <div class="head"><span class="eyebrow">What it could add up to</span><h2>If the test works, this is the ARR math.</h2><p>My base-case estimate, built on assumptions because Kayaan's pricing isn't public.</p></div>
+  <section>
+    <h2>The ARR math</h2>
     <div class="arr">
-      <div><strong class="grad">~$50K</strong><span>new ARR added each month: 1 to 2 brokers at about $30K ARR each</span></div>
-      <div><strong>~$66K</strong><span>ARR run rate by day 90, with more pilots still in progress</span></div>
-      <div><strong>~4 mo</strong><span>for each customer to pay back what it cost to win them</span></div>
+      <div class="row">
+        <div><strong>~$50K</strong><span>new ARR a month: 1 to 2 brokers at ~$30K ARR each</span></div>
+        <div><strong>~$66K</strong><span>ARR run rate by day 90, more pilots in progress</span></div>
+        <div><strong>~4 mo</strong><span>payback on what it costs to win each customer</span></div>
+      </div>
+      <p><b>Estimate.</b> Assumes ~500 protected loads a month per broker at ~$5 a load. I'll swap in your real pricing in a day.</p>
     </div>
-    <p class="note"><b>Assumes</b> about 500 protected loads a month per broker at about $5 a load. With your real pricing and pilot data, I can replace this in a day.</p>
-  </div>
-</section>
+  </section>
 
-<section class="s" id="me"><div class="in">
-  <div class="head"><span class="eyebrow">Why me</span><h2>I've built and run every part of this plan, and I measure it in ARR.</h2></div>
-  <div class="proof">
-    <div><strong class="o">$216K to $276K</strong><span>ARR built from zero at Appointive</span></div>
-    <div><strong>~$460K</strong><span>annualized revenue through the funnel I run at Sterling</span></div>
-    <div><strong>$180K+</strong><span>annual ad budget guided at Sterling</span></div>
-    <div><strong>13,000+</strong><span>B2B leads sourced, enriched and qualified</span></div>
-  </div>
-  <div class="xp">
-    <article>
-      <div><h3>Appointive</h3><div class="role">Founder &amp; GTM Engineering Lead · 2024 to now</div></div>
-      <p>Built the full outbound engine (n8n, Clay, Apollo, CRM, email infrastructure): 13,000+ leads qualified, about 30,000 emails a month, around 22 positive replies and 5 to 6 booked calls a day. Grew it to 10 paying clients and <b>$216K to $276K in ARR</b>.</p>
-      <span class="maps">Steps 01 and 02</span>
-    </article>
-    <article>
-      <div><h3>Sterling Periodontics</h3><div class="role">Marketing Analyst · 2026 to now</div></div>
-      <p>Built the measurement stack (GA4, Tag Manager, call and form tracking) and GoHighLevel follow-up with AI-assisted booking. Guide <b>$180K+ a year</b> in ad spend. The funnel brings in about 300 leads and 35 consultations a month, running at <b>about $460K in annualized revenue</b>.</p>
-      <span class="maps">Step 03: interest to revenue</span>
-    </article>
-    <article>
-      <div><h3>DXC Technology</h3><div class="role">Data Analyst · 2022 to 2024</div></div>
-      <p>Built dashboards for 4 enterprise accounts, cut SQL and Python pipeline processing time by <b>40%</b>, and automated anomaly detection that improved SLA compliance by <b>25%</b>.</p>
-      <span class="maps">Weekly reporting on what converts</span>
-    </article>
-    <article>
-      <div><h3>ChiEAC</h3><div class="role">Data Analyst · 2026</div></div>
-      <p>Found <b>3 underserved segments</b> in service data across 12 neighborhoods, which guided expansion into 6 new ones.</p>
-      <span class="maps">Picking the right broker segment</span>
-    </article>
-    <article>
-      <div><h3>For Kayaan</h3><div class="role">Already done</div></div>
-      <p>Pulled all <b>25,081 active brokers</b> from FMCSA's public data, built a working lead-scoring tool, and modeled the ARR math above.</p>
-      <span class="maps">Ready on day one</span>
-    </article>
-  </div>
-</div></section>
+  <section>
+    <h2>Why me</h2>
+    <table class="xp">
+      <tr class="k"><td class="co"><b>Appointive</b><small>Founder, GTM Eng · 2024 to now</small></td><td class="what">Built the outbound engine end to end (n8n, Clay, Apollo, CRM): <b>13,000+</b> leads qualified, <b>~30,000</b> emails a month, <b>5 to 6</b> calls booked a day, 10 paying clients.</td><td class="num">$216K to $276K<small>ARR built</small></td></tr>
+      <tr class="k"><td class="co"><b>Sterling Periodontics</b><small>Marketing Analyst · 2026 to now</small></td><td class="what">Built tracking (GA4, Tag Manager, calls, forms) and GoHighLevel follow-up; guide <b>$180K+</b> a year in ads; ~300 leads and 35 consults a month.</td><td class="num">~$460K<small>annualized revenue</small></td></tr>
+      <tr><td class="co"><b>DXC Technology</b><small>Data Analyst · 2022 to 2024</small></td><td class="what">Dashboards for 4 enterprise accounts; SQL and Python pipelines <b>40%</b> faster; anomaly alerts lifted SLA compliance <b>25%</b>.</td><td class="num">40%<small>faster pipelines</small></td></tr>
+      <tr><td class="co"><b>ChiEAC</b><small>Data Analyst · 2026</small></td><td class="what">Found <b>3</b> underserved segments across 12 neighborhoods, guiding expansion into 6 new ones.</td><td class="num">3<small>segments found</small></td></tr>
+      <tr><td class="co"><b>For Kayaan</b><small>Already done</small></td><td class="what">Pulled all 25,081 active brokers from FMCSA, built a working lead-scoring tool, and modeled the ARR math above.</td><td class="num">Day 1<small>ready</small></td></tr>
+    </table>
+  </section>
 
-<section class="s" style="padding-top:0"><div class="in">
-  <div class="cta">
-    <div class="glow a"></div>
-    <div>
-      <span class="eyebrow">Next step</span>
-      <h2>Let's run the first 30 days.</h2>
-      <p>The full plan has the research, competitor map, the acquisition engine, unit economics and a 90-day roadmap.</p>
-      <p class="contact" style="margin-top:14px">Arfaan Jeddy · linkedin.com/in/arfaanj · github.com/arfujj</p>
-    </div>
-    <div class="row">
-      <a class="btn dark" href="plan/">Open the full plan <span class="ar" aria-hidden="true">→</span></a>
-      <a class="btn ghost" href="plan/spec.html">System spec</a>
-    </div>
+  <div class="end">
+    <div class="links"><a href="plan/">Full plan →</a><a href="plan/spec.html">System spec →</a></div>
+    <span class="contact">linkedin.com/in/arfaanj · github.com/arfujj</span>
   </div>
-</div></section>
+  <p class="disc">Prepared independently from public sources. Not affiliated with Kayaan. Kayaan ARR figures are estimates.</p>
 </main>
-
-<footer><div class="in"><span>Prepared independently by Arfaan Jeddy from public sources. Not affiliated with Kayaan.</span><span class="mono">ARR figures for Kayaan are estimates</span></div></footer>
 </body>
 </html>
