@@ -1,115 +1,281 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta property="og:title" content="Kayaan Freight GTM Plan"><meta property="og:description" content="Full founding GTM plan for Kayaan Freight by Arfaan Jeddy."><style>[hidden]{display:none!important}</style>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kayaan Freight GTM Plan</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<meta name="description" content="The full founding GTM plan for Kayaan Freight by Arfaan Jeddy.">
+<meta property="og:title" content="Kayaan Freight GTM Plan"><meta property="og:description" content="Thesis, research, three plays, the Lane Radar acquisition engine, ARR model and a 90-day roadmap.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <style>
-/* Layout: a scrolling pitch, one card per slide, reflowing to a single column on phones */
+/* Visual language follows freight.kayaan.ai: white and warm-tint surfaces, ink text, one orange, mono labels, faint grids, a dark band with an orange glow. */
 :root{
-  --page:#ECEEF1; --bg:#FFFFFF; --ink:#0E1116; --ink2:#3B4250; --muted:#6B7280; --line:#E3E6EB; --soft:#F5F6F8;
-  --accent:#0F6E5C; --accent-soft:#E6F2EF; --accent-line:#CFE6E0; --warn:#B45309; --warn-soft:#FDF3E7; --warn-line:#F3DDC0;
-  --bad:#B42318; --bad-soft:#FDECEA; --chip:#EEF0F4; --dot:#9CA3AF;
-  --sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --bg:#ffffff; --soft:#fff7f2; --tint:#fff1e8; --ink:#0c0c0d; --muted:#5a5a63; --subtle:#8a8a94;
+  --border:#ececee; --border-strong:#d9d9de; --brand:#fe5200; --brand-ink:#b33600; --brand-glow:#ff7a3a; --brand-2:#e7842a;
+  --night:#0c0c0d; --night-2:#161618; --night-line:#26262a; --night-text:#e9e9ec; --night-muted:#9a9aa3;
+  --display:"Archivo","Geist",ui-sans-serif,system-ui,sans-serif; --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --page:#0A0D11; --bg:#12161B; --ink:#EDF0F3; --ink2:#C2C8D0; --muted:#8C94A1; --line:#29303A; --soft:#1A1F26;
-  --accent:#47BFA6; --accent-soft:#102C26; --accent-line:#1E4A40; --warn:#F2A64E; --warn-soft:#2E2110; --warn-line:#4A3618;
-  --bad:#F3897E; --bad-soft:#371613; --chip:#222932; --dot:#6E7682; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --page:#0A0D11; --bg:#12161B; --ink:#EDF0F3; --ink2:#C2C8D0; --muted:#8C94A1; --line:#29303A; --soft:#1A1F26;
-  --accent:#47BFA6; --accent-soft:#102C26; --accent-line:#1E4A40; --warn:#F2A64E; --warn-soft:#2E2110; --warn-line:#4A3618;
-  --bad:#F3897E; --bad-soft:#371613; --chip:#222932; --dot:#6E7682; color-scheme:dark}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;
-  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:28px 48px}
-a{color:var(--accent)}
-.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
-.top{display:flex;flex-direction:column;gap:14px;padding-block:8px 4px}
-.top .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.top h1.name{font-size:clamp(30px,5vw,46px);font-weight:800;letter-spacing:-.025em;line-height:1.05;text-wrap:balance;max-width:none}
-.top p{color:var(--ink2);max-width:68ch;font-size:15px}
-.top .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted)}
-.top .cta{display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:9px 16px;font-weight:600;font-size:13.5px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--bg)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-.btn:focus-visible,.toc a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px}
-.toc a{display:flex;gap:10px;align-items:baseline;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--ink2);font-size:13px;background:var(--bg);border:1px solid var(--line)}
-.toc a span{font-family:var(--mono);font-size:11px;color:var(--accent);font-variant-numeric:tabular-nums}
-.slide{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:40px 48px 24px;display:flex;flex-direction:column;scroll-margin-top:16px;min-width:0}
-.kicker{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-.slide h1{font-size:clamp(26px,3.6vw,42px);line-height:1.12;font-weight:800;letter-spacing:-.02em;max-width:1060px;text-wrap:balance}
-.slide h2{font-size:clamp(21px,2.5vw,29px);line-height:1.22;font-weight:750;letter-spacing:-.015em;max-width:1100px;text-wrap:balance}
-.sub{font-size:16px;color:var(--ink2);margin-top:12px;max-width:72ch;line-height:1.5}
-.body{margin-top:24px;display:flex;flex-direction:column;min-width:0}
-.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin-top:20px;padding-top:12px;border-top:1px solid var(--line)}
-.foot b{color:var(--ink2);font-weight:600}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.in{max-width:1120px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+
+/* announcement bar */
+.ann{background:var(--night);color:#d6d6da;font-size:13px}
+.ann .in{display:flex;gap:10px 16px;align-items:center;justify-content:center;flex-wrap:wrap;padding-block:9px;text-align:center}
+.ann .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--brand);text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
+.ann a{color:#fff;text-decoration:underline;text-decoration-color:var(--brand);text-underline-offset:3px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.82);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--border)}
+.nav .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;flex-direction:column;line-height:1.1;text-decoration:none}
+.brand b{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.02em}
+.brand b i{font-style:normal;color:var(--brand)}
+.brand small{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--subtle);text-transform:uppercase;margin-top:3px}
+.pills{display:flex;gap:2px;background:var(--soft);border:1px solid var(--border);border-radius:999px;padding:4px}
+.pills a{font-size:13.5px;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:999px}
+.pills a:hover{background:#fff;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.dark{background:var(--ink);color:#fff}
+.btn.ghost{border:1px solid var(--border-strong);background:#fff;color:var(--ink)}
+.btn.orange{background:var(--brand);color:#fff}
+.btn .ar{transition:transform .15s ease}.btn:hover .ar{transform:translateX(2px)}
+
+/* pill eyebrow */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-ink);background:var(--tint);border:1px solid #ffd9c2;border-radius:999px;padding:5px 12px}
+.eyebrow svg{width:12px;height:12px}
+.cap{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--subtle)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--soft);border-bottom:1px solid var(--border)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);opacity:.7;pointer-events:none}
+.glow{position:absolute;border-radius:50%;filter:blur(64px);pointer-events:none}
+.hero .glow.a{width:420px;height:420px;right:-80px;top:-60px;background:radial-gradient(circle,#ffb48a,transparent 70%);opacity:.75}
+.hero .glow.b{width:360px;height:360px;left:-120px;bottom:-140px;background:radial-gradient(circle,#ffc48a,transparent 70%);opacity:.5}
+.hero .in{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center;padding-block:72px 80px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,5.6vw,66px);line-height:1.02;letter-spacing:-.03em;margin:18px 0 18px;text-wrap:balance}
+.grad{background:linear-gradient(92deg,var(--brand) 0%,var(--brand-glow) 55%,var(--brand-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{font-size:18px;color:var(--muted);max-width:56ch;margin:0 0 26px}
+.hero p.sub b{color:var(--ink);font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero .cap{margin-top:22px}
+
+.panel{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:0 1px 0 var(--border),0 30px 60px -30px rgba(254,82,0,.28);overflow:hidden}
+.panel .bar{display:flex;align-items:center;gap:6px;padding:12px 14px;border-bottom:1px solid var(--border);background:#fcfcfd}
+.panel .bar i{width:10px;height:10px;border-radius:50%;display:block}
+.panel .bar span{margin-left:10px;font-family:var(--mono);font-size:11px;color:var(--subtle);letter-spacing:.06em}
+.kpi{display:grid;grid-template-columns:1fr 1fr;}
+.kpi div{padding:20px 20px 18px;border-bottom:1px solid var(--border)}
+.kpi div:nth-child(odd){border-right:1px solid var(--border)}
+.kpi strong{display:block;font-family:var(--display);font-weight:800;font-size:34px;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi strong.o{color:var(--brand)}
+.kpi span{display:block;font-size:13px;color:var(--muted);margin-top:8px;line-height:1.4}
+.panel .foot{padding:12px 16px;font-family:var(--mono);font-size:11px;color:var(--subtle);letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.live{width:8px;height:8px;border-radius:50%;background:#28c840;box-shadow:0 0 0 4px rgba(40,200,64,.15)}
+
+/* sections */
+section.s{padding-block:88px}
+section.s.tint{background:var(--soft);border-block:1px solid var(--border)}
+.head{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:760px;margin-bottom:40px}
+.head h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-.025em;margin:0;text-wrap:balance}
+.head p{margin:0;color:var(--muted);font-size:17px;max-width:62ch}
+
+.idea{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.quote{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.25;letter-spacing:-.015em;margin:0;text-wrap:pretty}
+.quote .hl{color:var(--brand)}
+.facts{display:flex;flex-direction:column;gap:12px}
+.fact{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:#fff}
+.fact .ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--tint);color:var(--brand);display:grid;place-items:center}
+.fact .ic svg{width:18px;height:18px}
+.fact b{display:block;font-size:15px}
+.fact span{font-size:14.5px;color:var(--muted)}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:st}
+.step{position:relative;background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.step .n{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--brand)}
+.step h3{margin:0;font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-.01em}
+.step p{margin:0;font-size:14.5px;color:var(--muted)}
+.step q{quotes:"“" "”";color:var(--ink)}
+.step::after{content:"";position:absolute;right:-10px;top:30px;width:6px;height:6px;border-top:2px solid var(--border-strong);border-right:2px solid var(--border-strong);transform:rotate(45deg)}
+.step:last-child::after{display:none}
+.wk{margin-top:16px;display:block;padding:14px 18px;border-radius:14px;background:var(--tint);border:1px solid #ffdcc7;font-size:14.5px;color:var(--muted)}
+.wk b{color:var(--ink)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:18px;background:#fff;overflow:hidden}
+.stats div{padding:24px 22px;border-right:1px solid var(--border)}
+.stats div:last-child{border-right:0}
+.stats strong{display:block;font-family:var(--display);font-weight:800;font-size:44px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stats span{display:block;margin-top:10px;font-size:14px;color:var(--muted);line-height:1.4}
+.note{margin-top:14px;font-size:14px;color:var(--subtle)}
+
+/* dark band */
+.dark{position:relative;overflow:hidden;background:var(--night);color:var(--night-text)}
+.dark .grid-bg{background-image:linear-gradient(var(--night-line) 1px,transparent 1px),linear-gradient(90deg,var(--night-line) 1px,transparent 1px);opacity:.55}
+.dark .glow.a{width:520px;height:520px;left:-160px;top:-180px;background:radial-gradient(circle,rgba(254,82,0,.55),transparent 70%)}
+.dark .glow.b{width:460px;height:460px;right:-140px;bottom:-200px;background:radial-gradient(circle,rgba(231,132,42,.4),transparent 70%)}
+.dark .in{position:relative}
+.dark .eyebrow{background:rgba(254,82,0,.12);border-color:rgba(254,82,0,.4);color:#ff9a4a}
+.dark .head p{color:var(--night-muted)}
+.arr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.arr div{background:rgba(255,255,255,.03);border:1px solid var(--night-line);border-radius:16px;padding:24px 22px}
+.arr strong{display:block;font-family:var(--display);font-weight:800;font-size:clamp(36px,4.4vw,52px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.arr span{display:block;margin-top:12px;color:var(--night-muted);font-size:14.5px}
+.dark .note{color:#7c7c86}
+.dark .note b{color:var(--night-text);font-weight:600}
+
+/* why me */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.proof div{border:1px solid var(--border);border-radius:16px;padding:20px;background:#fff}
+.proof strong{display:block;font-family:var(--display);font-weight:800;font-size:28px;line-height:1.05;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.proof strong.o{color:var(--brand)}
+.proof span{display:block;margin-top:8px;font-size:13.5px;color:var(--muted);line-height:1.4}
+.xp{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:18px;background:#fff;overflow:hidden}
+.xp article{display:grid;grid-template-columns:230px 1fr 190px;gap:8px 28px;padding:22px 24px;border-bottom:1px solid var(--border);align-items:start}
+.xp article:last-child{border-bottom:0;background:var(--soft)}
+.xp h3{margin:0;font-family:var(--display);font-weight:700;font-size:18px;line-height:1.2}
+.xp .role{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--subtle);text-transform:uppercase;margin-top:6px;line-height:1.5}
+.xp p{margin:0;font-size:15px;color:var(--muted)}
+.xp p b{color:var(--ink);font-weight:600}
+.xp .maps{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-ink);background:var(--tint);border:1px solid #ffdcc7;border-radius:10px;padding:8px 10px;line-height:1.45}
+
+/* closing */
+.cta{position:relative;overflow:hidden;border-radius:24px;border:1px solid var(--border);background:linear-gradient(180deg,#fff, var(--soft));padding:48px clamp(22px,5vw,56px);display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center}
+.cta .glow.a{width:360px;height:360px;right:-90px;top:-120px;background:radial-gradient(circle,#ffb48a,transparent 70%);opacity:.7}
+.cta h2{position:relative;font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,42px);line-height:1.08;letter-spacing:-.025em;margin:12px 0 10px}
+.cta p{position:relative;margin:0;color:var(--muted)}
+.cta .row{position:relative;justify-content:flex-end}
+.contact{font-family:var(--mono);font-size:13px;color:var(--muted);user-select:all}
+footer{padding-block:28px 40px;color:var(--subtle);font-size:13px}
+footer .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+
+/* slide-specific tokens (light) */
+.slide{--ink2:#3d3d45;--line:#ececee;--soft2:#fafafa;--accent:#fe5200;--accent-soft:#fff1e8;--accent-line:#ffd9c2;--warn:#b45309;--warn-soft:#fdf3e7;--warn-line:#f3ddc0;--bad:#c2410c;--bad-soft:#fff1ec;--chip:#f2f2f4;--dot:#b9b9c0;--card:#ffffff;--rule:var(--ink)}
+.slide.dk{--ink:#f2f2f4;--ink2:#c9c9cf;--muted:#9a9aa3;--subtle:#7c7c86;--line:#26262a;--soft2:#161618;--accent:#ff7a3a;--accent-soft:rgba(254,82,0,.14);--accent-line:rgba(254,82,0,.35);--warn:#f2a64e;--warn-soft:rgba(242,166,78,.12);--chip:#1d1d20;--dot:#55555c;--card:rgba(255,255,255,.03);--rule:#3a3a40;background:var(--night);color:var(--ink);position:relative;overflow:hidden}
+.slide.dk::before{content:"";position:absolute;width:560px;height:560px;left:-180px;top:-200px;border-radius:50%;filter:blur(70px);background:radial-gradient(circle,rgba(254,82,0,.5),transparent 70%);pointer-events:none}
+.slide.dk::after{content:"";position:absolute;inset:0;background-image:linear-gradient(#1f1f23 1px,transparent 1px),linear-gradient(90deg,#1f1f23 1px,transparent 1px);background-size:48px 48px;opacity:.5;-webkit-mask-image:radial-gradient(ellipse at 30% 20%,#000 20%,transparent 70%);mask-image:radial-gradient(ellipse at 30% 20%,#000 20%,transparent 70%);pointer-events:none}
+.slide.dk .in{position:relative;z-index:1}
+.slide.dk .eyebrow{background:rgba(254,82,0,.12);border-color:rgba(254,82,0,.4);color:#ff9a4a}
+.slide{padding-block:84px;scroll-margin-top:64px;color:var(--ink)}
+.slide.tint{background:var(--soft);border-block:1px solid var(--border)}
+.kicker{margin-bottom:16px}
+.slide h1,.slide h2{font-family:var(--display);font-weight:800;letter-spacing:-.025em;text-wrap:balance;margin:0;max-width:980px}
+.slide h1{font-size:clamp(32px,4.6vw,56px);line-height:1.04}
+.slide h2{font-size:clamp(26px,3.2vw,40px);line-height:1.1}
+.sub{font-size:18px;color:var(--muted);margin-top:16px;max-width:70ch}
+.sub b{color:var(--ink)}
+.body{margin-top:36px;display:flex;flex-direction:column;min-width:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .grid2>*,.grid3>*{min-width:0}
-.card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--bg)}
-.card.soft{background:var(--soft);border-color:var(--soft)}
+.card{border:1px solid var(--line);border-radius:16px;padding:20px 22px;background:var(--card)}
+.card.soft{background:var(--card)}
 .card.acc{background:var(--accent-soft);border-color:var(--accent-line)}
-.card h3{font-size:15.5px;font-weight:700;margin-bottom:6px;color:var(--ink)}
-.card p,.card li{font-size:13.5px;line-height:1.5;color:var(--ink2)}
-.card ul{padding-left:16px}
-.big{font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
-.lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.4}
-.tw{overflow-x:auto;min-width:0;-webkit-overflow-scrolling:touch}
-table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
-th{text-align:left;font-weight:600;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:7px 10px;border-bottom:1.5px solid var(--ink)}
-td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.4;color:var(--ink2)}
-td b{color:var(--ink)}
+.card h3{font-family:var(--display);font-size:17px;font-weight:700;margin:0 0 8px;color:var(--ink);letter-spacing:-.01em}
+.card p,.card li{font-size:14.5px;line-height:1.55;color:var(--ink2);margin:0}
+.card ul{padding-left:18px;margin:0;display:flex;flex-direction:column;gap:4px}
+.card p+p{margin-top:8px}
+.big{font-family:var(--display);font-size:46px;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.card.acc .big{color:var(--accent)}
+.lbl{font-size:13.5px;color:var(--muted);margin-top:10px;line-height:1.45}
+.tw{overflow-x:auto;min-width:0;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-family:var(--mono);font-weight:500;color:var(--subtle);font-size:11px;text-transform:uppercase;letter-spacing:.1em;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--soft2)}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45;color:var(--ink2)}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink);font-weight:600}
 tr.win td{background:var(--accent-soft)}
-.tight td{padding:6px 9px;font-size:12.5px}
-.tight th{padding:6px 9px}
-.tight-cards .card{padding:12px 16px}
-.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:2px 7px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
-.t-ver{background:var(--accent-soft);color:var(--accent)}
+.tight td{padding:10px 12px;font-size:13.5px}
+.tight th{padding:10px 12px}
+.tight-cards .card{padding:16px 18px}
+.tag{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;padding:3px 8px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
+.t-ver{background:#e8f6ec;color:#17803d}
 .t-cla{background:var(--warn-soft);color:var(--warn)}
 .t-inf{background:var(--chip);color:var(--ink2)}
 .t-bad{background:var(--bad-soft);color:var(--bad)}
-.assume{font-size:11.5px;color:var(--warn);font-weight:600}
-.src{font-size:11px;color:var(--muted);padding-top:12px;line-height:1.45}
+.slide.dk .t-ver{background:rgba(40,200,64,.12);color:#5fd77a}
+.assume{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--warn);font-weight:500;text-transform:uppercase}
+.src{font-size:12.5px;color:var(--subtle);padding-top:16px;line-height:1.5}
 .mono{font-family:var(--mono)}
-.flow{display:flex;gap:8px;align-items:stretch}
-.flow .step{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--bg)}
-.flow .step .n{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.06em;font-family:var(--mono)}
-.flow .step .t{font-size:13.5px;font-weight:700;margin:3px 0 4px;color:var(--ink)}
-.flow .step .d{font-size:11.5px;color:var(--ink2);line-height:1.4}
-.flow .step.human{border-color:var(--warn-line);background:var(--warn-soft)}
-.arrow{align-self:center;color:var(--muted);font-size:16px}
-.bar{height:20px;border-radius:0 4px 4px 0;background:var(--accent)}
-svg.map{width:100%;max-width:560px;height:auto;display:block}
-.notes{margin-top:16px;border-top:1px dashed var(--line);padding-top:10px}
-.notes summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--accent);list-style-position:inside}
-.notes p{font-size:14px;line-height:1.6;color:var(--ink2);margin-top:10px;max-width:80ch}
-.endnote{font-size:12.5px;color:var(--muted);text-align:center;padding-block:8px}
-@media (max-width:900px){
-  .slide{padding:26px 20px 16px;border-radius:14px}
-  .grid2,.grid3{grid-template-columns:1fr !important}
+.flow{display:flex;gap:10px;align-items:stretch}
+.flow .step{flex:1;min-width:0;border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--card)}
+.flow .step .n{font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.1em}
+.flow .step .t{font-family:var(--display);font-size:15px;font-weight:700;margin:4px 0 4px;color:var(--ink)}
+.flow .step .d{font-size:12.5px;color:var(--ink2);line-height:1.45}
+.flow .step.human{border-color:var(--accent-line);background:var(--accent-soft)}
+.flow .step.human .n{color:var(--accent)!important}
+.arrow{align-self:center;color:var(--border-strong);font-size:18px}
+.bar{height:22px;border-radius:0 6px 6px 0;background:linear-gradient(90deg,var(--brand),var(--brand-glow))}
+svg.map{width:100%;max-width:580px;height:auto;display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--subtle);margin-top:28px;padding-top:14px;border-top:1px solid var(--line)}
+.foot b{color:var(--ink2);font-weight:500}
+.notes{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:12px 16px}
+.notes summary{cursor:pointer;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.notes p{font-size:15px;line-height:1.65;color:var(--ink2);margin:12px 0 0;max-width:80ch}
+.toc{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:36px}
+.toc a{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:14px;text-decoration:none;background:#fff;border:1px solid var(--border);transition:border-color .15s ease,transform .15s ease}
+.toc a:hover{border-color:#ffc7a6;transform:translateY(-1px)}
+.toc a span{font-family:var(--mono);font-size:11px;color:var(--brand);letter-spacing:.1em}
+.toc a b{font-size:14.5px;font-weight:600;line-height:1.3}
+.hero.plan .in{grid-template-columns:1fr;padding-block:64px 56px}
+@media (max-width:980px){
+  .grid2,.grid3{grid-template-columns:1fr!important}
   .flow{flex-direction:column}
-  .arrow{transform:rotate(90deg);align-self:center;line-height:1}
-  .big{font-size:34px}
-  .tw table{min-width:640px}
-  .slide [style*="margin-top:auto"]{margin-top:0 !important}
+  .arrow{transform:rotate(90deg)}
+  .toc{grid-template-columns:1fr 1fr}
+  .tw table{min-width:680px}
+  .slide [style*="margin-top:auto"]{margin-top:0!important}
 }
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-html{scroll-behavior:smooth}
-</style>
-<div class="wrap">
-<header class="top">
-  <div class="eyebrow">Founding GTM plan · Kayaan Freight</div>
-  <h1 class="name">Selling proof of reasonable care, one load at a time</h1>
-  <p>A 12-part plan for putting Kayaan Shield in front of the brokers who need it most after <i>Montgomery v. Caribe</i>: who to win first, how to reach them, a working acquisition engine, unit economics, and a 90-day plan with go/no-go gates.</p>
-  <div class="meta"><span>Arfaan Jeddy</span><span>November 2026</span><span>Built from public information only; every hypothetical number is labeled</span></div>
-  <div class="cta"><a class="btn primary" href="#s1">Start the pitch</a><a class="btn" href="spec.html">Read the full system spec</a></div>
-  <nav class="toc" aria-label="Sections"><a href="#s1"><span>01</span>Kayaan Freight</a><a href="#s2"><span>02</span>What I found</a><a href="#s3"><span>03</span>Who to win first</a><a href="#s4"><span>04</span>The gap</a><a href="#s5"><span>05</span>Three plays, one priority</a><a href="#s6"><span>06</span>Signature system</a><a href="#s7"><span>07</span>One account, start to finish</a><a href="#s8"><span>08</span>Unit economics</a><a href="#s9"><span>09</span>The first 30 days</a><a href="#s10"><span>10</span>90-day roadmap</a><a href="#s11"><span>11</span>Risks and how we'd know</a><a href="#s12"><span>12</span>Why me</a></nav>
-</header>
+@media (max-width:620px){.slide{padding-block:56px}.big{font-size:38px}.toc{grid-template-columns:1fr}}
+/* responsive */
+@media (max-width:980px){
+  .pills{display:none}
+  .hero .in{grid-template-columns:1fr;padding-block:52px 56px;gap:36px}
+  .idea{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .step::after{display:none}
+  .proof{grid-template-columns:1fr 1fr}
+  .xp article{grid-template-columns:1fr;gap:10px}
+  .xp .maps{justify-self:start}
+  .cta{grid-template-columns:1fr}
+  .cta .row{justify-content:flex-start}
+}
+@media (max-width:620px){
+  section.s{padding-block:60px}
+  .steps,.arr{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .stats div:nth-child(2){border-right:0}
+  .stats div:nth-child(-n+2){border-bottom:1px solid var(--border)}
+  .stats strong{font-size:36px}
+  .nav .btn{padding:8px 14px}
+  .brand small{display:none}
+}
+</style></head>
+<body>
+<div class="ann"><div class="in"><span class="k"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>Full plan · Nov 2026</span><span>Prefer the short version? <a href="../">Read the one-page summary →</a></span></div></div>
+<nav class="nav" aria-label="Plan"><div class="in">
+  <a class="brand" href="../"><b>ARFAAN JEDDY <i>×</i> KAYAAN</b><small>Full GTM plan</small></a>
+  <div class="pills"><a href="#s2">Findings</a><a href="#s3">Customer</a><a href="#s5">Plays</a><a href="#s6">Engine</a><a href="#s8">ARR</a><a href="#s10">Roadmap</a><a href="#s12">Why me</a></div>
+  <a class="btn dark" href="spec.html">System spec <span class="ar" aria-hidden="true">→</span></a>
+</div></nav>
+<header class="hero plan"><div class="grid-bg"></div><div class="glow a"></div><div class="glow b"></div><div class="in"><div>
+  <span class="eyebrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>The full plan</span>
+  <h1>From a public list of brokers to <span class="grad">repeatable Shield ARR.</span></h1>
+  <p class="sub">Twelve parts: what I found, who to win first, the competitive gap, three plays, the acquisition engine, the ARR math, a 30-day test and a 90-day roadmap. Every hypothetical number is labeled.</p>
+  <div class="row"><a class="btn dark" href="#s1">Start reading <span class="ar" aria-hidden="true">→</span></a><a class="btn ghost" href="spec.html">Full system spec</a><a class="btn ghost" href="../">One-page summary</a></div>
+  <nav class="toc" aria-label="Sections"><a href="#s1"><span>01</span><b>Kayaan Freight</b></a><a href="#s2"><span>02</span><b>What I found</b></a><a href="#s3"><span>03</span><b>Who to win first</b></a><a href="#s4"><span>04</span><b>The gap</b></a><a href="#s5"><span>05</span><b>Three plays, one priority</b></a><a href="#s6"><span>06</span><b>Signature system</b></a><a href="#s7"><span>07</span><b>One account, start to finish</b></a><a href="#s8"><span>08</span><b>Unit economics</b></a><a href="#s9"><span>09</span><b>The first 30 days</b></a><a href="#s10"><span>10</span><b>90-day roadmap</b></a><a href="#s11"><span>11</span><b>Risks and how we'd know</b></a><a href="#s12"><span>12</span><b>Why me</b></a></nav>
+</div></div></header>
+<main>
 
 
 <!-- 1 THESIS -->
-<section class="slide" id="s1">
-  <div class="kicker">Kayaan Freight · Founding GTM plan · November 2026</div>
+<section class="slide dk" id="s1"><div class="in">
+  <div class="kicker"><span class="eyebrow">Kayaan Freight · Founding GTM plan · November 2026</span></div>
   <h1>Since Montgomery, brokers don't need another AI agent. They need proof they used reasonable care, and Kayaan can produce it one load at a time.</h1>
   <p class="sub">Recommendation: put all GTM weight on <b>Shield</b>, sell it to <b>10 to 75 person brokerages</b>, and turn the existing 20 free loads into a <b>Reasonable Care File</b> that brokers can hand to their insurance agent at renewal.</p>
   <div class="body">
@@ -120,12 +286,12 @@ html{scroll-behavior:smooth}
     </div>
   </div>
   <div class="foot"><span><b>Arfaan Jeddy</b> · Prepared independently from public information. Kayaan has not validated any of it.</span><span>1 / 12</span></div>
-  <details class="notes"><summary>Speaker notes</summary><p>Open with the thesis, not the research. The bet: since May 14, 2026, how a broker selects and monitors carriers is a legal and insurance question as well as an ops question. Insurers are already asking brokers how they vet carriers (RPS reported a capacity squeeze in broker contingent liability in September 2026). Shield already produces per-load evidence: vetting, driver ID, PTI photos, geofenced pickup, check calls, POD, and a sealed audit trail. Today the site sells it as fraud prevention and automation. I'd sell the evidence.</p><p>The 25,081 figure comes from my own query of FMCSA's "Carrier, All With History" dataset on data.transportation.gov, counting broker_stat = 'A'. It is a public, daily refreshed list, which is why the acquisition engine later in this deck is feasible without scraping anything.</p></details>
-</section>
+  <details class="notes"><summary>Speaker notes</summary><p>Open with the thesis, not the research. The bet: since May 14, 2026, how a broker selects and monitors carriers is a legal and insurance question as well as an ops question. Insurers are already asking brokers how they vet carriers (RPS reported a capacity squeeze in broker contingent liability in September 2026). Shield already produces per-load evidence: vetting, driver ID, PTI photos, geofenced pickup, check calls, POD, and a sealed audit trail. Kayaan's site already makes this argument well. What's missing is distribution: a repeatable way to put it in front of the right brokers, and the insurance agents who now ask how they vet carriers.</p><p>The 25,081 figure comes from my own query of FMCSA's "Carrier, All With History" dataset on data.transportation.gov, counting broker_stat = 'A'. It is a public, daily refreshed list, which is why the acquisition engine later in this deck is feasible without scraping anything.</p></details>
+</div></section>
 
 <!-- 2 DISCOVERY -->
-<section class="slide" id="s2">
-  <div class="kicker">What I found</div>
+<section class="slide tint" id="s2"><div class="in">
+  <div class="kicker"><span class="eyebrow">What I found</span></div>
   <h2>Kayaan's product is sharper than its funnel. Six fixable issues are probably costing pilots right now.</h2>
   <div class="body">
     <div class="grid2" style="grid-template-columns:1.55fr 1fr">
@@ -145,18 +311,18 @@ html{scroll-behavior:smooth}
           <li>Per-load pricing, no seats, live in 48 hours, a named TMS list (McLeod, Turvo, Revenova, Alvys, Ascend).</li>
           <li>A unit cost story: about $0.09 per AI check call (company claim).</li>
         </ul></div>
-        <div class="card"><h3>Opportunity I think is being missed</h3><p>Shield's output is a per-load evidence trail. After Montgomery, that trail is worth more to the broker's <b>insurer and attorney</b> than to the ops team. No competitor I found sells it that way to small brokers.</p></div>
+        <div class="card"><h3>Where the gap is</h3><p>Your site already makes the Montgomery case well. The gap is <b>distribution</b>: a repeatable way to put that message in front of the 25,081 active brokers, and the <b>insurance agents</b> who now ask how they vet carriers.</p></div>
       </div>
     </div>
     <div class="src">Sources: freight.kayaan.ai (/, /shield, /freight-autopilot, /security, /autonomous-freight-brokerage), kayaan.ai/about; yu.edu Katz news (Apr 14, 2026); highway.com/products/know-your-driver; FreightWaves (Transfix + E3); FleetOwner (Verified Pickup, Apr 2026); Verisk/CargoNet 2025 theft data. Full fact-check table in the System Spec.</div>
   </div>
   <div class="foot"><span>Kayaan Freight GTM</span><span>2 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>Lead with respect, then specifics. These are cheap fixes, and they matter because the buyer is risk-literate. A broker who reads "$35 to 60B" next to CargoNet's roughly $725M in recorded 2025 losses decides the vendor exaggerates. (The larger figure traces to old all-in estimates that include unreported losses. If Kayaan keeps it, it needs a citation and a caveat.)</p><p>The "only platform" claim is the most important one to fix. Highway now markets Know Your Driver (face, ID, liveness, proximity to pickup). Its waitlist page suggests it may not be fully live, but buyers will still compare. Transfix and E3, Verified Carrier's Verified Pickup (Apr 2026), and Arthur through Transport Pro also verify drivers. So driver verification alone is becoming table stakes. Kayaan's defensible angle is the bundle: vetting, driver, truck, pickup, transit, POD and a sealed file per load, priced per load, for brokers too small for an enterprise rollout.</p><p>Everything marked Verified I read directly on the pages cited. Traction figures (for example the $30K in two weeks from the Nov 2025 press release) are company claims, and I have not used them as evidence.</p></details>
-</section>
+</div></section>
 
 <!-- 3 SEGMENT -->
-<section class="slide" id="s3">
-  <div class="kicker">Who to win first</div>
+<section class="slide" id="s3"><div class="in">
+  <div class="kicker"><span class="eyebrow">Who to win first</span></div>
   <h2>Win established 10 to 75 person brokerages first. Enterprises already have agent vendors, and new authorities don't have the volume.</h2>
   <div class="body">
     <div class="tw"><table class="tight">
@@ -177,11 +343,11 @@ html{scroll-behavior:smooth}
   </div>
   <div class="foot"><span>Kayaan Freight GTM</span><span>3 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>The largest market (enterprise 3PLs) is the wrong beachhead. HappyRobot raised a reported $150M Series C in Aug 2026 and lists DHL, Ryder, Schneider and Werner. Augment and Vooma sell to large brokerages. A seed-stage company with "SOC 2 in progress" will lose that security review.</p><p>New authorities look easy because there are many of them, but they have low load volume, they churn, and FMCSA's Motus rollout has disrupted new registrations. The sweet spot is the established small brokerage. It has enough loads for per-load revenue to matter, it is now exposed after Montgomery, and it has no in-house compliance team. Insurance commentary (RPS via The Insurer, Sept 2026) suggests tighter underwriting favors larger brokers with established vetting. Kayaan can give a small broker that kind of process for a per-load price.</p></details>
-</section>
+</div></section>
 
 <!-- 4 COMPETITIVE GAP -->
-<section class="slide" id="s4">
-  <div class="kicker">The gap</div>
+<section class="slide tint" id="s4"><div class="in">
+  <div class="kicker"><span class="eyebrow">The gap</span></div>
   <h2>The market split into entity vetting and enterprise desk agents. Nobody owns per-load proof of care for the small broker.</h2>
   <div class="body">
     <div class="grid2" style="grid-template-columns:1.05fr 1fr">
@@ -218,11 +384,11 @@ html{scroll-behavior:smooth}
   </div>
   <div class="foot"><span>Kayaan Freight GTM</span><span>4 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>The critical question is why anyone switches. My answer: they shouldn't have to. Positioning Shield as a replacement for Highway (the current cost table lists Highway and Carrier411 as "included") forces a rip-and-replace decision and invites a feature war with a well-funded incumbent. Positioning it as the post-booking layer that complements their vetting removes that objection and shortens the cycle.</p><p>The CTO-level caveat: integrations are listed as "varies by phase of rollout" in Kayaan's own FAQ. The pilot qualification form should only accept TMSs that are live today, so pilots don't fail on integration.</p></details>
-</section>
+</div></section>
 
 <!-- 5 THREE PLAYS -->
-<section class="slide" id="s5">
-  <div class="kicker">Three plays, one priority</div>
+<section class="slide" id="s5"><div class="in">
+  <div class="kicker"><span class="eyebrow">Three plays, one priority</span></div>
   <h2>Lead with signal-based outbound around a free carrier readout. Run the insurance channel in parallel. Build the driver loop third.</h2>
   <div class="body">
     <div class="grid3" style="flex:1">
@@ -248,11 +414,11 @@ html{scroll-behavior:smooth}
   </div>
   <div class="foot"><span>Kayaan Freight GTM</span><span>5 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>I'm choosing, not listing. Play 1 is the priority because it can be built in a week with public data, its economics are measurable inside 30 days, and it turns the demo into a continuation of value the broker already got. The readout is honest Shield phase 1 (FMCSA plus authority checks) delivered as a lead magnet, so it doesn't give away the paid product, which is the per-load verification and monitoring.</p><p>Play 2 is slower to start but converts better because intros are warm and deadline-driven. It needs 2 to 4 agents willing to pilot, which is founder-led relationship work. Play 3 is the long-term moat but needs product work and a privacy review, so I would not lead with it. The full 15-point breakdown of each play is in the System Spec.</p></details>
-</section>
+</div></section>
 
 <!-- 6 ENGINE -->
-<section class="slide" id="s6">
-  <div class="kicker">Signature system · "Lane Radar"</div>
+<section class="slide tint" id="s6"><div class="in">
+  <div class="kicker"><span class="eyebrow">Signature system · "Lane Radar"</span></div>
   <h2>A signal-to-pilot engine I can build in four weeks with public data, Python, Claude and a CRM. Humans approve every first touch.</h2>
   <div class="body">
     <div class="flow">
@@ -277,11 +443,11 @@ html{scroll-behavior:smooth}
   </div>
   <div class="foot"><span>Kayaan Freight GTM</span><span>6 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>This is deliberately a commercial machine, not a research project. Steps 1 to 5 run nightly. Step 6 is a human gate (that's me in month one). Steps 7 to 10 are standard sales infrastructure, wired so every outcome flows back to the account record.</p><p>The data claim is verified: I queried data.transportation.gov today. "Carrier, All With History" (6eyk-hxee) has broker_stat per docket and returned 25,081 active broker authorities; the dataset was updated Nov 20, 2026. The census dataset (kjg3-diqy) adds addresses, phone, and MCS-150 update dates. Contact emails come only from licensed enrichment providers and are verified before sending.</p><p>The learning loop is simple logistic re-weighting once we have about 30 outcomes. Before that, weights are judgment-based and every score is explainable, so the founder can see why an account was picked. Full schema and code skeleton are in the System Spec, and a working scoring prototype on mock data is attached.</p></details>
-</section>
+</div></section>
 
 <!-- 7 WORKFLOW -->
-<section class="slide" id="s7">
-  <div class="kicker">One account, start to finish</div>
+<section class="slide" id="s7"><div class="in">
+  <div class="kicker"><span class="eyebrow">One account, start to finish</span></div>
   <h2>What it looks like on a real desk: from a hiring signal on day 0 to a signed per-load agreement on day 30.</h2>
   <div class="body">
     <div class="card soft" style="padding:10px 16px;margin-bottom:14px"><p style="font-size:13px"><span class="tag t-cla">Mock data</span>&nbsp; <b>Prairie Line Logistics</b> (fictional) · Joliet, IL · broker authority 6 yrs · ~22 staff · McLeod PowerBroker mentioned in a job post · ~120 dry van loads/wk into CA/TX/GA. <b>Lane Radar score 60</b> (fit 40, intent 20), computed by the attached prototype.</p></div>
@@ -299,11 +465,11 @@ html{scroll-behavior:smooth}
   </div>
   <div class="foot"><span>Kayaan Freight GTM</span><span>7 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>The key design choice: the pilot has signed success criteria before it starts. Free pilots without criteria tend to drift into "we'll get back to you." With criteria, day 28 is a decision meeting, not a check-in.</p><p>The second choice: the demo uses the prospect's own carriers from the readout. That is a reverse demo, so the founder is never showing generic screenshots. The third: the pilot ends with an artifact (the Reasonable Care File) that has value outside Kayaan. A broker who forwards it to their insurance agent has started selling Kayaan internally.</p></details>
-</section>
+</div></section>
 
 <!-- 8 UNIT ECONOMICS -->
-<section class="slide" id="s8">
-  <div class="kicker">Unit economics · every input is an assumption</div>
+<section class="slide dk" id="s8"><div class="in">
+  <div class="kicker"><span class="eyebrow">Unit economics · every input is an assumption</span></div>
   <h2>In the base case, one operator plus the agent channel yields about 5 pilots and about 1.6 paid accounts a month, with roughly 4-month payback. Cold outbound alone is marginal.</h2>
   <div class="body">
     <div class="grid2" style="grid-template-columns:1.25fr 1fr">
@@ -340,11 +506,11 @@ html{scroll-behavior:smooth}
   </div>
   <div class="foot"><span>Kayaan Freight GTM</span><span>8 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>I'm showing the conservative case honestly because it's the useful one: if cold outbound lands at a 2.5% positive reply rate and 35% demo-to-pilot, it does not pay back, and we should know that in 30 days rather than 6 months. That is why the plan pairs outbound with the insurance-agent channel, which enters at the meeting stage with much higher show and pilot rates.</p><p>CAC here is fully loaded. It includes my cost, tools, founder demo hours valued at $150/hr, and the cost of 20 free loads plus onboarding. The aggressive case is not a target. It shows the upside if the readout outperforms.</p><p>To replace assumptions with real numbers I need: the per-load price and tiers quoted in pilots, real variable cost per load, demo → pilot → paid history (even with small n), loads/month of current customers, and a CRM export of every demo since launch with its source.</p></details>
-</section>
+</div></section>
 
 <!-- 9 30-DAY EXPERIMENT -->
-<section class="slide" id="s9">
-  <div class="kicker">The first 30 days</div>
+<section class="slide" id="s9"><div class="in">
+  <div class="kicker"><span class="eyebrow">The first 30 days</span></div>
   <h2>One controlled experiment answers the only question that matters early: does the readout create pilots that convert?</h2>
   <div class="body">
     <div class="grid2" style="grid-template-columns:1fr 1fr">
@@ -375,11 +541,11 @@ html{scroll-behavior:smooth}
   </div>
   <div class="foot"><span>Kayaan Freight GTM</span><span>9 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>A founder worried about burn should like this slide: the downside is bounded at roughly $2.5k of tooling plus about 8 hours of founder time, and the result is a decision either way. If Arm A doesn't beat the control, we learn that the readout isn't the hook and test the next one (for example the check-call cost calculator) without having built a big content program.</p><p>On statistics: at around a 3% reply rate, 150 per arm only detects roughly 2x differences. That's acceptable for a go/no-go on a wedge. It's not acceptable for fine-tuning copy, which waits for volume in days 31 to 60.</p></details>
-</section>
+</div></section>
 
 <!-- 10 ROADMAP -->
-<section class="slide" id="s10">
-  <div class="kicker">90-day roadmap</div>
+<section class="slide tint" id="s10"><div class="in">
+  <div class="kicker"><span class="eyebrow">90-day roadmap</span></div>
   <h2>Validate in month one, optimize what won in month two, and make it repeatable in month three, with a go/no-go gate between each.</h2>
   <div class="body">
     <div class="grid3">
@@ -410,11 +576,11 @@ html{scroll-behavior:smooth}
   </div>
   <div class="foot"><span>Kayaan Freight GTM</span><span>10 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>Stakeholders: I own the engine, outbound, readouts, the dashboard and the pilot ops cadence. The CEO owns demos, agent relationships and closes, since buyers in this market want to talk to someone who has run trucks. The co-founder/engineering side owns integration readiness and the Verified Once spec. Total incremental budget over 90 days, excluding my cost, is roughly $4k to $5k.</p><p>The day-60 gate is the one most startups skip: if pilots aren't converting, more top-of-funnel just burns founder hours. The full weekly plan with deliverables, KPIs and dependencies is in the System Spec.</p></details>
-</section>
+</div></section>
 
 <!-- 11 RISKS -->
-<section class="slide" id="s11">
-  <div class="kicker">Risks and how we'd know</div>
+<section class="slide" id="s11"><div class="in">
+  <div class="kicker"><span class="eyebrow">Risks and how we'd know</span></div>
   <h2>The biggest risk isn't the channel. It's whether a pilot reliably goes live in 48 hours on the broker's TMS.</h2>
   <div class="body">
     <div class="tw"><table>
@@ -430,11 +596,11 @@ html{scroll-behavior:smooth}
   </div>
   <div class="foot"><span>Kayaan Freight GTM</span><span>11 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>Answering the CTO: the acquisition engine is the easy part. The hard part is product delivery inside the pilot, because a failed integration costs more than a lost lead. That's why the intake form filters by live TMS and the day-60 gate is about onboarding, not pipeline.</p><p>Answering the freight veteran: the liability message has to stay disciplined. Kayaan can document a reasonable-care process; it cannot promise a court outcome. I'd have counsel review the Readout and File templates before they ship.</p></details>
-</section>
+</div></section>
 
 <!-- 12 WHY ME -->
-<section class="slide" id="s12">
-  <div class="kicker">Why me</div>
+<section class="slide tint" id="s12"><div class="in">
+  <div class="kicker"><span class="eyebrow">Why me</span></div>
   <h2>I've already built and run this kind of outbound engine end to end. I'd build Kayaan's in the first two weeks, then run it.</h2>
   <div class="body">
     <div class="grid2" style="grid-template-columns:1.2fr 1fr">
@@ -460,7 +626,8 @@ html{scroll-behavior:smooth}
   </div>
   <div class="foot"><span><b>Arfaan Jeddy</b> · github.com/arfujj · linkedin.com/in/arfaanj</span><span>12 / 12</span></div>
   <details class="notes"><summary>Speaker notes</summary><p>Close with proof, not adjectives. Everything in the left table is from my own work history and can be checked. The ask is specific: give me the data that replaces the assumptions in this deck and I'll have the first experiment live within three weeks.</p><p>Suggested close line: "If the day-30 numbers don't clear the gate, you've spent a few thousand dollars and learned which hook doesn't work. If they do, you have a repeatable way to put Shield in front of the 25,000 brokers who now need it."</p></details>
-</section>
+</div></section>
 
-<p class="endnote"><a href="../">← Back to the one-page summary</a> · Prepared independently by Arfaan Jeddy from public sources. Kayaan has not reviewed or validated this plan. · <a href="spec.html">Full system spec, fact-check table and sources</a></p>
-</div></html>
+</main>
+<footer><div class="in"><span>Prepared independently by Arfaan Jeddy from public sources. Not affiliated with Kayaan.</span><a href="../">← One-page summary</a></div></footer>
+</body></html>

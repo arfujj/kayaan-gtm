@@ -1,263 +1,354 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="How Arfaan Jeddy would help Kayaan sell Shield to small freight brokers."><meta property="og:title" content="Arfaan Jeddy for Kayaan"><meta property="og:description" content="A plan to sell Kayaan Shield to small freight brokers: the idea, a 30-day test, the ARR math, and why me."><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
-<title>Arfaan for Kayaan</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Overpass+Mono:wght@400;600&display=swap">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arfaan Jeddy for Kayaan</title>
+<meta name="description" content="A growth plan for Kayaan Shield: the idea, a 30-day test, the ARR math, and why Arfaan Jeddy can run it.">
+<meta property="og:title" content="Arfaan Jeddy for Kayaan">
+<meta property="og:description" content="A growth plan for Kayaan Shield: the idea, a 30-day test, the ARR math, and why I can run it.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <style>
-/* Layout: a single road-trip column. Guide sign up top, the plan drawn as a lane with mile posts, a green "exit" band to close. */
+/* Visual language follows freight.kayaan.ai: white and warm-tint surfaces, ink text, one orange, mono labels, faint grids, a dark band with an orange glow. */
 :root{
-  --bg:#F3F4F1; --paper:#FFFFFF; --ink:#141816; --ink-2:#525a55; --ink-3:#7c847f; --rule:#E2E5E0;
-  --sign:#0A6A44; --sign-deep:#075236; --on-sign:#FFFFFF; --accent:#0A6A44; --lane:#E9B92B; --mark:#FCEFB4; --tint:#EAF3EE;
-  --display:"Overpass","Arial Narrow",Arial,sans-serif; --mono:"Overpass Mono",ui-monospace,Menlo,monospace;
+  --bg:#ffffff; --soft:#fff7f2; --tint:#fff1e8; --ink:#0c0c0d; --muted:#5a5a63; --subtle:#8a8a94;
+  --border:#ececee; --border-strong:#d9d9de; --brand:#fe5200; --brand-ink:#b33600; --brand-glow:#ff7a3a; --brand-2:#e7842a;
+  --night:#0c0c0d; --night-2:#161618; --night-line:#26262a; --night-text:#e9e9ec; --night-muted:#9a9aa3;
+  --display:"Archivo","Geist",ui-sans-serif,system-ui,sans-serif; --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0E1210; --paper:#151A17; --ink:#EDF1EE; --ink-2:#B3BBB6; --ink-3:#848d88; --rule:#28302C;
-  --sign:#0B6A44; --sign-deep:#084E33; --on-sign:#FFFFFF; --accent:#62CC9C; --lane:#E0B23A; --mark:#4A3F12; --tint:#13261D; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0E1210; --paper:#151A17; --ink:#EDF1EE; --ink-2:#B3BBB6; --ink-3:#848d88; --rule:#28302C;
-  --sign:#0B6A44; --sign-deep:#084E33; --on-sign:#FFFFFF; --accent:#62CC9C; --lane:#E0B23A; --mark:#4A3F12; --tint:#13261D; color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--display);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
-  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:48px 72px}
-.page{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
-a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1.5px}
-a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
-b{font-weight:700}
+html{scroll-behavior:smooth;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.in{max-width:1120px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
 
-/* ---------- guide sign ---------- */
-.signpost{display:flex;flex-direction:column;align-items:flex-start}
-.exit-tab{background:var(--sign);color:var(--on-sign);border-radius:10px 10px 0 0;padding:4px 5px 0;margin-left:28px}
-.exit-tab span{display:block;border:2.5px solid var(--on-sign);border-bottom:0;border-radius:7px 7px 0 0;padding:5px 14px 3px;font-weight:800;font-size:14px;letter-spacing:.06em}
-.sign{width:100%;background:var(--sign);color:var(--on-sign);border-radius:16px;padding:7px;box-shadow:0 1px 0 var(--sign-deep),0 18px 40px -24px rgba(7,82,54,.55)}
-.sign-in{border:3px solid var(--on-sign);border-radius:11px;padding:26px 30px 24px;display:grid;grid-template-columns:auto 1fr;gap:6px 24px;align-items:center}
-.shield{width:62px;height:70px;grid-row:span 2}
-.shield path{fill:none;stroke:var(--on-sign);stroke-width:3}
-.shield text{fill:var(--on-sign);font-family:var(--display);font-weight:900;font-size:26px}
-.sign .over{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.82}
-.sign h1{margin:0;font-size:clamp(32px,6.4vw,52px);line-height:1;font-weight:800;letter-spacing:-.015em}
-.sign .dest{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:16px;padding-top:16px;border-top:2px solid rgba(255,255,255,.35);font-weight:700;font-size:19px}
-.sign .dest svg{width:28px;height:28px;flex:none}
-.sign .dest svg path{fill:none;stroke:var(--on-sign);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
-.byline{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;margin-top:16px;font-size:14.5px;color:var(--ink-2)}
-.byline b{color:var(--ink)}
+/* announcement bar */
+.ann{background:var(--night);color:#d6d6da;font-size:13px}
+.ann .in{display:flex;gap:10px 16px;align-items:center;justify-content:center;flex-wrap:wrap;padding-block:9px;text-align:center}
+.ann .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--brand);text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
+.ann a{color:#fff;text-decoration:underline;text-decoration-color:var(--brand);text-underline-offset:3px}
 
-/* ---------- sections ---------- */
-.label{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 16px;display:flex;align-items:center;gap:12px}
-.label::after{content:"";flex:1;height:1px;background:var(--rule)}
-p{margin:0}
-.lead{font-size:clamp(20px,3vw,25px);line-height:1.45;font-weight:500;letter-spacing:-.005em;text-wrap:pretty}
-.lead i{font-style:italic}
-mark{background:linear-gradient(transparent 12%, var(--mark) 12%, var(--mark) 88%, transparent 88%);color:inherit;padding:0 2px;font-weight:700}
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.82);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--border)}
+.nav .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;flex-direction:column;line-height:1.1;text-decoration:none}
+.brand b{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.02em}
+.brand b i{font-style:normal;color:var(--brand)}
+.brand small{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--subtle);text-transform:uppercase;margin-top:3px}
+.pills{display:flex;gap:2px;background:var(--soft);border:1px solid var(--border);border-radius:999px;padding:4px}
+.pills a{font-size:13.5px;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:999px}
+.pills a:hover{background:#fff;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.dark{background:var(--ink);color:#fff}
+.btn.ghost{border:1px solid var(--border-strong);background:#fff;color:var(--ink)}
+.btn.orange{background:var(--brand);color:#fff}
+.btn .ar{transition:transform .15s ease}.btn:hover .ar{transform:translateX(2px)}
 
-/* ---------- the road ---------- */
-.road{list-style:none;margin:0;padding:0;position:relative}
-.road li:not(:last-child)::after{content:"";position:absolute;left:20.5px;top:58px;bottom:6px;width:3px;
-  background:repeating-linear-gradient(to bottom,var(--lane) 0 10px,transparent 10px 18px);border-radius:2px}
-.road li{position:relative;display:grid;grid-template-columns:44px 1fr;gap:0 20px;padding-bottom:26px}
-.road li:last-child{padding-bottom:0}
-.post{position:relative;z-index:1;width:44px;height:52px;background:var(--sign);color:var(--on-sign);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;box-shadow:0 0 0 4px var(--bg)}
-.post small{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em}
-.post strong{font-size:21px;font-weight:800;margin-top:3px}
-.road h3{margin:2px 0 4px;font-size:19px;font-weight:800;letter-spacing:-.005em}
-.road p{color:var(--ink-2)}
-.road q{quotes:"“" "”";color:var(--ink);font-style:italic}
-.aside{margin-top:22px;padding:14px 18px;border-radius:10px;background:var(--tint);color:var(--ink-2);font-size:15.5px}
-.aside b{color:var(--ink)}
+/* pill eyebrow */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-ink);background:var(--tint);border:1px solid #ffd9c2;border-radius:999px;padding:5px 12px}
+.eyebrow svg{width:12px;height:12px}
+.cap{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--subtle)}
 
-/* ---------- 30 days ---------- */
-.intro{color:var(--ink-2);margin-bottom:22px;max-width:60ch}
-.intro b{color:var(--ink)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
-.stats div{padding:16px 16px 16px 0;display:flex;flex-direction:column;gap:6px}
-.stats div + div{padding-left:16px;border-left:1px solid var(--rule)}
-.stats strong{font-size:36px;font-weight:800;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.stats span{font-size:14px;color:var(--ink-2);line-height:1.35}
-.fine{margin-top:12px;font-size:14px;color:var(--ink-3)}
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--soft);border-bottom:1px solid var(--border)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);opacity:.7;pointer-events:none}
+.glow{position:absolute;border-radius:50%;filter:blur(64px);pointer-events:none}
+.hero .glow.a{width:420px;height:420px;right:-80px;top:-60px;background:radial-gradient(circle,#ffb48a,transparent 70%);opacity:.75}
+.hero .glow.b{width:360px;height:360px;left:-120px;bottom:-140px;background:radial-gradient(circle,#ffc48a,transparent 70%);opacity:.5}
+.hero .in{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center;padding-block:72px 80px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,5.6vw,66px);line-height:1.02;letter-spacing:-.03em;margin:18px 0 18px;text-wrap:balance}
+.grad{background:linear-gradient(92deg,var(--brand) 0%,var(--brand-glow) 55%,var(--brand-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{font-size:18px;color:var(--muted);max-width:56ch;margin:0 0 26px}
+.hero p.sub b{color:var(--ink);font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero .cap{margin-top:22px}
 
-/* ---------- estimate ---------- */
-.estimate{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:22px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.estimate .tag{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-.estimate .tag b{font-size:17px}
-.estimate .tag span{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
-.estimate div.n strong{display:block;font-size:32px;font-weight:800;line-height:1.05;color:var(--accent);font-variant-numeric:tabular-nums}
-.estimate div.n span{font-size:14.5px;color:var(--ink-2)}
-.estimate p.small{grid-column:1 / -1;font-size:14px;color:var(--ink-3);padding-top:14px;border-top:1px dashed var(--rule)}
+.panel{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:0 1px 0 var(--border),0 30px 60px -30px rgba(254,82,0,.28);overflow:hidden}
+.panel .bar{display:flex;align-items:center;gap:6px;padding:12px 14px;border-bottom:1px solid var(--border);background:#fcfcfd}
+.panel .bar i{width:10px;height:10px;border-radius:50%;display:block}
+.panel .bar span{margin-left:10px;font-family:var(--mono);font-size:11px;color:var(--subtle);letter-spacing:.06em}
+.kpi{display:grid;grid-template-columns:1fr 1fr;}
+.kpi div{padding:20px 20px 18px;border-bottom:1px solid var(--border)}
+.kpi div:nth-child(odd){border-right:1px solid var(--border)}
+.kpi strong{display:block;font-family:var(--display);font-weight:800;font-size:34px;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi strong.o{color:var(--brand)}
+.kpi span{display:block;font-size:13px;color:var(--muted);margin-top:8px;line-height:1.4}
+.panel .foot{padding:12px 16px;font-family:var(--mono);font-size:11px;color:var(--subtle);letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.live{width:8px;height:8px;border-radius:50%;background:#28c840;box-shadow:0 0 0 4px rgba(40,200,64,.15)}
 
-/* ---------- why me ---------- */
-.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.proof div{display:flex;flex-direction:column;gap:6px}
-.proof strong{font-size:28px;font-weight:800;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.proof span{font-size:15px;color:var(--ink-2);line-height:1.45}
-.more{margin-top:24px;color:var(--ink-2);max-width:62ch}
-.more b{color:var(--ink)}
+/* sections */
+section.s{padding-block:88px}
+section.s.tint{background:var(--soft);border-block:1px solid var(--border)}
+.head{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:760px;margin-bottom:40px}
+.head h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-.025em;margin:0;text-wrap:balance}
+.head p{margin:0;color:var(--muted);font-size:17px;max-width:62ch}
 
-.why-lead{font-size:18px;font-weight:600;margin-bottom:20px;max-width:60ch;text-wrap:pretty}
-.fit{margin:26px 0 0;display:flex;flex-direction:column;border-top:1px solid var(--rule)}
-.fit div{display:grid;grid-template-columns:210px 1fr;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule)}
-.fit dt{font-weight:800;font-size:16px;color:var(--ink);display:flex;flex-direction:column;gap:2px}
-.fit dt small{font-family:var(--mono);font-weight:400;font-size:11.5px;letter-spacing:.02em;color:var(--ink-3)}
-.fit dd i{color:var(--accent);font-style:normal;font-weight:600}
-.fit dd{margin:0;color:var(--ink-2);font-size:15.5px}
-.fit dd b{color:var(--ink)}
-/* ---------- closing exit band ---------- */
-.close{background:var(--sign);color:var(--on-sign);border-radius:16px;padding:7px}
-.close-in{border:3px solid var(--on-sign);border-radius:11px;padding:24px 28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px}
-.close h2{margin:0 0 4px;font-size:26px;font-weight:800;line-height:1.1}
-.close p{opacity:.9;font-size:15.5px;max-width:42ch}
-.close a.go{display:inline-flex;align-items:center;gap:10px;background:var(--on-sign);color:var(--sign-deep);text-decoration:none;font-weight:800;font-size:16px;padding:12px 20px;border-radius:999px;white-space:nowrap}
-.close a.go:focus-visible{outline:3px solid var(--lane);outline-offset:3px}
-.close .contact{flex-basis:100%;font-family:var(--mono);font-size:13.5px;opacity:.85;padding-top:14px;border-top:2px solid rgba(255,255,255,.3);user-select:all}
+.idea{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.quote{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.25;letter-spacing:-.015em;margin:0;text-wrap:pretty}
+.quote .hl{color:var(--brand)}
+.facts{display:flex;flex-direction:column;gap:12px}
+.fact{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:#fff}
+.fact .ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--tint);color:var(--brand);display:grid;place-items:center}
+.fact .ic svg{width:18px;height:18px}
+.fact b{display:block;font-size:15px}
+.fact span{font-size:14.5px;color:var(--muted)}
 
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:st}
+.step{position:relative;background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.step .n{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--brand)}
+.step h3{margin:0;font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-.01em}
+.step p{margin:0;font-size:14.5px;color:var(--muted)}
+.step q{quotes:"“" "”";color:var(--ink)}
+.step::after{content:"";position:absolute;right:-10px;top:30px;width:6px;height:6px;border-top:2px solid var(--border-strong);border-right:2px solid var(--border-strong);transform:rotate(45deg)}
+.step:last-child::after{display:none}
+.wk{margin-top:16px;display:block;padding:14px 18px;border-radius:14px;background:var(--tint);border:1px solid #ffdcc7;font-size:14.5px;color:var(--muted)}
+.wk b{color:var(--ink)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:18px;background:#fff;overflow:hidden}
+.stats div{padding:24px 22px;border-right:1px solid var(--border)}
+.stats div:last-child{border-right:0}
+.stats strong{display:block;font-family:var(--display);font-weight:800;font-size:44px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stats span{display:block;margin-top:10px;font-size:14px;color:var(--muted);line-height:1.4}
+.note{margin-top:14px;font-size:14px;color:var(--subtle)}
+
+/* dark band */
+.dark{position:relative;overflow:hidden;background:var(--night);color:var(--night-text)}
+.dark .grid-bg{background-image:linear-gradient(var(--night-line) 1px,transparent 1px),linear-gradient(90deg,var(--night-line) 1px,transparent 1px);opacity:.55}
+.dark .glow.a{width:520px;height:520px;left:-160px;top:-180px;background:radial-gradient(circle,rgba(254,82,0,.55),transparent 70%)}
+.dark .glow.b{width:460px;height:460px;right:-140px;bottom:-200px;background:radial-gradient(circle,rgba(231,132,42,.4),transparent 70%)}
+.dark .in{position:relative}
+.dark .eyebrow{background:rgba(254,82,0,.12);border-color:rgba(254,82,0,.4);color:#ff9a4a}
+.dark .head p{color:var(--night-muted)}
+.arr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.arr div{background:rgba(255,255,255,.03);border:1px solid var(--night-line);border-radius:16px;padding:24px 22px}
+.arr strong{display:block;font-family:var(--display);font-weight:800;font-size:clamp(36px,4.4vw,52px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.arr span{display:block;margin-top:12px;color:var(--night-muted);font-size:14.5px}
+.dark .note{color:#7c7c86}
+.dark .note b{color:var(--night-text);font-weight:600}
+
+/* why me */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.proof div{border:1px solid var(--border);border-radius:16px;padding:20px;background:#fff}
+.proof strong{display:block;font-family:var(--display);font-weight:800;font-size:28px;line-height:1.05;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.proof strong.o{color:var(--brand)}
+.proof span{display:block;margin-top:8px;font-size:13.5px;color:var(--muted);line-height:1.4}
+.xp{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:18px;background:#fff;overflow:hidden}
+.xp article{display:grid;grid-template-columns:230px 1fr 190px;gap:8px 28px;padding:22px 24px;border-bottom:1px solid var(--border);align-items:start}
+.xp article:last-child{border-bottom:0;background:var(--soft)}
+.xp h3{margin:0;font-family:var(--display);font-weight:700;font-size:18px;line-height:1.2}
+.xp .role{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--subtle);text-transform:uppercase;margin-top:6px;line-height:1.5}
+.xp p{margin:0;font-size:15px;color:var(--muted)}
+.xp p b{color:var(--ink);font-weight:600}
+.xp .maps{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-ink);background:var(--tint);border:1px solid #ffdcc7;border-radius:10px;padding:8px 10px;line-height:1.45}
+
+/* closing */
+.cta{position:relative;overflow:hidden;border-radius:24px;border:1px solid var(--border);background:linear-gradient(180deg,#fff, var(--soft));padding:48px clamp(22px,5vw,56px);display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center}
+.cta .glow.a{width:360px;height:360px;right:-90px;top:-120px;background:radial-gradient(circle,#ffb48a,transparent 70%);opacity:.7}
+.cta h2{position:relative;font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,42px);line-height:1.08;letter-spacing:-.025em;margin:12px 0 10px}
+.cta p{position:relative;margin:0;color:var(--muted)}
+.cta .row{position:relative;justify-content:flex-end}
+.contact{font-family:var(--mono);font-size:13px;color:var(--muted);user-select:all}
+footer{padding-block:28px 40px;color:var(--subtle);font-size:13px}
+footer .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* responsive */
+@media (max-width:980px){
+  .pills{display:none}
+  .hero .in{grid-template-columns:1fr;padding-block:52px 56px;gap:36px}
+  .idea{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .step::after{display:none}
+  .proof{grid-template-columns:1fr 1fr}
+  .xp article{grid-template-columns:1fr;gap:10px}
+  .xp .maps{justify-self:start}
+  .cta{grid-template-columns:1fr}
+  .cta .row{justify-content:flex-start}
+}
 @media (max-width:620px){
-  body{font-size:16px;padding-block:28px 56px}
-  .page{gap:44px}
-  .sign-in{padding:20px 18px 18px;gap:6px 16px}
-  .shield{width:48px;height:54px}
+  section.s{padding-block:60px}
+  .steps,.arr{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}
-  .stats div:nth-child(3){padding-left:0;border-left:0}
-  .stats div:nth-child(n+3){border-top:1px solid var(--rule)}
-  .estimate{grid-template-columns:1fr}
-  .fit div{grid-template-columns:1fr}
-  .proof{grid-template-columns:1fr 1fr;gap:20px}
+  .stats div:nth-child(2){border-right:0}
+  .stats div:nth-child(-n+2){border-bottom:1px solid var(--border)}
+  .stats strong{font-size:36px}
+  .nav .btn{padding:8px 14px}
+  .brand small{display:none}
 }
 @media print{
-  @page{size:8.5in 11in;margin:.45in .5in}
-  :root{--bg:#fff}
-  body{background:#fff;padding:0;font-size:12.5px;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .page{max-width:none;gap:22px;zoom:.8}
-  .why{break-before:page;padding-top:4px}
-  .fit div{break-inside:avoid}
-  .sign{box-shadow:none}
-  .sign-in{padding:14px 20px 14px}
-  .shield{width:44px;height:50px}
-  .sign h1{font-size:34px}
-  .sign .dest{margin-top:8px;padding-top:8px;font-size:14px}
-  .exit-tab span{font-size:11px;padding:3px 10px 2px}
-  .byline{margin-top:8px;font-size:11.5px}
-  .label{margin-bottom:9px;font-size:10px}
-  .lead{font-size:15.5px}
-  .road li{padding-bottom:10px;grid-template-columns:34px 1fr;gap:0 14px}
-  .road li:not(:last-child)::after{left:15.5px;top:42px;bottom:4px}
-  .post{width:34px;height:38px}
-  .post strong{font-size:15px}
-  .post small{font-size:7px}
-  .road h3{font-size:14px;margin:0 0 1px}
-  .aside{margin-top:10px;padding:8px 12px;font-size:12px;background:#EAF3EE}
-  .intro{margin-bottom:10px}
-  .stats div{padding-block:9px}
-  .stats strong{font-size:24px}
-  .stats span{font-size:11.5px}
-  .fine{margin-top:6px;font-size:11px}
-  .estimate{padding:12px 16px;gap:10px}
-  .estimate div.n strong{font-size:21px}
-  .estimate div.n span,.estimate p.small{font-size:11.5px}
-  .estimate p.small{padding-top:8px}
-  .proof strong{font-size:22px}
-  .proof span{font-size:12px}
-  .why-lead{font-size:13.5px;margin-bottom:10px}
-  .fit{margin-top:10px}
-  .fit div{grid-template-columns:150px 1fr;padding:6px 0}
-  .fit dt{font-size:12.5px}
-  .fit dd{font-size:12px}
-  .close-in{padding:12px 18px;gap:8px 18px}
-  .close h2{font-size:18px}
-  .close p{font-size:12px}
-  .close a.go{font-size:12.5px;padding:7px 14px}
-  .close .contact{font-size:11px;padding-top:8px}
+  @page{size:1280px 1656px;margin:0}
+  html{padding:0}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .nav,.ann{display:none}
+  section.s{padding-block:40px}
+  .head{margin-bottom:24px}
+  .xp article{padding:14px 20px}
+  .hero .in{padding-block:56px 60px}
+  .step,.xp article,.stats,.arr,.proof,.cta,.fact{break-inside:avoid}
+  #route,#me{break-before:page}
+  #me{padding-bottom:24px}
+  .btn:hover{transform:none}
+  .grad{background:none!important;-webkit-text-fill-color:var(--brand);color:var(--brand)}
+  .hero .in{grid-template-columns:1.25fr .9fr;gap:48px}
+  .idea{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:repeat(4,1fr)}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .stats div{border-bottom:0!important;border-right:1px solid var(--border)!important}
+  .stats div:last-child{border-right:0!important}
+  .arr{grid-template-columns:repeat(3,1fr)}
+  .proof{grid-template-columns:repeat(4,1fr)}
+  .xp article{grid-template-columns:230px 1fr 190px;gap:8px 28px}
+  .cta{grid-template-columns:1.3fr 1fr}
+  .cta .row{justify-content:flex-end}
 }
-@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
 </style>
+</head>
+<body>
 
-<main class="page">
-  <header class="signpost">
-    <div class="exit-tab" aria-hidden="true"><span>EXIT 20</span></div>
-    <div class="sign" role="img" aria-label="Highway guide sign: Kayaan Shield, small freight brokers. Exit 20, twenty free loads.">
-      <div class="sign-in">
-        <svg class="shield" viewBox="0 0 62 70" aria-hidden="true">
-          <path d="M4 10 Q17 2 31 8 Q45 2 58 10 L58 32 Q58 56 31 67 Q4 56 4 32 Z"/>
-          <path d="M4 22 L58 22" style="stroke-width:2.5"/>
-          <text x="31" y="52" text-anchor="middle">K</text>
-        </svg>
-        <span class="over">Kayaan Shield · Growth route</span>
-        <h1>Small freight brokers</h1>
-        <div class="dest">
-          <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M6 22 L22 6 M10 6 H22 V18"/></svg>
-          <span>20 free loads, then a paying customer</span>
-        </div>
+<div class="ann"><div class="in">
+  <span class="k"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>For Kayaan Freight · Nov 2026</span>
+  <span>A growth plan for Shield, built from public data. <a href="plan/">Read the full plan →</a></span>
+</div></div>
+
+<nav class="nav" aria-label="Page"><div class="in">
+  <a class="brand" href="#top"><b>ARFAAN JEDDY <i>×</i> KAYAAN</b><small>GTM plan · Shield</small></a>
+  <div class="pills"><a href="#idea">Idea</a><a href="#route">The plan</a><a href="#test">30-day test</a><a href="#arr">ARR</a><a href="#me">Why me</a></div>
+  <a class="btn dark" href="plan/">Full plan <span class="ar" aria-hidden="true">→</span></a>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="grid-bg"></div><div class="glow a"></div><div class="glow b"></div>
+  <div class="in">
+    <div>
+      <span class="eyebrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>Founding GTM plan</span>
+      <h1>Shield already proves care. Let's put it in front of <span class="grad">25,081 brokers.</span></h1>
+      <p class="sub">Your site makes the Montgomery case well. What I'd add is <b>distribution</b>: a repeatable engine that finds the brokers who need Shield most, gets them into the 20-load pilot, and turns pilots into ARR.</p>
+      <div class="row">
+        <a class="btn dark" href="#route">See the plan <span class="ar" aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="plan/">Open the full plan</a>
       </div>
+      <div class="cap">By Arfaan Jeddy · 30-day test · every number labeled</div>
     </div>
-    <div class="byline"><span>A one-page note from <b>Arfaan Jeddy</b> on how I'd help Kayaan grow</span><span>November 2026</span></div>
-  </header>
-
-  <section>
-    <h2 class="label">The idea</h2>
-    <p class="lead">Since the Supreme Court's <i>Montgomery</i> ruling in May 2026, a freight broker can be sued for picking an unsafe carrier. Shield already records, on every load, that the broker checked the carrier, the driver and the truck. I'd sell that record as <mark>proof of care</mark> to brokers with 10 to 75 people, who feel this the most and have nobody doing compliance.</p>
-  </section>
-
-  <section>
-    <h2 class="label">What I'd do for you</h2>
-    <ol class="road">
-      <li><div class="post"><small>MILE</small><strong>1</strong></div>
-        <div><h3>Find the right brokers</h3><p>Build the list from the government's public broker database (25,081 active brokers today), then pick out the ones hiring dispatch staff, hit by theft, or close to an insurance renewal.</p></div></li>
-      <li><div class="post"><small>MILE</small><strong>2</strong></div>
-        <div><h3>Get them to answer</h3><p>Offer something useful first: <q>Send me 10 carriers you used last week and I'll send back a free safety check within 24 hours.</q> Then invite them to run Shield on 20 loads.</p></div></li>
-      <li><div class="post"><small>MILE</small><strong>3</strong></div>
-        <div><h3>Turn pilots into customers</h3><p>Agree on what success means before each pilot starts. Every pilot ends with a short report the broker can hand to their insurance agent.</p></div></li>
-      <li><div class="post"><small>MILE</small><strong>4</strong></div>
-        <div><h3>Add a referral channel</h3><p>Insurance agents now need their broker clients to look safe. They can send brokers to Kayaan before renewal.</p></div></li>
-    </ol>
-    <p class="aside"><b>In week one:</b> tighten the website to one clear message, swap two claims a freight veteran would doubt, and add a short intake form so demo time goes to real prospects.</p>
-  </section>
-
-  <section>
-    <h2 class="label">The first 30 days</h2>
-    <p class="intro">One small test, not a big campaign. About <b>$2,500</b> in tools and a few hours of founder time for demos.</p>
-    <div class="stats">
-      <div><strong>300</strong><span>brokers contacted, split into two test groups</span></div>
-      <div><strong>10</strong><span>real meetings booked</span></div>
-      <div><strong>4</strong><span>pilots started with agreed goals</span></div>
-      <div><strong>Day 30</strong><span>keep what worked, cut what didn't</span></div>
-    </div>
-    <p class="fine">These are targets, not promises. If the test misses them, we change the offer before spending more.</p>
-  </section>
-
-  <section>
-    <h2 class="label">What it could add up to</h2>
-    <div class="estimate">
-      <div class="tag"><b>If the test works</b><span>My estimate, in ARR</span></div>
-      <div class="n"><strong>~$50K</strong><span>new ARR added each month (about 1 to 2 brokers at ~$30K ARR each)</span></div>
-      <div class="n"><strong>~$66K</strong><span>ARR run rate by day 90, with pilots still in progress</span></div>
-      <div class="n"><strong>~4 mo</strong><span>for each customer to pay back what it cost to win them</span></div>
-      <p class="small">Built on assumptions (about 500 protected loads a month per broker at ~$5 a load), since Kayaan's pricing isn't public. With your real numbers I can replace this in a day.</p>
-    </div>
-  </section>
-
-  <section class="why">
-    <h2 class="label">Why me</h2>
-    <p class="why-lead">I've built and run every part of this plan before, and I measure it in revenue.</p>
-    <div class="proof">
-      <div><strong>$216K to $276K</strong><span>ARR built from zero at Appointive with an outbound engine I designed</span></div>
-      <div><strong>$386K</strong><span>revenue collected through a funnel I measure and optimize at Sterling</span></div>
-      <div><strong>13,000+</strong><span>B2B leads sourced, enriched and qualified</span></div>
-      <div><strong>25,081</strong><span>brokers already pulled from FMCSA for this plan</span></div>
-    </div>
-    <dl class="fit">
-      <div><dt>Appointive<small>Founder &amp; GTM Engineering Lead · 2024 to now</small></dt><dd>Built the full outbound engine (n8n, Clay, Apollo, CRM, email infrastructure): 13,000+ leads qualified, about 30,000 emails a month, around 22 positive replies and 5 to 6 booked calls a day. Grew it to 10 paying clients and <b>$216K to $276K in ARR</b>. <i>This is Miles 1 and 2 of the plan.</i></dd></div>
-      <div><dt>Sterling Periodontics<small>Marketing Analyst · 2026 to now</small></dt><dd>Built the measurement stack (GA4, Tag Manager, call and form tracking) and GoHighLevel follow-up with AI-assisted booking. Guide $15K+ a month in ad spend. The funnel brings in about 300 leads and 35 consultations a month and <b>$386K in collected revenue</b>. <i>This is Mile 3: turning interest into customers.</i></dd></div>
-      <div><dt>DXC Technology<small>Data Analyst · 2022 to 2024</small></dt><dd>Built dashboards for 4 enterprise accounts and cut SQL and Python pipeline processing time by 40%. Automated anomaly detection that improved SLA compliance by 25%. <i>This is the weekly reporting that shows what converts.</i></dd></div>
-      <div><dt>ChiEAC<small>Data Analyst · 2026</small></dt><dd>Found 3 underserved segments in service data across 12 neighborhoods, which guided expansion into 6 new ones. <i>This is how I'd pick and re-check the right broker segment.</i></dd></div>
-      <div><dt>For Kayaan<small>already done</small></dt><dd>Pulled all 25,081 active brokers from FMCSA's public data, built a working lead-scoring tool, and modeled the ARR math above.</dd></div>
-    </dl>
-  </section>
-
-  <section class="close">
-    <div class="close-in">
-      <div>
-        <h2>Want the details?</h2>
-        <p>Research, competitor map, the numbers and a 90-day roadmap are in the full plan.</p>
+    <div class="panel" aria-label="Plan at a glance">
+      <div class="bar"><i style="background:#fe5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>plan_at_a_glance</span></div>
+      <div class="kpi">
+        <div><strong>25,081</strong><span>active broker authorities in FMCSA data, pulled Nov 20, 2026</span></div>
+        <div><strong class="o">10 to 75</strong><span>staff: the brokerages to win first</span></div>
+        <div><strong>30 days</strong><span>to a go or no-go on the first channel</span></div>
+        <div><strong class="o">~$66K</strong><span>ARR run rate by day 90 in the base case (estimate)</span></div>
       </div>
-      <a class="go" href="plan/">Open the full plan <span aria-hidden="true">→</span></a>
-      <div class="contact">Arfaan Jeddy · linkedin.com/in/arfaanj · github.com/arfujj</div>
+      <div class="foot"><span class="live"></span>Prototype scoring tool already built</div>
     </div>
-  </section>
+  </div>
+</header>
+
+<main>
+<section class="s" id="idea"><div class="in">
+  <div class="head"><span class="eyebrow">The idea</span><h2>Sell the proof of care to the brokers who feel the ruling most.</h2></div>
+  <div class="idea">
+    <p class="quote">Since <i>Montgomery</i>, a broker can be sued for picking an unsafe carrier. Shield records, on every load, that the broker checked the carrier, the driver and the truck. <span class="hl">That record is the product</span> for brokerages with 10 to 75 people and nobody doing compliance.</p>
+    <div class="facts">
+      <div class="fact"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M5 7h14M7 7l-3 7h6L7 7Zm10 0-3 7h6l-3-7Z"/></svg></div><div><b>9 to 0, May 14, 2026</b><span>Negligent-selection claims against brokers are no longer preempted.</span></div></div>
+      <div class="fact"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><div><b>Insurers are tightening</b><span>Underwriters now ask brokers how they vet carriers before they renew.</span></div></div>
+      <div class="fact"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg></div><div><b>Fraud moved after the rate con</b><span>Highway's 2026 reports tie about 40% of stolen loads to compromised communications.</span></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="s tint" id="route"><div class="in">
+  <div class="head"><span class="eyebrow">What I'd do for you</span><h2>Four steps from a public list to a paying broker.</h2></div>
+  <div class="steps">
+    <article class="step"><span class="n">STEP 01</span><h3>Find the right brokers</h3><p>Build the list from FMCSA's public broker data, then pick out the ones hiring dispatch staff, hit by theft, or close to an insurance renewal.</p></article>
+    <article class="step"><span class="n">STEP 02</span><h3>Get them to answer</h3><p>Lead with something useful: <q>Send me 10 carriers you used last week and I'll send back a free safety check in 24 hours.</q> Then offer Shield on 20 loads.</p></article>
+    <article class="step"><span class="n">STEP 03</span><h3>Turn pilots into ARR</h3><p>Agree on success goals before each pilot. Each pilot ends with a short Reasonable Care File the broker can hand to their insurance agent.</p></article>
+    <article class="step"><span class="n">STEP 04</span><h3>Add a referral channel</h3><p>Insurance agents need their broker clients to look safe. They can send brokers to Kayaan before renewal.</p></article>
+  </div>
+  <div class="wk"><b>Week one:</b>&nbsp;sharpen the site to one message, swap two claims a freight veteran would doubt, and add a short intake form so demo time goes to real prospects.</div>
+</div></section>
+
+<section class="s" id="test"><div class="in">
+  <div class="head"><span class="eyebrow">The first 30 days</span><h2>One small, controlled test before any big spend.</h2><p>About $2,500 in tools and a few hours of founder time for demos.</p></div>
+  <div class="stats">
+    <div><strong>300</strong><span>brokers contacted, split into two test groups</span></div>
+    <div><strong>10</strong><span>qualified meetings booked</span></div>
+    <div><strong>4</strong><span>pilots started with agreed goals</span></div>
+    <div><strong style="color:var(--brand)">Day 30</strong><span>keep what worked, cut what didn't</span></div>
+  </div>
+  <p class="note">These are targets, not promises. If the test misses them, we change the offer before spending more.</p>
+</div></section>
+
+<section class="s dark" id="arr">
+  <div class="grid-bg"></div><div class="glow a"></div><div class="glow b"></div>
+  <div class="in">
+    <div class="head"><span class="eyebrow">What it could add up to</span><h2>If the test works, this is the ARR math.</h2><p>My base-case estimate, built on assumptions because Kayaan's pricing isn't public.</p></div>
+    <div class="arr">
+      <div><strong class="grad">~$50K</strong><span>new ARR added each month: 1 to 2 brokers at about $30K ARR each</span></div>
+      <div><strong>~$66K</strong><span>ARR run rate by day 90, with more pilots still in progress</span></div>
+      <div><strong>~4 mo</strong><span>for each customer to pay back what it cost to win them</span></div>
+    </div>
+    <p class="note"><b>Assumes</b> about 500 protected loads a month per broker at about $5 a load. With your real pricing and pilot data, I can replace this in a day.</p>
+  </div>
+</section>
+
+<section class="s" id="me"><div class="in">
+  <div class="head"><span class="eyebrow">Why me</span><h2>I've built and run every part of this plan, and I measure it in ARR.</h2></div>
+  <div class="proof">
+    <div><strong class="o">$216K to $276K</strong><span>ARR built from zero at Appointive</span></div>
+    <div><strong>~$460K</strong><span>annualized revenue through the funnel I run at Sterling</span></div>
+    <div><strong>$180K+</strong><span>annual ad budget guided at Sterling</span></div>
+    <div><strong>13,000+</strong><span>B2B leads sourced, enriched and qualified</span></div>
+  </div>
+  <div class="xp">
+    <article>
+      <div><h3>Appointive</h3><div class="role">Founder &amp; GTM Engineering Lead · 2024 to now</div></div>
+      <p>Built the full outbound engine (n8n, Clay, Apollo, CRM, email infrastructure): 13,000+ leads qualified, about 30,000 emails a month, around 22 positive replies and 5 to 6 booked calls a day. Grew it to 10 paying clients and <b>$216K to $276K in ARR</b>.</p>
+      <span class="maps">Steps 01 and 02</span>
+    </article>
+    <article>
+      <div><h3>Sterling Periodontics</h3><div class="role">Marketing Analyst · 2026 to now</div></div>
+      <p>Built the measurement stack (GA4, Tag Manager, call and form tracking) and GoHighLevel follow-up with AI-assisted booking. Guide <b>$180K+ a year</b> in ad spend. The funnel brings in about 300 leads and 35 consultations a month, running at <b>about $460K in annualized revenue</b>.</p>
+      <span class="maps">Step 03: interest to revenue</span>
+    </article>
+    <article>
+      <div><h3>DXC Technology</h3><div class="role">Data Analyst · 2022 to 2024</div></div>
+      <p>Built dashboards for 4 enterprise accounts, cut SQL and Python pipeline processing time by <b>40%</b>, and automated anomaly detection that improved SLA compliance by <b>25%</b>.</p>
+      <span class="maps">Weekly reporting on what converts</span>
+    </article>
+    <article>
+      <div><h3>ChiEAC</h3><div class="role">Data Analyst · 2026</div></div>
+      <p>Found <b>3 underserved segments</b> in service data across 12 neighborhoods, which guided expansion into 6 new ones.</p>
+      <span class="maps">Picking the right broker segment</span>
+    </article>
+    <article>
+      <div><h3>For Kayaan</h3><div class="role">Already done</div></div>
+      <p>Pulled all <b>25,081 active brokers</b> from FMCSA's public data, built a working lead-scoring tool, and modeled the ARR math above.</p>
+      <span class="maps">Ready on day one</span>
+    </article>
+  </div>
+</div></section>
+
+<section class="s" style="padding-top:0"><div class="in">
+  <div class="cta">
+    <div class="glow a"></div>
+    <div>
+      <span class="eyebrow">Next step</span>
+      <h2>Let's run the first 30 days.</h2>
+      <p>The full plan has the research, competitor map, the acquisition engine, unit economics and a 90-day roadmap.</p>
+      <p class="contact" style="margin-top:14px">Arfaan Jeddy · linkedin.com/in/arfaanj · github.com/arfujj</p>
+    </div>
+    <div class="row">
+      <a class="btn dark" href="plan/">Open the full plan <span class="ar" aria-hidden="true">→</span></a>
+      <a class="btn ghost" href="plan/spec.html">System spec</a>
+    </div>
+  </div>
+</div></section>
 </main>
+
+<footer><div class="in"><span>Prepared independently by Arfaan Jeddy from public sources. Not affiliated with Kayaan.</span><span class="mono">ARR figures for Kayaan are estimates</span></div></footer>
+</body>
 </html>
