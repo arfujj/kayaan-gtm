@@ -133,6 +133,10 @@ ul.ticks.o li::before{background:var(--brand)}
 .gate{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line-2);font-size:12px;color:var(--ink);font-family:var(--mono)}
 
 .xp td.co{width:170px}
+.tools{margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--subtle);line-height:1.7}
+.xp td.co{width:210px}
+.facts strong{font-size:20px}
+
 .xp td.co b{display:block;font-family:var(--display);font-weight:700;font-size:14.5px}
 .xp td.co small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--subtle);text-transform:uppercase;margin-top:3px}
 .xp td.num{width:128px;text-align:right;padding-right:0;font-family:var(--display);font-weight:800;font-size:15px;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -528,15 +532,25 @@ ol.src a{color:var(--muted)}
 
   <section id="me">
     <div class="sh">11 · Why me</div>
-    <h2>I've built and run each part of this, and I measure it in ARR.</h2>
-    <p class="short"><b>In short</b>Outbound engines, funnels and data pipelines at real scale, plus a working start on this one.</p>
+    <h2>I build GTM automations, then I run them and measure them in ARR.</h2>
+    <p class="short"><b>In short</b>Every part of this plan is something I've already built: lead pipelines, outbound infrastructure, CRM automation, AI drafting and reporting.</p>
+    <div class="facts" style="margin:0 0 18px">
+      <div><strong class="o">$216K to $276K</strong><span>ARR built through outbound I engineered</span></div>
+      <div><strong>~$4.6M</strong><span>ARR funnel I track and automate</span></div>
+      <div><strong>13,000+</strong><span>leads enriched and scored automatically</span></div>
+      <div><strong>~30,000</strong><span>outbound emails a month</span></div>
+    </div>
     <div class="tw"><table class="xp">
-      <tr class="k"><td class="co"><b>Appointive</b><small>GTM Engineering Lead · 2024 to now</small></td><td class="what">Built the outbound engine end to end (n8n, Clay, Apollo, CRM): <b>13,000+</b> leads qualified, <b>~30,000</b> emails a month, <b>~22</b> positive replies and <b>5 to 6</b> calls booked a day, 10 paying clients.</td><td class="num">$216K to $276K<small>ARR built</small></td></tr>
-      <tr class="k"><td class="co"><b>Sterling Periodontics</b><small>Marketing Analyst · 2026 to now</small></td><td class="what">Built tracking (GA4, Tag Manager, calls, forms) and GoHighLevel follow-up; guide <b>$180K+</b> a year in ads; ~300 leads and 35 consults a month, at about <b>$386K a month</b> in revenue.</td><td class="num">~$4.6M<small>ARR ($386K a month)</small></td></tr>
-      <tr><td class="co"><b>DXC Technology</b><small>Data Analyst · 2022 to 2024</small></td><td class="what">Dashboards for 4 enterprise accounts; SQL and Python pipelines <b>40%</b> faster; anomaly alerts lifted SLA compliance <b>25%</b>.</td><td class="num">40%<small>faster pipelines</small></td></tr>
-      <tr><td class="co"><b>ChiEAC</b><small>Data Analyst · 2026</small></td><td class="what">Found <b>3</b> underserved segments across 12 neighborhoods, guiding expansion into 6 new ones.</td><td class="num">3<small>segments found</small></td></tr>
-      <tr><td class="co"><b>For Kayaan</b><small>Already done</small></td><td class="what">Pulled all 25,081 active brokers from FMCSA, built a working lead-scoring tool, and modeled the ARR math above.</td><td class="num">Day 1<small>ready</small></td></tr>
+      <tr><th>What the role needs</th><th>What I've built</th><th class="r">Proof</th></tr>
+      <tr class="k"><td class="co"><b>Find and score the right accounts</b><small>Appointive</small></td><td class="what">Built n8n pipelines that connect Clay, Apollo and APIs to <b>source, enrich and ICP-score leads automatically</b>, then push them into the CRM.</td><td class="num">13,000+<small>leads qualified</small></td></tr>
+      <tr class="k"><td class="co"><b>Run outbound at volume</b><small>Appointive</small></td><td class="what">Set up my own sending infrastructure and <b>multichannel sequences</b> (email, LinkedIn, SMS) at about 1,000 emails a day, with replies routed to booked calls.</td><td class="num">5 to 6<small>calls booked a day</small></td></tr>
+      <tr class="k"><td class="co"><b>Turn pipeline into ARR</b><small>Appointive</small></td><td class="what">Ran the engine end to end, from list to booked meeting to paying client.</td><td class="num">$216K to $276K<small>ARR built</small></td></tr>
+      <tr class="k"><td class="co"><b>Convert and follow up automatically</b><small>Sterling Periodontics</small></td><td class="what">Built <b>GoHighLevel pipelines, lead nurture and AI-assisted booking follow-up</b>, plus call and form tracking. ~300 leads and 35 consults a month.</td><td class="num">~$4.6M<small>ARR funnel ($386K a month)</small></td></tr>
+      <tr><td class="co"><b>Know what's converting</b><small>Sterling · DXC Technology</small></td><td class="what">GA4 and Tag Manager attribution with <b>automated reporting</b> (Looker Studio, Power BI); month-end review cut to 3 to 4 hours; pipelines 40% faster at DXC.</td><td class="num">Weekly<small>funnel report</small></td></tr>
+      <tr><td class="co"><b>Use AI and keep data clean</b><small>Own builds</small></td><td class="what">An <b>LLM gateway</b> with model routing and cost tracking, and a <b>CRM data-quality monitor</b> that flags duplicates, gaps and stale records. Anthropic certified (Claude, MCP).</td><td class="num">AI + QA<small>built in</small></td></tr>
+      <tr><td class="co"><b>Already started for Kayaan</b><small>This plan</small></td><td class="what">Pulled all 25,081 active brokers from FMCSA and built a working lead-scoring tool.</td><td class="num">Day 1<small>ready</small></td></tr>
     </table></div>
+    <p class="tools">Clay · Apollo · n8n · GoHighLevel · REST APIs · email infrastructure · GA4 · Tag Manager · Looker Studio · Python · SQL · PostgreSQL · Claude</p>
     <div class="next"><a href="#risks">← Risks</a><a href="#sources">Next: sources →</a></div>
   </section>
 
