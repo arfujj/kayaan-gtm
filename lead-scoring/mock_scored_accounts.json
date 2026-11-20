@@ -1,0 +1,85 @@
+[
+  {
+    "account": "Gulf Bend Freight (MOCK)",
+    "mc": "MC-000002",
+    "score": 75,
+    "fit": 50,
+    "intent": 25,
+    "buyer": "COO / VP Operations",
+    "champion": "Carrier compliance or carrier relations lead",
+    "angle": "You were just hit or impersonated. Show what a sealed per-load trail would have flagged.",
+    "reasons": [
+      "+10 fit: authority 9 yrs (established, not legacy)",
+      "+15 fit: 48 staff, core ICP band",
+      "+10 fit: supported TMS detected (Turvo)",
+      "+10 fit: FTL van/reefer/power only, high theft exposure",
+      "+5 fit: operates in or into high-theft states",
+      "+15 intent: public theft or impersonation mention in 90 days",
+      "+10 intent: insurance renewal in 2 mo (agent partner)"
+    ]
+  },
+  {
+    "account": "Prairie Line Logistics (MOCK)",
+    "mc": "MC-000001",
+    "score": 60,
+    "fit": 40,
+    "intent": 20,
+    "buyer": "Owner / President",
+    "champion": "Ops lead or senior carrier rep",
+    "angle": "Before the next check-call hire, automate the calls and keep the audit file.",
+    "reasons": [
+      "+10 fit: authority 6 yrs (established, not legacy)",
+      "+15 fit: 22 staff, core ICP band",
+      "+10 fit: FTL van/reefer/power only, high theft exposure",
+      "+5 fit: operates in or into high-theft states",
+      "+15 intent: hiring 'Carrier Sales Rep, track and trace experience' (check-call load growing)",
+      "+5 intent: 1 visit to pilot/readout page"
+    ]
+  },
+  {
+    "account": "Copper Mesa Transport Brokers (MOCK)",
+    "mc": "MC-000003",
+    "score": 44,
+    "fit": 29,
+    "intent": 15,
+    "buyer": "Owner / President",
+    "champion": "Ops lead or senior carrier rep",
+    "angle": "Before the next check-call hire, automate the calls and keep the audit file.",
+    "reasons": [
+      "+10 fit: authority 3 yrs (established, not legacy)",
+      "+15 fit: 14 staff, core ICP band",
+      "+4 fit: TMS unknown (confirm on call)",
+      "+15 intent: hiring 'Track and Trace Coordinator' (check-call load growing)"
+    ]
+  },
+  {
+    "account": "Harborview 3PL Group (MOCK)",
+    "mc": "MC-000004",
+    "score": 43,
+    "fit": 33,
+    "intent": 10,
+    "buyer": "VP Carrier Procurement + Head of Risk",
+    "champion": "Director of Carrier Relations",
+    "angle": "Renewal in under 90 days. Walk in with a documented carrier-selection process.",
+    "reasons": [
+      "+8 fit: 140 staff, upper band",
+      "+10 fit: supported TMS detected (MercuryGate)",
+      "+10 fit: FTL van/reefer/power only, high theft exposure",
+      "+5 fit: operates in or into high-theft states",
+      "+10 intent: insurance renewal in 3 mo (agent partner)"
+    ]
+  },
+  {
+    "account": "Two Rivers Brokerage (MOCK)",
+    "mc": "MC-000005",
+    "score": 0,
+    "fit": 0,
+    "intent": 0,
+    "buyer": "Owner / President",
+    "champion": "Ops lead or senior carrier rep",
+    "angle": "Post-Montgomery readout on 10 recent carriers.",
+    "reasons": [
+      "DQ: 3 staff is outside 5 to 500"
+    ]
+  }
+]
