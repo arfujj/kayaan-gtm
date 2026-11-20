@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kayaan Shield GTM Plan</title>
+<title>Arfaan × Kayaan · Full Plan</title>
 <meta name="description" content="The full GTM plan for Kayaan Shield by Arfaan Jeddy: research, who to win first, three plays, the acquisition engine, the ARR math and a 90-day roadmap.">
 <meta property="og:title" content="Kayaan Shield GTM Plan · Arfaan Jeddy">
 <meta property="og:description" content="Research, who to win first, three plays, the acquisition engine, the ARR math and a 90-day roadmap.">
@@ -188,6 +188,25 @@ ol.src a{color:var(--muted)}
   .play,tr,.arr,.phases{break-inside:avoid}
   h2,h3,.sh{break-after:avoid}
 }
+.mast{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;padding-bottom:16px;border-bottom:2px solid var(--ink);position:relative}
+.mast::after{content:"";position:absolute;left:0;bottom:-2px;width:72px;height:2px;background:var(--brand)}
+.mast .for{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-ink)}
+h1.name{font-family:var(--display);font-weight:800;font-size:clamp(38px,6.4vw,54px);line-height:.95;letter-spacing:-.035em;margin:8px 0 6px}
+.mast .role{margin:0;font-size:14.5px;color:var(--muted)}
+.mast .meta{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-family:var(--mono);font-size:11px;color:var(--subtle)}
+.thesis{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,32px);line-height:1.12;letter-spacing:-.02em;margin:24px 0 12px;text-wrap:balance}
+.thesis em{font-style:normal;color:var(--brand)}
+@media (max-width:640px){.mast .meta{align-items:flex-start}}
+.try{display:grid;grid-template-columns:1fr auto;gap:14px 24px;align-items:center;background:#0c0c0d;color:#f2f2f4;border-radius:14px;padding:18px 22px;text-decoration:none;position:relative;overflow:hidden}
+.try::before{content:"";position:absolute;right:-60px;top:-80px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(254,82,0,.45),transparent 70%);pointer-events:none}
+.try small{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#ff9a4a}
+.try small i{width:7px;height:7px;border-radius:50%;background:#28c840;box-shadow:0 0 0 3px rgba(40,200,64,.2)}
+.try strong{display:block;font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.015em;margin:4px 0 2px;color:#fff}
+.try span.d{display:block;font-size:13.5px;color:#a9a9b2}
+.try .go{position:relative;display:inline-flex;align-items:center;gap:8px;background:#fe5200;color:#fff;border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;white-space:nowrap}
+.try:hover .go{background:#ff6a1f}
+@media (max-width:620px){.try{grid-template-columns:1fr}.try .go{justify-self:start}}
+.x{color:var(--brand);font-weight:700;margin:0 .08em}
 </style>
 </head>
 <body>
@@ -195,7 +214,7 @@ ol.src a{color:var(--muted)}
 
 <aside class="rail">
   <a class="back" href="../">← One-page summary</a>
-  <div class="who">Arfaan Jeddy<small>Full GTM plan · Kayaan Shield</small></div>
+  <div class="who">Arfaan <span class="x">×</span> Kayaan<small>Full GTM plan · Kayaan Shield</small></div>
   <nav aria-label="Sections">
     <a href="#found"><span>01</span>What I found</a>
     <a href="#who"><span>02</span>Who to win first</a>
@@ -215,8 +234,13 @@ ol.src a{color:var(--muted)}
 </aside>
 
 <main>
-  <div class="top"><span>Full plan · Arfaan Jeddy for Kayaan</span><span>Nov 2026</span></div>
-  <h1>Shield's message is right. The gap is <em>getting it in front of the right brokers.</em></h1>
+  <header class="mast">
+    <div><div class="for">The full GTM plan</div>
+      <h1 class="name">Arfaan <span class="x">×</span> Kayaan</h1>
+      <p class="role">Arfaan Jeddy · GTM Engineer · A growth plan for Kayaan Shield</p></div>
+    <div class="meta"><span>Nov 2026</span><span>linkedin.com/in/arfaanj</span><span>github.com/arfujj</span></div>
+  </header>
+  <p class="thesis">Shield's message is right. The gap is <em>getting it in front of the right brokers.</em></p>
   <p class="dek">Since <i>Montgomery v. Caribe</i> (Supreme Court, 9 to 0, May 14, 2026), a broker can be sued for picking an unsafe carrier. Shield already records proof of care on every load. This plan turns that into a repeatable path to <b>pilots and ARR</b>, starting with the brokers who feel the ruling most.</p>
   <div class="facts">
     <div><strong>9 to 0</strong><span>Montgomery ruling, May 14, 2026</span></div>
@@ -224,6 +248,10 @@ ol.src a{color:var(--muted)}
     <div><strong>10 to 75</strong><span>staff: the brokers to win first</span></div>
     <div><strong class="o">~$66K</strong><span>ARR by day 90, base case (estimate)</span></div>
   </div>
+  <div style="margin-top:18px"><a class="try" href="../lead-scoring/">
+    <div><small><i></i>Live tool · real FMCSA data</small><strong>Try the lead scoring tool</strong><span class="d">Pull real active brokers by state, add what you know, and see who to call first and why.</span></div>
+    <span class="go">Open the tool →</span>
+  </a></div>
 
   <section id="found">
     <div class="sh">01 · What I found</div>
@@ -400,6 +428,10 @@ ol.src a{color:var(--muted)}
           <li>Anything sent to an insurance agent</li>
         </ul></div>
     </div>
+    <div style="margin-top:18px"><a class="try" href="../lead-scoring/">
+    <div><small><i></i>Live tool · real FMCSA data</small><strong>Try the lead scoring tool</strong><span class="d">Pull real active brokers by state, add what you know, and see who to call first and why.</span></div>
+    <span class="go">Open the tool →</span>
+  </a></div>
     <p class="fine">Built with Python, Postgres, FMCSA's public data, licensed contact data, Claude for drafts, and a CRM. No scraping, no cold texts or AI calls. <a href="../lead-scoring/"><b>Try the live lead-scoring tool →</b></a></p>
     <div class="next"><a href="#plays">← Three plays</a><a href="#example">Next: one account →</a></div>
   </section>
