@@ -4,6 +4,9 @@ Scores freight brokerages on **fit** (are they the right kind of broker?) and **
 
 Built by Arfaan Jeddy as part of a GTM plan for Kayaan. Not affiliated with Kayaan.
 
+**Use it live in your browser:** https://arfujj.github.io/kayaan-gtm/lead-scoring/
+Pick a state, pull real active brokers from FMCSA, add what you know, and the score updates with reasons. Export to CSV or copy an account brief.
+
 ## What it does
 
 1. **Finds brokers.** Pulls active broker authorities from FMCSA's public dataset on data.transportation.gov (25,081 active as of Nov 20, 2026). Public, keyless, no scraping.

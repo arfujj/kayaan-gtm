@@ -3,189 +3,398 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lead Scoring Tool · Arfaan Jeddy</title>
-<meta name="description" content="An explainable lead-scoring tool for Kayaan Shield, built on FMCSA's public broker data.">
-<meta property="og:title" content="Lead Scoring Tool · Arfaan Jeddy">
-<meta property="og:description" content="Scores freight brokers on fit and intent, with a reason for every point.">
+<title>Broker Lead Scoring · Arfaan Jeddy</title>
+<meta name="description" content="A live, interactive lead-scoring tool for Kayaan Shield. Pull real active freight brokers from FMCSA's public data and score them on fit and intent.">
+<meta property="og:title" content="Broker Lead Scoring · Arfaan Jeddy">
+<meta property="og:description" content="Pull real active freight brokers from FMCSA and score them on fit and intent, with a reason for every point.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
+/* Tool layout: controls bar, broker list on the left, scoring workbench on the right. Kayaan palette. */
 :root{
-  --bg:#ffffff; --soft:#fff7f2; --ink:#0c0c0d; --muted:#5a5a63; --subtle:#8a8a94; --line:#ececee; --line-2:#d9d9de;
-  --brand:#fe5200; --brand-ink:#b33600; --night:#0c0c0d; --night-line:#26262a; --ok:#17803d; --bad:#c2410c;
+  --bg:#ffffff; --soft:#fff7f2; --soft-2:#fafafa; --ink:#0c0c0d; --muted:#5a5a63; --subtle:#8a8a94; --line:#ececee; --line-2:#d9d9de;
+  --brand:#fe5200; --brand-ink:#b33600; --night:#0c0c0d; --ok:#17803d; --ok-soft:#e8f6ec; --bad:#c2410c; --bad-soft:#fff1ec;
   --display:"Archivo","Geist",ui-sans-serif,system-ui,sans-serif; --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   color-scheme:light;
 }
 *{box-sizing:border-box}
 html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;
-  padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px));padding-block:48px 64px}
-.memo{max-width:780px;margin:0 auto}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px));padding-block:36px 56px}
+.app{max-width:1180px;margin:0 auto}
 a{color:var(--ink);text-decoration-color:var(--brand);text-underline-offset:3px;text-decoration-thickness:1.5px}
-:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+button,select,input{font:inherit;color:inherit}
 b{font-weight:600}
 p{margin:0}
+
 .top{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-ink);padding-bottom:12px;border-bottom:2px solid var(--ink);position:relative}
 .top::after{content:"";position:absolute;left:0;bottom:-2px;width:72px;height:2px;background:var(--brand)}
+.top nav{display:flex;gap:16px}
 .top a{color:var(--subtle);text-decoration:none}.top a:hover{color:var(--ink)}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.6vw,40px);line-height:1.08;letter-spacing:-.025em;margin:24px 0 12px;text-wrap:balance}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap;margin:22px 0 18px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,36px);line-height:1.08;letter-spacing:-.025em;margin:0 0 8px;text-wrap:balance}
 h1 em{font-style:normal;color:var(--brand)}
-.dek{color:var(--muted);font-size:16px;max-width:64ch}
-.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:9px 16px;font-weight:600;font-size:14px;text-decoration:none}
-.btn.dark{background:var(--ink);color:#fff}.btn.ghost{border:1px solid var(--line-2);color:var(--ink)}
-section{margin-top:44px}
-.sh{display:flex;align-items:baseline;gap:10px;margin:0 0 12px;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-ink)}
-.sh::after{content:"";flex:1;height:1px;background:var(--line);transform:translateY(-3px)}
-.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.chip{display:inline-flex;align-items:baseline;gap:6px;border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;font-size:13px;color:var(--muted);white-space:nowrap}
-.chip strong{font-family:var(--display);font-weight:800;font-size:15px;color:var(--ink)}
-.to{color:var(--line-2)}
-.fine{margin-top:10px;font-size:12.5px;color:var(--subtle)}
+.dek{color:var(--muted);max-width:62ch}
+.live{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+.live i{width:8px;height:8px;border-radius:50%;background:#28c840;box-shadow:0 0 0 4px rgba(40,200,64,.15)}
+.live.off i{background:var(--line-2);box-shadow:none}
 
-.acct{border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:12px;display:grid;grid-template-columns:88px 1fr;gap:4px 18px}
-.acct.dq{opacity:.65}
-.score{grid-row:span 3;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-.score strong{font-family:var(--display);font-weight:800;font-size:40px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.score.hi strong{color:var(--brand)}
-.meter{width:72px;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
-.meter i{display:block;height:100%;background:var(--brand)}
-.score small{font-family:var(--mono);font-size:10.5px;color:var(--subtle)}
-.acct h3{margin:0;font-family:var(--display);font-weight:700;font-size:17px}
-.acct .who{font-size:13px;color:var(--muted)}
-.acct .who b{color:var(--ink)}
-.acct .angle{font-size:13.5px;color:var(--ink);background:var(--soft);border-radius:8px;padding:6px 10px;margin-top:4px}
-.acct ul{grid-column:2;list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:3px;font-family:var(--mono);font-size:12px;color:var(--muted)}
-.acct li span{display:inline-block;min-width:34px;color:var(--ok);font-weight:500}
-.acct li.int span{color:var(--brand)}
-.acct li.dq span{color:var(--bad)}
-.tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--subtle);border:1px solid var(--line-2);border-radius:999px;padding:1px 7px;margin-left:6px;vertical-align:middle}
+/* controls */
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--soft-2)}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle)}
+select,input[type=number],input[type=text]{height:36px;border:1px solid var(--line-2);border-radius:9px;background:#fff;padding:0 10px;min-width:0}
+input[type=search]{height:36px;border:1px solid var(--line-2);border-radius:9px;background:#fff;padding:0 12px;width:200px;font:inherit}
+.btn{height:36px;display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:0 15px;font-weight:600;font-size:13.5px;cursor:pointer;border:1px solid var(--line-2);background:#fff;white-space:nowrap}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.dark:disabled{opacity:.55;cursor:progress}
+.btn:hover:not(:disabled){border-color:var(--ink)}
+.spacer{flex:1}
+.status{font-size:12.5px;color:var(--muted);margin:10px 2px 0;min-height:19px}
+.status b{color:var(--ink)}
+.status.err{color:var(--bad)}
 
-.tw{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-th{text-align:left;font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);padding:0 12px 8px 0;border-bottom:1px solid var(--ink)}
-td{padding:9px 12px 9px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted)}
-td:first-child{color:var(--ink)}
-td.r,th.r{text-align:right}
-pre{background:var(--night);color:#e9e9ec;border-radius:12px;padding:16px 18px;overflow-x:auto;font-family:var(--mono);font-size:12.5px;line-height:1.7;margin:0}
-pre .c{color:#7c7c86}
-.end{margin-top:48px;padding-top:16px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:14px}
-.disc{margin-top:10px;font-size:11.5px;color:var(--subtle)}
-@media (max-width:620px){
-  body{padding-block:32px 48px}
-  .acct{grid-template-columns:1fr}
-  .score{grid-row:auto;flex-direction:row;align-items:center}
-  .acct ul{grid-column:1}
-  .tw table{min-width:520px}
+/* layout */
+.grid{display:grid;grid-template-columns:360px minmax(0,1fr);gap:18px;margin-top:14px;align-items:start}
+.list{border:1px solid var(--line);border-radius:14px;overflow:hidden;max-height:760px;display:flex;flex-direction:column}
+.list .lh{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);background:#fff}
+.rows{overflow-y:auto}
+.row{display:grid;grid-template-columns:46px 1fr;gap:10px;align-items:center;width:100%;text-align:left;padding:10px 14px;border:0;border-bottom:1px solid var(--line);background:#fff;cursor:pointer}
+.row:hover{background:var(--soft-2)}
+.row.on{background:var(--soft);box-shadow:inset 3px 0 0 var(--brand)}
+.row .sc{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em;text-align:center;font-variant-numeric:tabular-nums}
+.row .sc.hi{color:var(--brand)}
+.row .sc.dq{color:var(--line-2)}
+.row .nm{display:block;font-weight:600;font-size:13.5px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .mt{display:block;font-size:12px;color:var(--subtle);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--brand);margin-right:5px;vertical-align:middle}
+.empty{padding:28px 16px;color:var(--subtle);font-size:13px;text-align:center}
+.skel{height:52px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#fafafa 0%,#f1f1f3 50%,#fafafa 100%);background-size:200% 100%;animation:sh 1.2s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.skel{animation:none}}
+
+.bench{border:1px solid var(--line);border-radius:14px;padding:20px 22px;min-width:0}
+.bh{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.bh h2{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.015em;margin:0 0 4px;line-height:1.15}
+.bh .meta{font-size:13px;color:var(--muted)}
+.bh .meta a{color:var(--muted)}
+.big{display:flex;align-items:center;gap:14px}
+.big strong{font-family:var(--display);font-weight:800;font-size:48px;line-height:1;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.big strong.hi{color:var(--brand)}
+.big .split{font-family:var(--mono);font-size:11px;color:var(--subtle);line-height:1.6}
+.meter{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:6px;width:120px}
+.meter i{display:block;height:100%;background:var(--brand);transition:width .2s ease}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:18px}
+.cols > div{min-width:0}
+h3{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-ink);margin:0 0 10px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fact{border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.fact small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--subtle)}
+.fact span{font-weight:600;font-size:13.5px}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.inputs .field select,.inputs .field input{width:100%}
+.checks{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.check{display:flex;align-items:flex-start;gap:9px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;cursor:pointer;font-size:13.5px}
+.check:hover{border-color:var(--line-2)}
+.check input{margin:2px 0 0;accent-color:var(--brand);width:15px;height:15px;flex:none}
+.check small{display:block;color:var(--subtle);font-size:12px}
+
+.reasons{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.reasons li{display:grid;grid-template-columns:44px 1fr;padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.reasons li span{font-family:var(--mono);font-weight:500;color:var(--ok)}
+.reasons li.int span{color:var(--brand)}
+.reasons li.dq span{color:var(--bad)}
+.reasons li.na{color:var(--subtle)}
+.reasons li.na span{color:var(--line-2)}
+.out{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.out .card{border-radius:10px;padding:10px 12px;font-size:13.5px}
+.out .buyer{border:1px solid var(--line)}
+.out .angle{background:var(--soft);border:1px solid #ffdcc7}
+.out small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);margin-bottom:2px}
+.out .note{background:var(--soft-2);border:1px solid var(--line);color:var(--muted)}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+details.weights{margin-top:18px;border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+details.weights summary{cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-ink)}
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 18px;margin-top:12px}
+.w{display:grid;grid-template-columns:1fr 34px;gap:2px 8px;align-items:center;font-size:12.5px;color:var(--muted)}
+.w input{grid-column:1 / -1;accent-color:var(--brand);width:100%}
+.w b{text-align:right;font-family:var(--mono);font-weight:500;color:var(--ink)}
+.foot{margin-top:28px;padding-top:14px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--subtle)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;font-size:13px;padding:8px 14px;border-radius:999px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+
+@media (max-width:980px){
+  .grid{grid-template-columns:1fr}
+  .list{max-height:380px}
+  .wgrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  body{padding-block:24px 48px}
+  .cols,.inputs{grid-template-columns:1fr}
+  .wgrid{grid-template-columns:1fr}
+  input[type=search]{width:100%}
+  .bar .field{flex:1 1 140px}
+  .bench{padding:16px}
 }
 </style>
 </head>
 <body>
-<main class="memo">
-  <div class="top"><span>Lead scoring tool · Arfaan Jeddy</span><a href="../plan/#engine">← Back to the plan</a></div>
-  <h1>Which brokers to call first, <em>and why.</em></h1>
-  <p class="dek">This tool pulls active freight brokers from FMCSA's public data, scores each one out of 100 on fit and buying intent, and explains every point. It's the first step of the engine in the plan.</p>
-  <div class="btns">
-    <a class="btn dark" href="https://github.com/arfujj/kayaan-gtm/tree/main/lead-scoring" target="_blank" rel="noopener">View the code on GitHub →</a>
-    <a class="btn ghost" href="https://github.com/arfujj/kayaan-gtm/blob/main/lead-scoring/lead_scoring.py" target="_blank" rel="noopener">lead_scoring.py</a>
+<div class="app">
+  <div class="top"><span>Broker lead scoring · Arfaan Jeddy</span><nav><a href="../">Summary</a><a href="../plan/#engine">Plan</a><a href="https://github.com/arfujj/kayaan-gtm/tree/main/lead-scoring" target="_blank" rel="noopener">Code ↗</a></nav></div>
+
+  <div class="head">
+    <div>
+      <h1>Pull real brokers. <em>Score who to call first.</em></h1>
+      <p class="dek">Live data from FMCSA's public register of active freight brokers. Pick a state, pull a batch, then add what you know about each broker. The score and the reasons update as you go.</p>
+    </div>
+    <span class="live" id="live"><i></i><span id="liveText">Connecting to FMCSA…</span></span>
   </div>
 
-  <section>
-    <div class="sh">How it works</div>
-    <div class="flow">
-      <span class="chip"><strong>25,081</strong>active brokers (FMCSA)</span><span class="to">→</span>
-      <span class="chip">rule out bad fits</span><span class="to">→</span>
-      <span class="chip">fit score /50</span><span class="to">→</span>
-      <span class="chip">intent score /50</span><span class="to">→</span>
-      <span class="chip">buyer + opening angle</span>
-    </div>
-    <p class="fine">Public, keyless government data. No scraping. Hiring, theft and renewal signals are inputs from licensed or partner sources.</p>
-  </section>
+  <form class="bar" id="pullForm">
+    <div class="field"><label for="state">State</label>
+      <select id="state"><option value="">All states</option></select></div>
+    <div class="field"><label for="mode">Batch</label>
+      <select id="mode"><option value="random">Random sample</option><option value="oldest">Longest registered</option><option value="newest">Newest authorities</option></select></div>
+    <div class="field"><label for="type">Type</label>
+      <select id="type"><option value="broker">Broker only</option><option value="any">Broker + carrier</option></select></div>
+    <div class="field"><label for="size">How many</label>
+      <select id="size"><option>15</option><option selected>25</option><option>50</option></select></div>
+    <button class="btn dark" id="pullBtn" type="submit">Pull live brokers →</button>
+    <span class="spacer"></span>
+    <div class="field"><label for="q">Filter list</label><input type="search" id="q" placeholder="Name or city"></div>
+    <button class="btn" type="button" id="addBtn">+ Add your own</button>
+    <button class="btn" type="button" id="csvBtn">Export CSV</button>
+  </form>
+  <p class="status" id="status" aria-live="polite"></p>
 
-  <section>
-    <div class="sh">Example output</div>
-    <p class="dek" style="font-size:14.5px">Real output from the tool, run on fictional example accounts.</p>
+  <div class="grid">
+    <section class="list" aria-label="Brokers">
+      <div class="lh"><span id="listCount">Brokers</span><span>Score</span></div>
+      <div class="rows" id="rows"></div>
+    </section>
 
-    <article class="acct">
-      <div class="score hi"><strong>75</strong><div class="meter"><i style="width:75%"></i></div><small>fit 50 · intent 25</small></div>
-      <h3>Gulf Bend Freight <span class="tag">example</span></h3>
-      <p class="who">Texas · 48 staff · reefer · Contact: <b>COO or VP Operations</b></p>
-      <p class="angle">Angle: you were just hit or impersonated. Show what a sealed per-load trail would have flagged.</p>
-      <ul>
-        <li class="int"><span>+15</span>public theft or impersonation mention in 90 days</li>
-        <li class="int"><span>+10</span>insurance renewal in 2 months</li>
-        <li><span>+15</span>48 staff, core size band</li>
-        <li><span>+10</span>authority 9 years</li>
-        <li><span>+10</span>supported TMS (Turvo)</li>
-        <li><span>+10</span>reefer, high theft exposure</li>
-        <li><span>+5</span>operates in high-theft states</li>
-      </ul>
-    </article>
+    <section class="bench" id="bench" aria-live="polite"></section>
+  </div>
 
-    <article class="acct">
-      <div class="score hi"><strong>60</strong><div class="meter"><i style="width:60%"></i></div><small>fit 40 · intent 20</small></div>
-      <h3>Prairie Line Logistics <span class="tag">example</span></h3>
-      <p class="who">Illinois · 22 staff · dry van · Contact: <b>Owner or President</b></p>
-      <p class="angle">Angle: before the next check-call hire, automate the calls and keep the audit file.</p>
-      <ul>
-        <li class="int"><span>+15</span>hiring a carrier sales rep with track and trace experience</li>
-        <li class="int"><span>+5</span>visited the pilot page</li>
-        <li><span>+15</span>22 staff, core size band</li>
-        <li><span>+10</span>authority 6 years</li>
-        <li><span>+10</span>dry van, high theft exposure</li>
-        <li><span>+5</span>lanes into CA, TX and GA</li>
-      </ul>
-    </article>
+  <details class="weights">
+    <summary>Adjust scoring weights</summary>
+    <div class="wgrid" id="wgrid"></div>
+    <div class="acts"><button class="btn" type="button" id="resetW">Reset weights</button></div>
+  </details>
 
-    <article class="acct">
-      <div class="score"><strong>44</strong><div class="meter"><i style="width:44%"></i></div><small>fit 29 · intent 15</small></div>
-      <h3>Copper Mesa Transport Brokers <span class="tag">example</span></h3>
-      <p class="who">Arizona · 14 staff · flatbed · Contact: <b>Owner or President</b></p>
-      <ul>
-        <li class="int"><span>+15</span>hiring a track and trace coordinator</li>
-        <li><span>+15</span>14 staff, core size band</li>
-        <li><span>+10</span>authority 3 years</li>
-        <li><span>+4</span>TMS unknown, confirm on the call</li>
-      </ul>
-    </article>
+  <div class="foot"><span>Data: FMCSA "Carrier, All With History" and census datasets on data.transportation.gov, queried live in your browser. Size, TMS and buying signals are entered by you.</span><span>Built by Arfaan Jeddy. Not affiliated with Kayaan.</span></div>
+</div>
+<div class="toast" id="toast" role="status"></div>
 
-    <article class="acct dq">
-      <div class="score"><strong>0</strong><div class="meter"><i style="width:0%"></i></div><small>ruled out</small></div>
-      <h3>Two Rivers Brokerage <span class="tag">example</span></h3>
-      <p class="who">Ohio · 3 staff</p>
-      <ul><li class="dq"><span>DQ</span>under 5 staff, too small for now</li></ul>
-    </article>
-  </section>
+<script>
+(function(){
+"use strict";
+var API="https://data.transportation.gov/resource/";
+var AUTH="6eyk-hxee", CENSUS="kjg3-diqy";
+var STATES="AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC".split(" ");
+var HIGH_THEFT=["CA","TX","IL","GA","FL","NJ","TN","PA"];
+var TMS=["Unknown","McLeod","Turvo","Revenova","Alvys","Ascend","Aljex","MercuryGate","Rose Rocket","Tailwind","Other / spreadsheets"];
+var SUPPORTED=["McLeod","Turvo","Revenova","Alvys","Ascend","Aljex","MercuryGate","Rose Rocket","Tailwind"];
+var FREIGHT=["Unknown","Dry van","Reefer","Power only","Flatbed","LTL","Specialized"];
+var HIGH_FREIGHT=["Dry van","Reefer","Power only"];
+var DEFAULT_W={size:15,size_upper:8,hiring:15,theft:15,auth:10,auth_young:5,tms:10,tms_unknown:4,freight:10,renewal:10,visits:10,lanes:5};
+var W_LABELS={size:"Size 10 to 75 staff",size_upper:"Size 76 to 200 staff",hiring:"Hiring dispatch roles",theft:"Theft or impersonation",auth:"Registered 2 to 15 yrs",auth_young:"Registered 1 to 2 yrs",tms:"Supported TMS",tms_unknown:"TMS unknown",freight:"Van, reefer, power only",renewal:"Renewal within 3 months",visits:"Visited pilot page (2+)",lanes:"High-theft state"};
 
-  <section>
-    <div class="sh">Scoring rules</div>
-    <div class="tw"><table>
-      <tr><th>Signal</th><th>Rule</th><th class="r">Points</th></tr>
-      <tr><td>Company size</td><td>10 to 75 staff (76 to 200 scores 8)</td><td class="r">15</td></tr>
-      <tr><td>Hiring</td><td>Carrier sales, track and trace or compliance role in 30 days</td><td class="r">15</td></tr>
-      <tr><td>Theft or impersonation</td><td>Public mention in 90 days</td><td class="r">15</td></tr>
-      <tr><td>Authority age</td><td>2 to 15 years (1 to 2 scores 5)</td><td class="r">10</td></tr>
-      <tr><td>Supported TMS</td><td>McLeod, Turvo, Revenova, Alvys, Ascend and others</td><td class="r">10</td></tr>
-      <tr><td>Freight type</td><td>Dry van, reefer or power only</td><td class="r">10</td></tr>
-      <tr><td>Insurance renewal</td><td>Within 3 months</td><td class="r">10</td></tr>
-      <tr><td>Engagement</td><td>2+ visits to the pilot page (1 visit scores 5)</td><td class="r">10</td></tr>
-      <tr><td>High-theft lanes</td><td>Based in or shipping into high-theft states</td><td class="r">5</td></tr>
-      <tr><td>Ruled out</td><td>Inactive authority, under 5 or over 500 staff</td><td class="r">0</td></tr>
-    </table></div>
-  </section>
+var W=load("ls_w",DEFAULT_W);
+var accounts=[]; var sel=null; var seq=0;
+var $=function(id){return document.getElementById(id);};
 
-  <section>
-    <div class="sh">Run it yourself</div>
-<pre><span class="c"># score the example accounts (no network needed)</span>
-python3 lead_scoring.py
+function load(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v?Object.assign({},d,v):Object.assign({},d);}catch(e){return Object.assign({},d);}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function toast(t){var el=$("toast");el.textContent=t;el.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(function(){el.classList.remove("show");},1800);}
+function title(s){return String(s||"").toLowerCase().replace(/\b([a-z])/g,function(m){return m.toUpperCase();}).replace(/\b(Llc|Inc|Usa|Ltd|Lp|Co)\b/g,function(m){return m.toUpperCase();});}
+function parseDate(s){ // "01-JUN-74"
+  if(!s)return null;var m=/^(\d{2})-([A-Z]{3})-(\d{2})$/.exec(s);if(!m)return null;
+  var mon="JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC".indexOf(m[2])/3;var yy=+m[3];var y=yy>40?1900+yy:2000+yy;
+  return new Date(y,mon,+m[1]);
+}
+function yearsSince(d){return d?(Date.now()-d.getTime())/(365.25*864e5):null;}
 
-<span class="c"># pull 25 real active brokers from FMCSA's public data</span>
-python3 lead_scoring.py --live 25</pre>
-    <p class="fine">Python 3.10+, standard library only.</p>
-  </section>
+/* ---------- scoring ---------- */
+function score(a){
+  var r=[],fit=0,intent=0;
+  var st=a.staff===""||a.staff==null?null:+a.staff;
+  if(st!=null&&(st<5||st>500))return {total:0,fit:0,intent:0,dq:true,reasons:[{t:"dq",p:"DQ",s:st+" staff is outside 5 to 500"}]};
+  var yrs=a.years;
+  if(yrs!=null&&yrs>=2&&yrs<=15){fit+=W.auth;r.push({t:"fit",p:W.auth,s:"Registered "+yrs.toFixed(0)+" years: established, not legacy"});}
+  else if(yrs!=null&&yrs>=1&&yrs<2){fit+=W.auth_young;r.push({t:"fit",p:W.auth_young,s:"Registered "+yrs.toFixed(1)+" years: young"});}
+  else if(yrs!=null){r.push({t:"na",p:0,s:"Registered "+yrs.toFixed(0)+" years: outside the 2 to 15 year band"});}
+  if(st!=null&&st>=10&&st<=75){fit+=W.size;r.push({t:"fit",p:W.size,s:st+" staff: core size band"});}
+  else if(st!=null&&st>=76&&st<=200){fit+=W.size_upper;r.push({t:"fit",p:W.size_upper,s:st+" staff: upper band"});}
+  else if(st==null){r.push({t:"na",p:0,s:"Staff size not entered"});}
+  if(SUPPORTED.indexOf(a.tms)>=0){fit+=W.tms;r.push({t:"fit",p:W.tms,s:"Supported TMS: "+a.tms});}
+  else if(a.tms==="Unknown"){fit+=W.tms_unknown;r.push({t:"fit",p:W.tms_unknown,s:"TMS unknown: confirm on the call"});}
+  if(HIGH_FREIGHT.indexOf(a.freight)>=0){fit+=W.freight;r.push({t:"fit",p:W.freight,s:a.freight+": high theft exposure"});}
+  if(HIGH_THEFT.indexOf(a.state)>=0){fit+=W.lanes;r.push({t:"fit",p:W.lanes,s:"Based in "+a.state+", a high-theft state"});}
+  if(a.hiring){intent+=W.hiring;r.push({t:"int",p:W.hiring,s:"Hiring carrier sales or track and trace"});}
+  if(a.theft){intent+=W.theft;r.push({t:"int",p:W.theft,s:"Theft or impersonation mention in 90 days"});}
+  if(a.renewal){intent+=W.renewal;r.push({t:"int",p:W.renewal,s:"Insurance renewal within 3 months"});}
+  if(+a.visits>=2){intent+=W.visits;r.push({t:"int",p:W.visits,s:"2+ visits to the pilot page"});}
+  else if(+a.visits===1){var v=Math.round(W.visits/2);intent+=v;r.push({t:"int",p:v,s:"1 visit to the pilot page"});}
+  fit=Math.min(fit,50);intent=Math.min(intent,50);
+  return {total:fit+intent,fit:fit,intent:intent,dq:false,reasons:r};
+}
+function buyer(a){var n=+a.staff||0;if(!a.staff)return ["Owner or COO","Confirm size on the first call"];if(n<25)return ["Owner or President","Ops lead or senior carrier rep"];if(n<=75)return ["COO or VP Operations","Carrier compliance lead"];return ["VP Carrier Procurement and Head of Risk","Director of Carrier Relations"];}
+function angle(a){
+  if(a.theft)return "You were just hit or impersonated. Show what a sealed per-load trail would have flagged.";
+  if(a.renewal)return "Renewal is close. Walk in with a documented carrier-selection process from 20 protected loads.";
+  if(a.hiring)return "Before the next check-call hire, automate the calls and keep the audit file.";
+  return "Offer the free 24-hour readout on 10 carriers they used last week, then 20 loads on Shield.";
+}
 
-  <div class="end"><a href="../plan/#engine">← Back to the plan</a><a href="../">One-page summary</a></div>
-  <p class="disc">Built by Arfaan Jeddy. Not affiliated with Kayaan. Example accounts are fictional.</p>
-</main>
+/* ---------- data ---------- */
+function soql(ds,params){var q=Object.keys(params).map(function(k){return encodeURIComponent(k)+"="+encodeURIComponent(params[k]);}).join("&");return fetch(API+ds+".json?"+q).then(function(r){if(!r.ok)throw new Error("FMCSA returned "+r.status);return r.json();});}
+function where(){var w="broker_stat='A'";var s=$("state").value;if(s)w+=" AND bus_state_code='"+s+"'";if($("type").value==="broker")w+=" AND common_stat!='A' AND contract_stat!='A'";return w;}
+
+function pull(e){
+  if(e)e.preventDefault();
+  var n=+$("size").value, mode=$("mode").value, w=where();
+  $("pullBtn").disabled=true;setStatus("Pulling active brokers from FMCSA…");
+  $("rows").innerHTML=new Array(8).join('<div class="skel"></div>');
+  soql(AUTH,{"$select":"count(*)","$where":w}).then(function(c){
+    var total=+(c[0]&&(c[0].count||c[0].count_1))||0;
+    var p={"$select":"docket_number,dot_number,legal_name,dba_name,bus_city,bus_state_code,common_stat","$where":w,"$limit":n};
+    if(mode==="random"){p["$order"]="dot_number";p["$offset"]=Math.max(0,Math.floor(Math.random()*Math.max(1,total-n)));}
+    else if(mode==="oldest"){p["$order"]="docket_number ASC";}
+    else{p["$order"]="docket_number DESC";}
+    return soql(AUTH,p).then(function(rows){return {rows:rows,total:total};});
+  }).then(function(res){
+    var dots=res.rows.map(function(r){return String(+r.dot_number);}).filter(function(d){return d!=="0";});
+    var cen=dots.length?soql(CENSUS,{"$select":"dot_number,add_date,mcs150_date","$where":"dot_number in('"+dots.join("','")+"')","$limit":dots.length+5}).catch(function(){return [];}):Promise.resolve([]);
+    return cen.then(function(c){
+      var map={};c.forEach(function(x){map[x.dot_number]=x;});
+      accounts=res.rows.map(function(r){
+        var cx=map[String(+r.dot_number)]||{};var added=parseDate(cx.add_date);var mcs=parseDate(cx.mcs150_date);
+        return {id:"a"+(++seq),name:title(r.dba_name&&r.dba_name.length>2?r.dba_name:r.legal_name),legal:title(r.legal_name),mc:r.docket_number,dot:String(+r.dot_number),city:title(r.bus_city),state:r.bus_state_code,
+          alsoCarrier:r.common_stat==="A",years:added?yearsSince(added):null,since:added?added.getFullYear():null,mcs:mcs,
+          staff:"",tms:"Unknown",freight:"Unknown",hiring:false,theft:false,renewal:false,visits:0,live:true};
+      });
+      restoreInputs();
+      setLive(true);
+      setStatus("<b>"+accounts.length+"</b> of <b>"+res.total.toLocaleString()+"</b> matching active brokers, pulled live from FMCSA. Select one to score it.");
+      sel=accounts.length?sortAcc()[0].id:null;render();
+    });
+  }).catch(function(err){
+    setLive(false);setStatus("Couldn't reach FMCSA's public API ("+esc(err.message)+"). Showing example accounts instead. Try again in a moment.",true);
+    accounts=examples();sel=accounts[0].id;render();
+  }).then(function(){$("pullBtn").disabled=false;});
+}
+function setStatus(h,err){var s=$("status");s.innerHTML=h;s.classList.toggle("err",!!err);}
+function setLive(ok){$("live").classList.toggle("off",!ok);$("liveText").textContent=ok?"Live: FMCSA public data":"Offline: example data";}
+
+function examples(){
+  return [
+    {id:"a"+(++seq),name:"Gulf Bend Freight (example)",mc:"MC-000002",dot:"",city:"Houston",state:"TX",years:9,since:2017,staff:48,tms:"Turvo",freight:"Reefer",hiring:false,theft:true,renewal:true,visits:0,live:false},
+    {id:"a"+(++seq),name:"Prairie Line Logistics (example)",mc:"MC-000001",dot:"",city:"Joliet",state:"IL",years:6,since:2020,staff:22,tms:"Unknown",freight:"Dry van",hiring:true,theft:false,renewal:false,visits:1,live:false},
+    {id:"a"+(++seq),name:"Copper Mesa Brokers (example)",mc:"MC-000003",dot:"",city:"Phoenix",state:"AZ",years:3,since:2023,staff:14,tms:"Unknown",freight:"Flatbed",hiring:true,theft:false,renewal:false,visits:0,live:false}
+  ];
+}
+function inputKey(a){return "ls_in_"+(a.dot||a.mc);}
+function restoreInputs(){accounts.forEach(function(a){try{var v=JSON.parse(localStorage.getItem(inputKey(a)));if(v)Object.assign(a,v);}catch(e){}});}
+function persist(a){if(!a.live)return;save(inputKey(a),{staff:a.staff,tms:a.tms,freight:a.freight,hiring:a.hiring,theft:a.theft,renewal:a.renewal,visits:a.visits});}
+
+/* ---------- render ---------- */
+function sortAcc(){return accounts.slice().sort(function(x,y){return score(y).total-score(x).total||x.name.localeCompare(y.name);});}
+function render(){renderList();renderBench();}
+function renderList(){
+  var q=$("q").value.trim().toLowerCase();
+  var list=sortAcc().filter(function(a){return !q||(a.name+" "+a.city+" "+a.legal).toLowerCase().indexOf(q)>=0;});
+  $("listCount").textContent=list.length+" broker"+(list.length===1?"":"s");
+  if(!list.length){$("rows").innerHTML='<div class="empty">No brokers yet. Pull a live batch or add your own.</div>';return;}
+  $("rows").innerHTML=list.map(function(a){var s=score(a);var touched=a.staff!==""||a.hiring||a.theft||a.renewal||+a.visits>0||a.tms!=="Unknown"||a.freight!=="Unknown";
+    return '<button type="button" class="row'+(a.id===sel?' on':'')+'" data-id="'+a.id+'"><span class="sc'+(s.dq?' dq':s.total>=60?' hi':'')+'">'+(s.dq?'DQ':s.total)+'</span><span style="min-width:0"><span class="nm">'+(touched?'<span class="dot" title="You added signals"></span>':'')+esc(a.name)+'</span><span class="mt">'+esc([a.city,a.state].filter(Boolean).join(", "))+' · '+esc(a.mc||"")+(a.since?' · since '+a.since:'')+'</span></span></button>';}).join("");
+}
+function opt(list,v){return list.map(function(x){return '<option'+(x===v?' selected':'')+'>'+esc(x)+'</option>';}).join("");}
+function renderBench(){
+  var a=accounts.filter(function(x){return x.id===sel;})[0];
+  if(!a){$("bench").innerHTML='<div class="empty">Select a broker to score it.</div>';return;}
+  var s=score(a),b=buyer(a);
+  var safer=a.dot?'https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&query_string='+encodeURIComponent(a.dot):'';
+  var mcsNote=a.mcs&&yearsSince(a.mcs)<0.25?'<div class="card note"><small>Public record note</small>Registration details updated '+a.mcs.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"})+'. Worth confirming contacts before outreach.</div>':'';
+  $("bench").innerHTML=
+   '<div class="bh"><div style="min-width:0"><h2>'+esc(a.name)+'</h2><p class="meta">'+esc([a.city,a.state].filter(Boolean).join(", "))+(a.mc?' · '+esc(a.mc):'')+(a.dot?' · USDOT '+esc(a.dot):'')+(safer?' · <a href="'+safer+'" target="_blank" rel="noopener">FMCSA record ↗</a>':'')+'</p></div>'+
+   '<div class="big"><strong class="'+(s.total>=60?'hi':'')+'">'+(s.dq?'DQ':s.total)+'</strong><div class="split">fit '+s.fit+' / 50<br>intent '+s.intent+' / 50<div class="meter"><i style="width:'+s.total+'%"></i></div></div></div></div>'+
+   '<div class="cols"><div>'+
+     '<h3>From public data</h3><div class="facts">'+
+       '<div class="fact"><small>Registered since</small><span>'+(a.since||"Unknown")+'</span></div>'+
+       '<div class="fact"><small>Years registered</small><span>'+(a.years!=null?a.years.toFixed(1):"Unknown")+'</span></div>'+
+       '<div class="fact"><small>State</small><span>'+esc(a.state||"Unknown")+(HIGH_THEFT.indexOf(a.state)>=0?' · high theft':'')+'</span></div>'+
+       '<div class="fact"><small>Authority</small><span>'+(a.live?(a.alsoCarrier?'Broker + carrier':'Broker'):'Example')+'</span></div>'+
+     '</div>'+
+     (a.manual?'<h3 style="margin-top:18px">Broker details</h3><div class="inputs"><div class="field"><label for="m_name">Name</label><input id="m_name" type="text" value="'+esc(a.name)+'"></div><div class="field"><label for="m_city">City</label><input id="m_city" type="text" value="'+esc(a.city)+'"></div><div class="field"><label for="m_state">State</label><select id="m_state"><option value="">Choose</option>'+opt(STATES,a.state)+'</select></div><div class="field"><label for="m_years">Years registered</label><input id="m_years" type="number" min="0" max="80" step="0.5" value="'+(a.years==null?'':a.years)+'"></div></div>':'')+
+     '<h3 style="margin-top:18px">What you know</h3>'+
+     '<div class="inputs">'+
+       '<div class="field"><label for="f_staff">Staff</label><input id="f_staff" type="number" min="1" max="5000" placeholder="e.g. 22" value="'+esc(a.staff)+'"></div>'+
+       '<div class="field"><label for="f_visits">Pilot page visits</label><select id="f_visits">'+[0,1,2].map(function(v){return '<option value="'+v+'"'+(+a.visits===v?' selected':'')+'>'+(v===2?'2 or more':v)+'</option>';}).join("")+'</select></div>'+
+       '<div class="field"><label for="f_tms">TMS</label><select id="f_tms">'+opt(TMS,a.tms)+'</select></div>'+
+       '<div class="field"><label for="f_freight">Main freight</label><select id="f_freight">'+opt(FREIGHT,a.freight)+'</select></div>'+
+     '</div>'+
+     '<div class="checks">'+
+       chk("f_hiring",a.hiring,"Hiring carrier sales or track and trace","Job posted in the last 30 days")+
+       chk("f_theft",a.theft,"Theft or impersonation mention","Public post or news in the last 90 days")+
+       chk("f_renewal",a.renewal,"Insurance renewal within 3 months","Usually from an insurance agent partner")+
+     '</div>'+
+   '</div><div>'+
+     '<h3>Why this score</h3><ul class="reasons">'+(s.reasons.length?s.reasons.map(function(x){return '<li class="'+(x.t==="int"?"int":x.t==="dq"?"dq":x.t==="na"?"na":"")+'"><span>'+(x.t==="dq"?"DQ":x.t==="na"?"·":"+"+x.p)+'</span>'+esc(x.s)+'</li>';}).join(""):'<li class="na"><span>·</span>Add what you know to build the score</li>')+'</ul>'+
+     '<div class="out">'+
+       '<div class="card buyer"><small>Who to contact</small><b>'+esc(b[0])+'</b> · champion: '+esc(b[1])+'</div>'+
+       '<div class="card angle"><small>Opening angle</small>'+esc(angle(a))+'</div>'+mcsNote+
+     '</div>'+
+     '<div class="acts"><button class="btn dark" type="button" id="copyBrief">Copy account brief</button>'+(a.live?'':'<button class="btn" type="button" id="delAcc">Remove</button>')+'</div>'+
+   '</div></div>';
+  bindBench(a);
+}
+function chk(id,on,label,sub){return '<label class="check" for="'+id+'"><input type="checkbox" id="'+id+'"'+(on?' checked':'')+'><span>'+esc(label)+'<small>'+esc(sub)+'</small></span></label>';}
+function bindBench(a){
+  function upd(){if(a.manual){a.name=$("m_name").value||"Untitled broker";a.city=$("m_city").value;a.state=$("m_state").value;var y=$("m_years").value;a.years=y===""?null:+y;a.since=a.years==null?null:Math.round(new Date().getFullYear()-a.years);}a.staff=$("f_staff").value;a.visits=+$("f_visits").value;a.tms=$("f_tms").value;a.freight=$("f_freight").value;a.hiring=$("f_hiring").checked;a.theft=$("f_theft").checked;a.renewal=$("f_renewal").checked;persist(a);
+    var ae=document.activeElement&&document.activeElement.id;renderList();renderBench();if(ae&&$(ae)){var el=$(ae);el.focus();if(el.type==="number"||el.type==="text"){var v=el.value;el.value="";el.value=v;}}}
+  ["f_staff"].concat(a.manual?["m_name","m_city","m_years"]:[]).forEach(function(id){$(id).addEventListener("input",upd);});
+  if(a.manual)$("m_state").addEventListener("change",upd);
+  ["f_visits","f_tms","f_freight","f_hiring","f_theft","f_renewal"].forEach(function(id){$(id).addEventListener("change",upd);});
+  $("copyBrief").addEventListener("click",function(){
+    var s=score(a),b=buyer(a);
+    var txt=a.name+(a.mc?" ("+a.mc+")":"")+" · "+[a.city,a.state].filter(Boolean).join(", ")+"\nScore "+(s.dq?"DQ":s.total)+" (fit "+s.fit+", intent "+s.intent+")\nContact: "+b[0]+"\nAngle: "+angle(a)+"\nWhy:\n"+s.reasons.filter(function(x){return x.t!=="na";}).map(function(x){return "  "+(x.t==="dq"?"DQ":"+"+x.p)+" "+x.s;}).join("\n");
+    var done=function(){toast("Brief copied");};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback(txt);});}else{fallback(txt);}
+  });
+  var d=$("delAcc");if(d)d.addEventListener("click",function(){accounts=accounts.filter(function(x){return x.id!==a.id;});sel=accounts.length?sortAcc()[0].id:null;render();});
+}
+function fallback(t){var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("Brief copied");}catch(e){toast("Select and copy the text");}ta.remove();}
+
+/* ---------- weights ---------- */
+function renderWeights(){
+  $("wgrid").innerHTML=Object.keys(DEFAULT_W).map(function(k){return '<label class="w" for="w_'+k+'">'+esc(W_LABELS[k])+'<b id="wv_'+k+'">'+W[k]+'</b><input type="range" id="w_'+k+'" min="0" max="25" value="'+W[k]+'"></label>';}).join("");
+  Object.keys(DEFAULT_W).forEach(function(k){$("w_"+k).addEventListener("input",function(e){W[k]=+e.target.value;$("wv_"+k).textContent=W[k];save("ls_w",W);render();});});
+}
+
+/* ---------- csv ---------- */
+function csv(){
+  var head=["score","fit","intent","name","legal_name","mc","usdot","city","state","registered_since","staff","tms","freight","hiring","theft","renewal","pilot_visits","contact","angle"];
+  var lines=[head.join(",")].concat(sortAcc().map(function(a){var s=score(a);return [s.dq?"DQ":s.total,s.fit,s.intent,a.name,a.legal||"",a.mc||"",a.dot||"",a.city||"",a.state||"",a.since||"",a.staff,a.tms,a.freight,a.hiring,a.theft,a.renewal,a.visits,buyer(a)[0],angle(a)].map(function(v){v=String(v==null?"":v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}).join(",");}));
+  var blob=new Blob([lines.join("\n")],{type:"text/csv"});var url=URL.createObjectURL(blob);var link=document.createElement("a");link.href=url;link.download="scored_brokers.csv";document.body.appendChild(link);link.click();link.remove();setTimeout(function(){URL.revokeObjectURL(url);},1000);
+}
+
+/* ---------- init ---------- */
+$("state").innerHTML+=STATES.map(function(s){return '<option'+(s==="IL"?' selected':'')+'>'+s+'</option>';}).join("");
+$("pullForm").addEventListener("submit",pull);
+$("q").addEventListener("input",renderList);
+$("rows").addEventListener("click",function(e){var b=e.target.closest(".row");if(!b)return;sel=b.getAttribute("data-id");render();if(window.innerWidth<=980)$("bench").scrollIntoView({behavior:"smooth",block:"start"});});
+$("addBtn").addEventListener("click",function(){var a={id:"a"+(++seq),name:"New broker",mc:"",dot:"",city:"",state:$("state").value||"",years:null,since:null,staff:"",tms:"Unknown",freight:"Unknown",hiring:false,theft:false,renewal:false,visits:0,live:false};
+  a.name="Your broker "+seq;a.manual=true;accounts.unshift(a);sel=a.id;render();toast("Added. Fill in what you know.");});
+$("csvBtn").addEventListener("click",csv);
+$("resetW").addEventListener("click",function(){W=Object.assign({},DEFAULT_W);save("ls_w",W);renderWeights();render();});
+renderWeights();
+pull();
+})();
+</script>
 </body>
 </html>
