@@ -1,0 +1,466 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta property="og:title" content="Kayaan Freight GTM Plan"><meta property="og:description" content="Full founding GTM plan for Kayaan Freight by Arfaan Jeddy."><style>[hidden]{display:none!important}</style>
+<title>Kayaan Freight GTM Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a scrolling pitch, one card per slide, reflowing to a single column on phones */
+:root{
+  --page:#ECEEF1; --bg:#FFFFFF; --ink:#0E1116; --ink2:#3B4250; --muted:#6B7280; --line:#E3E6EB; --soft:#F5F6F8;
+  --accent:#0F6E5C; --accent-soft:#E6F2EF; --accent-line:#CFE6E0; --warn:#B45309; --warn-soft:#FDF3E7; --warn-line:#F3DDC0;
+  --bad:#B42318; --bad-soft:#FDECEA; --chip:#EEF0F4; --dot:#9CA3AF;
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --page:#0A0D11; --bg:#12161B; --ink:#EDF0F3; --ink2:#C2C8D0; --muted:#8C94A1; --line:#29303A; --soft:#1A1F26;
+  --accent:#47BFA6; --accent-soft:#102C26; --accent-line:#1E4A40; --warn:#F2A64E; --warn-soft:#2E2110; --warn-line:#4A3618;
+  --bad:#F3897E; --bad-soft:#371613; --chip:#222932; --dot:#6E7682; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --page:#0A0D11; --bg:#12161B; --ink:#EDF0F3; --ink2:#C2C8D0; --muted:#8C94A1; --line:#29303A; --soft:#1A1F26;
+  --accent:#47BFA6; --accent-soft:#102C26; --accent-line:#1E4A40; --warn:#F2A64E; --warn-soft:#2E2110; --warn-line:#4A3618;
+  --bad:#F3897E; --bad-soft:#371613; --chip:#222932; --dot:#6E7682; color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:28px 48px}
+a{color:var(--accent)}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.top{display:flex;flex-direction:column;gap:14px;padding-block:8px 4px}
+.top .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.top h1.name{font-size:clamp(30px,5vw,46px);font-weight:800;letter-spacing:-.025em;line-height:1.05;text-wrap:balance;max-width:none}
+.top p{color:var(--ink2);max-width:68ch;font-size:15px}
+.top .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted)}
+.top .cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:9px 16px;font-weight:600;font-size:13.5px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--bg)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn:focus-visible,.toc a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px}
+.toc a{display:flex;gap:10px;align-items:baseline;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--ink2);font-size:13px;background:var(--bg);border:1px solid var(--line)}
+.toc a span{font-family:var(--mono);font-size:11px;color:var(--accent);font-variant-numeric:tabular-nums}
+.slide{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:40px 48px 24px;display:flex;flex-direction:column;scroll-margin-top:16px;min-width:0}
+.kicker{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.slide h1{font-size:clamp(26px,3.6vw,42px);line-height:1.12;font-weight:800;letter-spacing:-.02em;max-width:1060px;text-wrap:balance}
+.slide h2{font-size:clamp(21px,2.5vw,29px);line-height:1.22;font-weight:750;letter-spacing:-.015em;max-width:1100px;text-wrap:balance}
+.sub{font-size:16px;color:var(--ink2);margin-top:12px;max-width:72ch;line-height:1.5}
+.body{margin-top:24px;display:flex;flex-direction:column;min-width:0}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin-top:20px;padding-top:12px;border-top:1px solid var(--line)}
+.foot b{color:var(--ink2);font-weight:600}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid2>*,.grid3>*{min-width:0}
+.card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--bg)}
+.card.soft{background:var(--soft);border-color:var(--soft)}
+.card.acc{background:var(--accent-soft);border-color:var(--accent-line)}
+.card h3{font-size:15.5px;font-weight:700;margin-bottom:6px;color:var(--ink)}
+.card p,.card li{font-size:13.5px;line-height:1.5;color:var(--ink2)}
+.card ul{padding-left:16px}
+.big{font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.lbl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.4}
+.tw{overflow-x:auto;min-width:0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:7px 10px;border-bottom:1.5px solid var(--ink)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.4;color:var(--ink2)}
+td b{color:var(--ink)}
+tr.win td{background:var(--accent-soft)}
+.tight td{padding:6px 9px;font-size:12.5px}
+.tight th{padding:6px 9px}
+.tight-cards .card{padding:12px 16px}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:2px 7px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
+.t-ver{background:var(--accent-soft);color:var(--accent)}
+.t-cla{background:var(--warn-soft);color:var(--warn)}
+.t-inf{background:var(--chip);color:var(--ink2)}
+.t-bad{background:var(--bad-soft);color:var(--bad)}
+.assume{font-size:11.5px;color:var(--warn);font-weight:600}
+.src{font-size:11px;color:var(--muted);padding-top:12px;line-height:1.45}
+.mono{font-family:var(--mono)}
+.flow{display:flex;gap:8px;align-items:stretch}
+.flow .step{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--bg)}
+.flow .step .n{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.06em;font-family:var(--mono)}
+.flow .step .t{font-size:13.5px;font-weight:700;margin:3px 0 4px;color:var(--ink)}
+.flow .step .d{font-size:11.5px;color:var(--ink2);line-height:1.4}
+.flow .step.human{border-color:var(--warn-line);background:var(--warn-soft)}
+.arrow{align-self:center;color:var(--muted);font-size:16px}
+.bar{height:20px;border-radius:0 4px 4px 0;background:var(--accent)}
+svg.map{width:100%;max-width:560px;height:auto;display:block}
+.notes{margin-top:16px;border-top:1px dashed var(--line);padding-top:10px}
+.notes summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--accent);list-style-position:inside}
+.notes p{font-size:14px;line-height:1.6;color:var(--ink2);margin-top:10px;max-width:80ch}
+.endnote{font-size:12.5px;color:var(--muted);text-align:center;padding-block:8px}
+@media (max-width:900px){
+  .slide{padding:26px 20px 16px;border-radius:14px}
+  .grid2,.grid3{grid-template-columns:1fr !important}
+  .flow{flex-direction:column}
+  .arrow{transform:rotate(90deg);align-self:center;line-height:1}
+  .big{font-size:34px}
+  .tw table{min-width:640px}
+  .slide [style*="margin-top:auto"]{margin-top:0 !important}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+html{scroll-behavior:smooth}
+</style>
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">Founding GTM plan · Kayaan Freight</div>
+  <h1 class="name">Selling proof of reasonable care, one load at a time</h1>
+  <p>A 12-part plan for putting Kayaan Shield in front of the brokers who need it most after <i>Montgomery v. Caribe</i>: who to win first, how to reach them, a working acquisition engine, unit economics, and a 90-day plan with go/no-go gates.</p>
+  <div class="meta"><span>Arfaan Jeddy</span><span>November 2026</span><span>Built from public information only; every hypothetical number is labeled</span></div>
+  <div class="cta"><a class="btn primary" href="#s1">Start the pitch</a><a class="btn" href="spec.html">Read the full system spec</a></div>
+  <nav class="toc" aria-label="Sections"><a href="#s1"><span>01</span>Kayaan Freight</a><a href="#s2"><span>02</span>What I found</a><a href="#s3"><span>03</span>Who to win first</a><a href="#s4"><span>04</span>The gap</a><a href="#s5"><span>05</span>Three plays, one priority</a><a href="#s6"><span>06</span>Signature system</a><a href="#s7"><span>07</span>One account, start to finish</a><a href="#s8"><span>08</span>Unit economics</a><a href="#s9"><span>09</span>The first 30 days</a><a href="#s10"><span>10</span>90-day roadmap</a><a href="#s11"><span>11</span>Risks and how we'd know</a><a href="#s12"><span>12</span>Why me</a></nav>
+</header>
+
+
+<!-- 1 THESIS -->
+<section class="slide" id="s1">
+  <div class="kicker">Kayaan Freight · Founding GTM plan · November 2026</div>
+  <h1>Since Montgomery, brokers don't need another AI agent. They need proof they used reasonable care, and Kayaan can produce it one load at a time.</h1>
+  <p class="sub">Recommendation: put all GTM weight on <b>Shield</b>, sell it to <b>10 to 75 person brokerages</b>, and turn the existing 20 free loads into a <b>Reasonable Care File</b> that brokers can hand to their insurance agent at renewal.</p>
+  <div class="body">
+    <div class="grid3" style="margin-top:auto">
+      <div class="card soft"><div class="big">9 to 0</div><div class="lbl">Supreme Court, <i>Montgomery v. Caribe Transport II</i>, May 14, 2026. Negligent selection claims against brokers are no longer preempted. <span class="tag t-ver">Verified</span></div></div>
+      <div class="card soft"><div class="big">25,081</div><div class="lbl">Active broker authorities in FMCSA's public dataset, which I queried on Nov 20, 2026. That is a finite, addressable list that refreshes every day. <span class="tag t-ver">Verified</span></div></div>
+      <div class="card acc"><div class="big">20 loads</div><div class="lbl">Kayaan's existing free pilot. It is already the right wedge. What it lacks is a scoped success definition and a deliverable the buyer keeps.</div></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>Arfaan Jeddy</b> · Prepared independently from public information. Kayaan has not validated any of it.</span><span>1 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>Open with the thesis, not the research. The bet: since May 14, 2026, how a broker selects and monitors carriers is a legal and insurance question as well as an ops question. Insurers are already asking brokers how they vet carriers (RPS reported a capacity squeeze in broker contingent liability in September 2026). Shield already produces per-load evidence: vetting, driver ID, PTI photos, geofenced pickup, check calls, POD, and a sealed audit trail. Today the site sells it as fraud prevention and automation. I'd sell the evidence.</p><p>The 25,081 figure comes from my own query of FMCSA's "Carrier, All With History" dataset on data.transportation.gov, counting broker_stat = 'A'. It is a public, daily refreshed list, which is why the acquisition engine later in this deck is feasible without scraping anything.</p></details>
+</section>
+
+<!-- 2 DISCOVERY -->
+<section class="slide" id="s2">
+  <div class="kicker">What I found</div>
+  <h2>Kayaan's product is sharper than its funnel. Six fixable issues are probably costing pilots right now.</h2>
+  <div class="body">
+    <div class="grid2" style="grid-template-columns:1.55fr 1fr">
+      <div class="tw"><table class="tight">
+        <tr><th style="width:36%">Finding</th><th>Why it matters to a buyer</th><th style="width:16%">Status</th></tr>
+        <tr><td><b>Four stories on two sites</b>: voice load booking, Shield, Freight Autopilot, "autonomous brokerage"</td><td>A broker landing cold can't tell which problem Kayaan solves first. The driver site never links to the 20-load offer.</td><td><span class="tag t-ver">Verified</span></td></tr>
+        <tr><td><b>"Only platform that verifies the human at the dock"</b></td><td>Highway (Know Your Driver), E3 via Transfix, Verified Carrier and Arthur all market driver-level checks. A freight veteran will discount the whole page after reading this line.</td><td><span class="tag t-bad">Contested</span></td></tr>
+        <tr><td><b>Cargo theft "$35 to 60B annually"</b> (FAQ)</td><td>Verisk/CargoNet recorded about $725M in 2025 US and Canada losses. An inflated number hurts trust with exactly the risk-literate buyer we want.</td><td><span class="tag t-bad">Contested</span></td></tr>
+        <tr><td><b>Every CTA opens the same 30-minute Calendly</b>. Copy says 15, 20 or 30 minutes depending on the page.</td><td>There is no pilot intake (TMS, loads per week, lanes) and no qualification, so founder time goes to unqualified calls.</td><td><span class="tag t-ver">Verified</span></td></tr>
+        <tr><td><b>No named customers, case study, or price range</b></td><td>"Pay per protected load" is the right model, but the buyer cannot sanity-check cost before booking.</td><td><span class="tag t-ver">Verified</span></td></tr>
+        <tr><td><b>SOC 2 "in progress"</b> on /security vs. "SOC 2 compliance" on /autonomous page</td><td>Mid-market security reviews catch this kind of mismatch.</td><td><span class="tag t-ver">Verified</span></td></tr>
+      </table></div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card acc"><h3>What is genuinely strong</h3><ul>
+          <li>Operator founders: the CEO is a second-generation fleet owner who still runs trucks.</li>
+          <li>A driver-side app already exists (KAY, live since Aug 2025, about 40 to 50 trucks per YU, Apr 2026). Most broker-side tools have no driver relationship at all.</li>
+          <li>Per-load pricing, no seats, live in 48 hours, a named TMS list (McLeod, Turvo, Revenova, Alvys, Ascend).</li>
+          <li>A unit cost story: about $0.09 per AI check call (company claim).</li>
+        </ul></div>
+        <div class="card"><h3>Opportunity I think is being missed</h3><p>Shield's output is a per-load evidence trail. After Montgomery, that trail is worth more to the broker's <b>insurer and attorney</b> than to the ops team. No competitor I found sells it that way to small brokers.</p></div>
+      </div>
+    </div>
+    <div class="src">Sources: freight.kayaan.ai (/, /shield, /freight-autopilot, /security, /autonomous-freight-brokerage), kayaan.ai/about; yu.edu Katz news (Apr 14, 2026); highway.com/products/know-your-driver; FreightWaves (Transfix + E3); FleetOwner (Verified Pickup, Apr 2026); Verisk/CargoNet 2025 theft data. Full fact-check table in the System Spec.</div>
+  </div>
+  <div class="foot"><span>Kayaan Freight GTM</span><span>2 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>Lead with respect, then specifics. These are cheap fixes, and they matter because the buyer is risk-literate. A broker who reads "$35 to 60B" next to CargoNet's roughly $725M in recorded 2025 losses decides the vendor exaggerates. (The larger figure traces to old all-in estimates that include unreported losses. If Kayaan keeps it, it needs a citation and a caveat.)</p><p>The "only platform" claim is the most important one to fix. Highway now markets Know Your Driver (face, ID, liveness, proximity to pickup). Its waitlist page suggests it may not be fully live, but buyers will still compare. Transfix and E3, Verified Carrier's Verified Pickup (Apr 2026), and Arthur through Transport Pro also verify drivers. So driver verification alone is becoming table stakes. Kayaan's defensible angle is the bundle: vetting, driver, truck, pickup, transit, POD and a sealed file per load, priced per load, for brokers too small for an enterprise rollout.</p><p>Everything marked Verified I read directly on the pages cited. Traction figures (for example the $30K in two weeks from the Nov 2025 press release) are company claims, and I have not used them as evidence.</p></details>
+</section>
+
+<!-- 3 SEGMENT -->
+<section class="slide" id="s3">
+  <div class="kicker">Who to win first</div>
+  <h2>Win established 10 to 75 person brokerages first. Enterprises already have agent vendors, and new authorities don't have the volume.</h2>
+  <div class="body">
+    <div class="tw"><table class="tight">
+      <tr><th style="width:21%">Segment</th><th>Pain urgency</th><th>Willingness to pay</th><th>Sales cycle</th><th>Reach decision maker</th><th>Competition</th><th>Implementation</th><th style="width:9%">Score /35</th></tr>
+      <tr class="win"><td><b>Established small/mid brokers</b><br>10 to 75 staff, 2+ yrs authority, 50 to 300 loads/wk</td><td>High. Montgomery exposure, theft, check-call labor</td><td>Medium-high. Per-load fits P&amp;L</td><td>2 to 6 wks</td><td>Owner or VP Ops reachable</td><td>Medium. Below enterprise vendors' focus</td><td>Low. 48 hr, TMS list</td><td><b>29</b></td></tr>
+      <tr><td><b>Mid-market 3PLs</b> (75 to 500 staff)</td><td>High</td><td>High</td><td>3 to 9 months, security review</td><td>Harder. Committees</td><td>High. HappyRobot, Augment, Vooma, Highway</td><td>Medium-high</td><td>22</td></tr>
+      <tr><td><b>New broker authorities</b> (&lt;1 yr)</td><td>Medium</td><td>Low. Cash-constrained</td><td>Fast</td><td>Easy</td><td>Low</td><td>Low</td><td>20</td></tr>
+      <tr><td><b>Shippers / BCOs</b></td><td>Medium. Theft is the broker's problem until it isn't</td><td>Medium</td><td>6 to 12 months</td><td>Hard</td><td>Medium</td><td>High</td><td>16</td></tr>
+      <tr><td><b>Small fleets &amp; dispatch cos.</b> (KAY)</td><td>Medium. Rate per mile</td><td>Low-medium</td><td>Fast</td><td>Easy</td><td>Very high. DAT, Truckstop, CloudTrucks, dispatch services</td><td>Low</td><td>18</td></tr>
+      <tr><td><b>Owner-operators</b> (KAY)</td><td>Medium</td><td>Low</td><td>Instant</td><td>Easy, high churn</td><td>Very high</td><td>Low</td><td>15</td></tr>
+    </table></div>
+    <div class="grid3 tight-cards" style="margin-top:12px">
+      <div class="card"><h3>Economic buyer</h3><p>Under 25 staff: owner or President. 25 to 75: COO or VP Operations, with the carrier compliance lead as champion. Insurance renewal brings the CFO in.</p></div>
+      <div class="card"><h3>Buying triggers</h3><p>A recent theft or double-brokering hit · insurance renewal within 90 days · hiring carrier sales or track &amp; trace reps · new lanes in high-theft states · a shipper RFP asking about fraud controls.</p></div>
+      <div class="card"><h3>Not a beachhead (yet)</h3><p>The KAY driver app matters as a <b>distribution asset</b> (Play 3), not as the first revenue line. The B2C economics are weaker and the competition is crowded.</p></div>
+    </div>
+    <div class="src"><span class="assume">ASSUMPTION:</span> scores are my judgment (1 to 5 per criterion, 7 criteria) from public research, not interview data. Validate in the Week 1 to 2 customer interviews.</div>
+  </div>
+  <div class="foot"><span>Kayaan Freight GTM</span><span>3 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>The largest market (enterprise 3PLs) is the wrong beachhead. HappyRobot raised a reported $150M Series C in Aug 2026 and lists DHL, Ryder, Schneider and Werner. Augment and Vooma sell to large brokerages. A seed-stage company with "SOC 2 in progress" will lose that security review.</p><p>New authorities look easy because there are many of them, but they have low load volume, they churn, and FMCSA's Motus rollout has disrupted new registrations. The sweet spot is the established small brokerage. It has enough loads for per-load revenue to matter, it is now exposed after Montgomery, and it has no in-house compliance team. Insurance commentary (RPS via The Insurer, Sept 2026) suggests tighter underwriting favors larger brokers with established vetting. Kayaan can give a small broker that kind of process for a per-load price.</p></details>
+</section>
+
+<!-- 4 COMPETITIVE GAP -->
+<section class="slide" id="s4">
+  <div class="kicker">The gap</div>
+  <h2>The market split into entity vetting and enterprise desk agents. Nobody owns per-load proof of care for the small broker.</h2>
+  <div class="body">
+    <div class="grid2" style="grid-template-columns:1.05fr 1fr">
+      <svg viewBox="0 0 560 400" class="map" role="img" aria-label="Positioning map">
+        <rect x="60" y="10" width="490" height="350" style="fill:var(--bg);stroke:var(--line)"/>
+        <line x1="305" y1="10" x2="305" y2="360" style="stroke:var(--line)" stroke-dasharray="4 4"/>
+        <line x1="60" y1="185" x2="550" y2="185" style="stroke:var(--line)" stroke-dasharray="4 4"/>
+        <text x="305" y="385" text-anchor="middle" font-size="12" style="fill:var(--muted)">Primary buyer: small/mid broker  →  enterprise 3PL</text>
+        <text x="22" y="185" font-size="12" style="fill:var(--muted)" transform="rotate(-90 22 185)" text-anchor="middle">Entity check  →  per-load execution proof</text>
+        <g font-size="12" style="fill:var(--ink2)">
+          <circle cx="140" cy="300" r="7" style="fill:var(--dot)"/><text x="152" y="304">Carrier411</text>
+          <circle cx="230" cy="275" r="7" style="fill:var(--dot)"/><text x="242" y="279">MyCarrierPackets / RMIS</text>
+          <circle cx="400" cy="250" r="7" style="fill:var(--dot)"/><text x="412" y="254">Highway</text>
+          <circle cx="410" cy="200" r="5" style="fill:var(--dot)"/><text x="420" y="215" font-size="11">(+ Know Your Driver)</text>
+          <circle cx="450" cy="90" r="7" style="fill:var(--muted)"/><text x="380" y="72">HappyRobot · Augment</text>
+          <circle cx="400" cy="120" r="7" style="fill:var(--muted)"/><text x="412" y="124">Vooma · FleetWorks</text>
+          <circle cx="250" cy="150" r="7" style="fill:var(--dot)"/><text x="262" y="154">E3 · Verified Pickup · Arthur</text>
+          <text x="262" y="168" font-size="11" style="fill:var(--muted)">(driver check only)</text>
+          <circle cx="150" cy="70" r="11" style="fill:var(--accent)"/><text x="168" y="66" font-weight="700" style="fill:var(--accent)">Kayaan Shield</text>
+          <text x="168" y="82" font-size="11" style="fill:var(--accent)">vet → driver → truck → pickup →</text>
+          <text x="168" y="96" font-size="11" style="fill:var(--accent)">transit → POD → sealed file, per load</text>
+        </g>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card acc"><h3>Why a broker adds Kayaan instead of switching</h3><p><b>Don't ask them to rip anything out.</b> Keep Highway or Carrier411 for onboarding. Kayaan covers what happens <i>after</i> the rate con, which is where 2026 fraud moved (Highway's Q3 report ties compromised communications to about 40% of stolen loads). At the end of every load it seals the record a plaintiff's attorney or underwriter will ask for.</p></div>
+        <div class="card"><h3>The three reasons it converts</h3><ul>
+          <li><b>Liability:</b> "reasonable care" is now the question in court. Shield's audit trail is the answer, load by load.</li>
+          <li><b>Labor:</b> check calls and POD chasing are the hours a 15-person desk can't spare. A desk rep handles 3 to 4 loads a day (company claim).</li>
+          <li><b>Driver friction:</b> owner-operators publicly complain about heavy ID flows (Overdrive, 2026). Kayaan is built by a fleet that lives on the driver side.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="src">Placement is my qualitative read of public positioning, not a feature audit. I don't claim any competitor lacks a feature unless a source shows it. Sources: highway.com; FreightWaves (Highway Q3 fraud report; Transfix + E3; HappyRobot Series C coverage); FleetOwner (Verified Pickup); Overdrive (Highway ID verification lockout, 2026). Full matrix in the System Spec.</div>
+  </div>
+  <div class="foot"><span>Kayaan Freight GTM</span><span>4 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>The critical question is why anyone switches. My answer: they shouldn't have to. Positioning Shield as a replacement for Highway (the current cost table lists Highway and Carrier411 as "included") forces a rip-and-replace decision and invites a feature war with a well-funded incumbent. Positioning it as the post-booking layer that complements their vetting removes that objection and shortens the cycle.</p><p>The CTO-level caveat: integrations are listed as "varies by phase of rollout" in Kayaan's own FAQ. The pilot qualification form should only accept TMSs that are live today, so pilots don't fail on integration.</p></details>
+</section>
+
+<!-- 5 THREE PLAYS -->
+<section class="slide" id="s5">
+  <div class="kicker">Three plays, one priority</div>
+  <h2>Lead with signal-based outbound around a free carrier readout. Run the insurance channel in parallel. Build the driver loop third.</h2>
+  <div class="body">
+    <div class="grid3" style="flex:1">
+      <div class="card acc" style="display:flex;flex-direction:column"><div class="tag t-ver" style="align-self:flex-start;margin-bottom:8px">Lead · Days 1 to 90</div>
+        <h3>1 · The Reasonable Care Readout</h3>
+        <p><b>Offer:</b> "Send the MC numbers of 10 carriers you booked last week. Within 24 hours you get a one-page readout: conditional or unsatisfactory safety ratings, authority age, insurance on file, recent MCS-150 contact changes, and what your file would show a plaintiff today."</p>
+        <p style="margin-top:8px"><b>Then:</b> "Want this sealed automatically on every load? Run Shield on your next 20."</p>
+        <p style="margin-top:8px"><b>Why it works:</b> it gives value before the demo, it uses public FMCSA data only, and it is the exact failure in <i>Montgomery</i> (a carrier with a conditional rating).</p>
+        <p class="lbl" style="margin-top:auto">Buyer: owner or VP Ops · Cost: about $900/mo tools <span class="assume">(est.)</span></p></div>
+      <div class="card" style="display:flex;flex-direction:column"><div class="tag t-cla" style="align-self:flex-start;margin-bottom:8px">Parallel · Days 15 to 90</div>
+        <h3>2 · Renewal Desk</h3>
+        <p><b>Channel:</b> transportation insurance agents and wholesalers. Several (e.g., Higginbotham) have made broker liability a focus since the ruling.</p>
+        <p style="margin-top:8px"><b>Offer to agents:</b> a free Carrier Selection Readiness review for their broker clients before renewal. Shield's 20-load file becomes underwriting evidence.</p>
+        <p style="margin-top:8px"><b>Why it works:</b> agents need insurable brokers, brokers trust their agent, and the intro arrives warm with a deadline attached.</p>
+        <p class="lbl" style="margin-top:auto">Buyer: same, introduced by agent · Cost: founder time + co-branded one-pager</p></div>
+      <div class="card" style="display:flex;flex-direction:column"><div class="tag t-inf" style="align-self:flex-start;margin-bottom:8px">Build · Days 60+</div>
+        <h3>3 · Verified Once</h3>
+        <p><b>Loop:</b> every driver Shield verifies (consented) can reuse that identity on the next Kayaan-protected load from <i>any</i> broker. Carriers on the KAY app become pre-verified, and when a carrier hauls for a non-Kayaan broker, the driver can send "I'm Kayaan Verified" with a link.</p>
+        <p style="margin-top:8px"><b>Why it works:</b> it connects Kayaan's two sites into one network. Verification friction falls for every broker added.</p>
+        <p class="lbl" style="margin-top:auto">Needs product + legal (consent, data retention) · measure as a distribution channel</p></div>
+    </div>
+    <div class="src">Not recommended now: paid ads, generic content, or SEO-first. The buyer pool is 25k named entities, so account-level precision beats reach. AI voice cold calling is also out: TCPA risk, and the wrong first impression for a fraud-prevention brand.</div>
+  </div>
+  <div class="foot"><span>Kayaan Freight GTM</span><span>5 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>I'm choosing, not listing. Play 1 is the priority because it can be built in a week with public data, its economics are measurable inside 30 days, and it turns the demo into a continuation of value the broker already got. The readout is honest Shield phase 1 (FMCSA plus authority checks) delivered as a lead magnet, so it doesn't give away the paid product, which is the per-load verification and monitoring.</p><p>Play 2 is slower to start but converts better because intros are warm and deadline-driven. It needs 2 to 4 agents willing to pilot, which is founder-led relationship work. Play 3 is the long-term moat but needs product work and a privacy review, so I would not lead with it. The full 15-point breakdown of each play is in the System Spec.</p></details>
+</section>
+
+<!-- 6 ENGINE -->
+<section class="slide" id="s6">
+  <div class="kicker">Signature system · "Lane Radar"</div>
+  <h2>A signal-to-pilot engine I can build in four weeks with public data, Python, Claude and a CRM. Humans approve every first touch.</h2>
+  <div class="body">
+    <div class="flow">
+      <div class="step"><div class="n">01 DISCOVER</div><div class="t">25k brokers</div><div class="d">FMCSA authority + census datasets (public API), daily diffs</div></div><div class="arrow">→</div>
+      <div class="step"><div class="n">02 SIGNALS</div><div class="t">Intent</div><div class="d">Hiring for carrier sales or T&amp;T, high-theft lanes, MCS-150 changes, site visits, agent renewal dates</div></div><div class="arrow">→</div>
+      <div class="step"><div class="n">03 ENRICH</div><div class="t">Validate</div><div class="d">Website, size, TMS mentions, licensed contact data (Apollo/Clay), email verification</div></div><div class="arrow">→</div>
+      <div class="step"><div class="n">04 SCORE</div><div class="t">Fit + Intent</div><div class="d">100-pt explainable score; each point carries a reason string</div></div><div class="arrow">→</div>
+      <div class="step"><div class="n">05 BRIEF</div><div class="t">Claude</div><div class="d">Account brief, likely buyer, 3-line value prop, draft email</div></div>
+    </div>
+    <div class="flow" style="margin-top:10px">
+      <div class="step human"><div class="n" style="color:var(--warn)">06 APPROVE</div><div class="t">Human queue</div><div class="d">Operator edits or approves in Slack/CRM. Nothing sends unreviewed.</div></div><div class="arrow">→</div>
+      <div class="step"><div class="n">07 SEND</div><div class="t">Sequence</div><div class="d">3 emails over 10 days + 1 call task. CAN-SPAM compliant.</div></div><div class="arrow">→</div>
+      <div class="step"><div class="n">08 TRIAGE</div><div class="t">Reply AI</div><div class="d">Classifies replies; MC numbers received → readout job</div></div><div class="arrow">→</div>
+      <div class="step human"><div class="n" style="color:var(--warn)">09 QUALIFY</div><div class="t">Call</div><div class="d">Loads/wk, TMS, renewal date, pilot success criteria signed</div></div><div class="arrow">→</div>
+      <div class="step"><div class="n">10 LEARN</div><div class="t">Re-weight</div><div class="d">Weekly: which signals predicted meetings, pilots and paid loads</div></div>
+    </div>
+    <div class="grid3" style="margin-top:18px">
+      <div class="card"><h3>Scoring (excerpt)</h3><p class="mono" style="font-size:12px;line-height:1.6">+15 hiring carrier sales / T&amp;T (30d)<br>+15 public theft/impersonation mention<br>+10 supported TMS detected<br>+10 authority 2 to 15 yrs<br>+10 renewal ≤ 90d (via agent)<br>−∞ revoked, &lt;5 staff, &gt;500 staff</p></div>
+      <div class="card"><h3>Stack</h3><p>Python + Postgres (Supabase) · FMCSA Socrata + QCMobile · Clay or Apollo (licensed) · Claude Sonnet 5.5 for briefs, Haiku 5.5 for triage · HubSpot or GoHighLevel · Smartlead on secondary domains · Calendly (existing)</p></div>
+      <div class="card"><h3>Cost &amp; boundaries</h3><p><b>$700 to $1,100/mo</b> tools <span class="assume">(est.)</span>. No LinkedIn scraping, no cold SMS or AI voice to prospects, robots.txt respected, opt-out honored. Auto-suppression of existing Kayaan pipeline.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Kayaan Freight GTM</span><span>6 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>This is deliberately a commercial machine, not a research project. Steps 1 to 5 run nightly. Step 6 is a human gate (that's me in month one). Steps 7 to 10 are standard sales infrastructure, wired so every outcome flows back to the account record.</p><p>The data claim is verified: I queried data.transportation.gov today. "Carrier, All With History" (6eyk-hxee) has broker_stat per docket and returned 25,081 active broker authorities; the dataset was updated Nov 20, 2026. The census dataset (kjg3-diqy) adds addresses, phone, and MCS-150 update dates. Contact emails come only from licensed enrichment providers and are verified before sending.</p><p>The learning loop is simple logistic re-weighting once we have about 30 outcomes. Before that, weights are judgment-based and every score is explainable, so the founder can see why an account was picked. Full schema and code skeleton are in the System Spec, and a working scoring prototype on mock data is attached.</p></details>
+</section>
+
+<!-- 7 WORKFLOW -->
+<section class="slide" id="s7">
+  <div class="kicker">One account, start to finish</div>
+  <h2>What it looks like on a real desk: from a hiring signal on day 0 to a signed per-load agreement on day 30.</h2>
+  <div class="body">
+    <div class="card soft" style="padding:10px 16px;margin-bottom:14px"><p style="font-size:13px"><span class="tag t-cla">Mock data</span>&nbsp; <b>Prairie Line Logistics</b> (fictional) · Joliet, IL · broker authority 6 yrs · ~22 staff · McLeod PowerBroker mentioned in a job post · ~120 dry van loads/wk into CA/TX/GA. <b>Lane Radar score 60</b> (fit 40, intent 20), computed by the attached prototype.</p></div>
+    <div class="tw"><table>
+      <tr><th style="width:9%">Day</th><th style="width:22%">Event</th><th>What the system or person does</th><th style="width:14%">Owner</th></tr>
+      <tr><td><b>0</b></td><td>Signal fires</td><td>New posting: "Carrier Sales Rep, track &amp; trace experience." Engine scores, drafts a brief: <i>likely buyer: VP Operations; angle: check-call load is growing faster than headcount.</i></td><td>System</td></tr>
+      <tr><td><b>1</b></td><td>Approved + sent</td><td>"Your new rep will spend a third of the day on check calls and POD chasing. Before you hire the next one: send me 10 MCs you booked last week and I'll show you what your carrier file would look like to an underwriter since Montgomery."</td><td>Operator approves</td></tr>
+      <tr><td><b>4</b></td><td>Reply with 10 MCs</td><td>Readout runs: 1 carrier with a <b>conditional</b> rating, 2 with MCS-150 contact changes in the last 60 days, 1 authority under 9 months. One-page PDF delivered in under 24h.</td><td>System + operator QA</td></tr>
+      <tr><td><b>6</b></td><td>Founder demo (20 min)</td><td>Demo runs on <i>their</i> carriers from the readout. Pilot scope signed: 20 loads, 2 lanes, success = ≥90% loads with complete audit file, ≥75% check calls automated, 0 driver complaints.</td><td>Founder</td></tr>
+      <tr><td><b>8 to 27</b></td><td>Pilot live</td><td>Weekly 15-minute check-in. Engine logs flags caught, check calls automated and POD time. Day 14: midpoint report so there are no surprises at the close.</td><td>Operator + CS</td></tr>
+      <tr><td><b>28</b></td><td>Pilot review</td><td>Reasonable Care File (20 loads) + ROI sheet. Recommended: forward the file to their insurance agent before renewal.</td><td>Founder</td></tr>
+      <tr><td><b>30</b></td><td>Close</td><td>Per-load agreement at quoted volume tier. Activation goal: 100 paid loads in month 1.</td><td>Founder</td></tr>
+    </table></div>
+    <div class="src"><span class="assume">ASSUMPTION / MOCK:</span> the account, its numbers and the readout results are invented to illustrate the workflow. They are not Kayaan customer data.</div>
+  </div>
+  <div class="foot"><span>Kayaan Freight GTM</span><span>7 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>The key design choice: the pilot has signed success criteria before it starts. Free pilots without criteria tend to drift into "we'll get back to you." With criteria, day 28 is a decision meeting, not a check-in.</p><p>The second choice: the demo uses the prospect's own carriers from the readout. That is a reverse demo, so the founder is never showing generic screenshots. The third: the pilot ends with an artifact (the Reasonable Care File) that has value outside Kayaan. A broker who forwards it to their insurance agent has started selling Kayaan internally.</p></details>
+</section>
+
+<!-- 8 UNIT ECONOMICS -->
+<section class="slide" id="s8">
+  <div class="kicker">Unit economics · every input is an assumption</div>
+  <h2>In the base case, one operator plus the agent channel yields about 5 pilots and about 1.6 paid accounts a month, with roughly 4-month payback. Cold outbound alone is marginal.</h2>
+  <div class="body">
+    <div class="grid2" style="grid-template-columns:1.25fr 1fr">
+      <div class="tw"><table class="tight">
+        <tr><th>Monthly, steady state</th><th style="text-align:right">Conservative</th><th style="text-align:right">Base</th><th style="text-align:right">Aggressive</th></tr>
+        <tr><td>Brokerages researched → eligible</td><td style="text-align:right">1,500 → 450</td><td style="text-align:right">2,000 → 700</td><td style="text-align:right">2,500 → 1,000</td></tr>
+        <tr><td>Approved outreach sent</td><td style="text-align:right">248</td><td style="text-align:right">350</td><td style="text-align:right">450</td></tr>
+        <tr><td>Positive reply rate</td><td style="text-align:right">2.5%</td><td style="text-align:right">3.5%</td><td style="text-align:right">5.0%</td></tr>
+        <tr><td>Qualified meetings (outbound + agent intros)</td><td style="text-align:right">5.1</td><td style="text-align:right">13.4</td><td style="text-align:right">24.5</td></tr>
+        <tr><td>Pilots started → completed</td><td style="text-align:right">1.3 → 0.7</td><td style="text-align:right">5.0 → 3.3</td><td style="text-align:right">11.7 → 8.8</td></tr>
+        <tr><td>New paying accounts</td><td style="text-align:right">0.3</td><td style="text-align:right"><b>1.6</b></td><td style="text-align:right">5.3</td></tr>
+        <tr><td>Loads/mo × price per load</td><td style="text-align:right">300 × $4</td><td style="text-align:right">500 × $5</td><td style="text-align:right">700 × $6</td></tr>
+        <tr><td>ACV per account</td><td style="text-align:right">$14.4k</td><td style="text-align:right">$30.0k</td><td style="text-align:right">$50.4k</td></tr>
+        <tr><td>Blended CAC (incl. operator, tools, founder time, pilot cost)</td><td style="text-align:right">$33.8k</td><td style="text-align:right"><b>$7.7k</b></td><td style="text-align:right">$3.1k</td></tr>
+        <tr><td>Gross-margin payback</td><td style="text-align:right;color:var(--bad)"><b>43 mo</b></td><td style="text-align:right"><b>4.1 mo</b></td><td style="text-align:right">0.9 mo</td></tr>
+        <tr><td>Day-90 ARR run rate (with ramp + pilot lag)</td><td style="text-align:right">$6k</td><td style="text-align:right"><b>$66k</b></td><td style="text-align:right">$357k</td></tr>
+      </table></div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card"><h3>Base-case funnel, per month</h3>
+          <div style="display:grid;grid-template-columns:110px 1fr 44px;gap:6px 8px;align-items:center;font-size:12px;color:var(--ink2);margin-top:6px">
+            <span>Sent</span><div class="bar" style="width:100%"></div><span>350</span>
+            <span>Positive replies</span><div class="bar" style="width:12%"></div><span>12.3</span>
+            <span>+ agent intros</span><div class="bar" style="width:6%;opacity:.55"></div><span>6.0</span>
+            <span>Meetings</span><div class="bar" style="width:13%"></div><span>13.4</span>
+            <span>Demos held</span><div class="bar" style="width:11%"></div><span>11.2</span>
+            <span>Pilots</span><div class="bar" style="width:5%"></div><span>5.0</span>
+            <span>Paid</span><div class="bar" style="width:2%"></div><span>1.6</span>
+          </div>
+          <p class="lbl">Bars scaled to outreach sent. Agent intros enter at the meeting stage.</p></div>
+        <div class="card acc"><h3>What this tells us</h3><p>The model is most sensitive to <b>loads per account × price</b> and <b>pilot → paid</b>. Reply rate matters less. So the 30-day experiment measures those first. If the outbound arm lands near the conservative case, we cut it and move effort to the agent channel.</p></div>
+      </div>
+    </div>
+    <div class="src"><span class="assume">ALL INPUTS ARE ASSUMPTIONS</span>, not Kayaan performance. Kayaan publishes no price; $4 to $6 per load is a placeholder. Variable cost $1.10 to $1.40/load is estimated from Kayaan's ~$0.09 per check call claim plus KYC, GPS and OCR. Operator cost $8k/mo is a placeholder. Model: prototype/gtm_model.py (attached).</div>
+  </div>
+  <div class="foot"><span>Kayaan Freight GTM</span><span>8 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>I'm showing the conservative case honestly because it's the useful one: if cold outbound lands at a 2.5% positive reply rate and 35% demo-to-pilot, it does not pay back, and we should know that in 30 days rather than 6 months. That is why the plan pairs outbound with the insurance-agent channel, which enters at the meeting stage with much higher show and pilot rates.</p><p>CAC here is fully loaded. It includes my cost, tools, founder demo hours valued at $150/hr, and the cost of 20 free loads plus onboarding. The aggressive case is not a target. It shows the upside if the readout outperforms.</p><p>To replace assumptions with real numbers I need: the per-load price and tiers quoted in pilots, real variable cost per load, demo → pilot → paid history (even with small n), loads/month of current customers, and a CRM export of every demo since launch with its source.</p></details>
+</section>
+
+<!-- 9 30-DAY EXPERIMENT -->
+<section class="slide" id="s9">
+  <div class="kicker">The first 30 days</div>
+  <h2>One controlled experiment answers the only question that matters early: does the readout create pilots that convert?</h2>
+  <div class="body">
+    <div class="grid2" style="grid-template-columns:1fr 1fr">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card"><h3>Design</h3><ul>
+          <li><b>300 accounts</b> scored ≥ 60, split randomly into two arms of 150</li>
+          <li><b>Arm A:</b> Reasonable Care Readout offer → 20-load pilot</li>
+          <li><b>Arm B (control):</b> current offer, "Run Shield on your next 20 loads," same targeting and same sender</li>
+          <li><b>Parallel, not randomized:</b> 3 insurance agents briefed, intros tracked separately</li>
+          <li>Pilot intake form replaces the open Calendly: TMS, loads/wk, lanes, renewal month</li>
+        </ul></div>
+        <div class="card"><h3>Budget</h3><p>About <b>$1,500</b> one-time (domains, inbox warm-up, enrichment credits, readout template) + about <b>$900/mo</b> tools. Founder time: about 6 demo hours plus 2 hours of agent calls. <span class="assume">(est.)</span></p></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="tw"><table>
+          <tr><th>Metric (by day 30)</th><th style="text-align:right">Success</th><th style="text-align:right">Kill / rethink</th></tr>
+          <tr><td>Positive reply rate, Arm A</td><td style="text-align:right">≥ 3%</td><td style="text-align:right">&lt; 1.5%</td></tr>
+          <tr><td>Readouts requested</td><td style="text-align:right">≥ 8</td><td style="text-align:right">&lt; 3</td></tr>
+          <tr><td>Qualified meetings (all sources)</td><td style="text-align:right">≥ 10</td><td style="text-align:right">&lt; 4</td></tr>
+          <tr><td>Pilots started with signed criteria</td><td style="text-align:right">≥ 4</td><td style="text-align:right">&lt; 2</td></tr>
+          <tr><td>Arm A vs B meeting rate</td><td style="text-align:right">A ≥ 1.5× B</td><td style="text-align:right">A ≤ B</td></tr>
+          <tr><td>Domain health (spam rate)</td><td style="text-align:right">&lt; 0.1%</td><td style="text-align:right">&gt; 0.3%</td></tr>
+          <tr><td>Agents willing to co-brand</td><td style="text-align:right">≥ 1</td><td style="text-align:right">0 of 3</td></tr>
+        </table></div>
+        <div class="card acc"><h3>Honest limit</h3><p>Thirty days measures <b>leading</b> indicators. Pilot → paid is read at day 45 to 60, because pilots take about 3 weeks. 150 per arm detects large effects only, so it is a directional test, not proof.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Kayaan Freight GTM</span><span>9 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>A founder worried about burn should like this slide: the downside is bounded at roughly $2.5k of tooling plus about 8 hours of founder time, and the result is a decision either way. If Arm A doesn't beat the control, we learn that the readout isn't the hook and test the next one (for example the check-call cost calculator) without having built a big content program.</p><p>On statistics: at around a 3% reply rate, 150 per arm only detects roughly 2x differences. That's acceptable for a go/no-go on a wedge. It's not acceptable for fine-tuning copy, which waits for volume in days 31 to 60.</p></details>
+</section>
+
+<!-- 10 ROADMAP -->
+<section class="slide" id="s10">
+  <div class="kicker">90-day roadmap</div>
+  <h2>Validate in month one, optimize what won in month two, and make it repeatable in month three, with a go/no-go gate between each.</h2>
+  <div class="body">
+    <div class="grid3">
+      <div class="card"><div class="tag t-ver" style="margin-bottom:8px">Days 1 to 30 · Validate</div><ul>
+        <li><b>Wk 1:</b> funnel audit + CRM export review · fix site issues (claims, CTAs, intake form) · 5 customer/prospect interviews</li>
+        <li><b>Wk 2:</b> Lane Radar v0 live (FMCSA pull, scoring, briefs, approval queue) · readout template · domains warming</li>
+        <li><b>Wk 3:</b> launch A/B (300 accounts) · brief 3 insurance agents</li>
+        <li><b>Wk 4:</b> first readouts + demos · weekly dashboard · Gate 1 review</li></ul></div>
+      <div class="card"><div class="tag t-cla" style="margin-bottom:8px">Days 31 to 60 · Optimize</div><ul>
+        <li>Re-weight scoring on the first outcomes · drop dead signals</li>
+        <li>Pilot playbook: success criteria template, day-14 report, Reasonable Care File v1</li>
+        <li>Message tests by trigger (hiring vs theft vs renewal)</li>
+        <li>Publish a price range + per-load calculator page</li>
+        <li>First pilot reviews → first paid conversions · Gate 2</li></ul></div>
+      <div class="card"><div class="tag t-inf" style="margin-bottom:8px">Days 61 to 90 · Scale</div><ul>
+        <li>Raise approved volume toward 450/mo if deliverability holds</li>
+        <li>Formal agent program (2 to 4 active, co-branded readiness review)</li>
+        <li>First case study (with permission) · TMS marketplace listing request</li>
+        <li>Spec Verified Once with product + legal</li>
+        <li>Runbook so a second operator could run it · Gate 3</li></ul></div>
+    </div>
+    <div class="tw"><table style="margin-top:16px">
+      <tr><th style="width:13%">Gate</th><th>Go if</th><th>Else</th></tr>
+      <tr><td><b>Day 30</b></td><td>≥ 10 qualified meetings and ≥ 4 pilots with signed criteria; Arm A beats control</td><td>Swap the hook (calculator or theft-incident trigger) and shift weight to the agent channel</td></tr>
+      <tr><td><b>Day 60</b></td><td>≥ 50% of completed pilots convert or are in signed negotiation; time-to-first-protected-load ≤ 48h</td><td>Stop adding pilots; fix onboarding and integration before buying more pipeline</td></tr>
+      <tr><td><b>Day 90</b></td><td>≥ 3 paid accounts (base ≈ 2.2 modeled), ≥ 3 pilots in flight, CAC trending ≤ $10k</td><td>Narrow the ICP to the single best trigger and re-plan</td></tr>
+    </table></div>
+  </div>
+  <div class="foot"><span>Kayaan Freight GTM</span><span>10 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>Stakeholders: I own the engine, outbound, readouts, the dashboard and the pilot ops cadence. The CEO owns demos, agent relationships and closes, since buyers in this market want to talk to someone who has run trucks. The co-founder/engineering side owns integration readiness and the Verified Once spec. Total incremental budget over 90 days, excluding my cost, is roughly $4k to $5k.</p><p>The day-60 gate is the one most startups skip: if pilots aren't converting, more top-of-funnel just burns founder hours. The full weekly plan with deliverables, KPIs and dependencies is in the System Spec.</p></details>
+</section>
+
+<!-- 11 RISKS -->
+<section class="slide" id="s11">
+  <div class="kicker">Risks and how we'd know</div>
+  <h2>The biggest risk isn't the channel. It's whether a pilot reliably goes live in 48 hours on the broker's TMS.</h2>
+  <div class="body">
+    <div class="tw"><table>
+      <tr><th style="width:26%">Risk / assumption</th><th>How we test it</th><th style="width:22%">Validation gate</th></tr>
+      <tr><td><b>Integration readiness</b>: FAQ says integrations "vary by phase of rollout"</td><td>Intake form only accepts live TMSs; track time-to-first-protected-load per pilot</td><td>Median ≤ 48h by day 60</td></tr>
+      <tr><td><b>Driver friction</b>: drivers refuse a selfie + CDL step</td><td>Log the completion rate and drop-off step per load; compare by carrier size</td><td>≥ 85% verification completion</td></tr>
+      <tr><td><b>Liability framing over-promises</b></td><td>Copy reviewed by counsel; we say "documented process," never "protects you from lawsuits"</td><td>Counsel sign-off before launch</td></tr>
+      <tr><td><b>Readout seen as a free product</b></td><td>Readout covers public data only; per-load monitoring stays paid; track readout → pilot rate</td><td>≥ 35% of readouts → meeting</td></tr>
+      <tr><td><b>Deliverability / domain burn</b></td><td>Secondary domains, ≤ 30 sends/inbox/day, human-approved copy, auto-suppression</td><td>Spam rate &lt; 0.1%</td></tr>
+      <tr><td><b>Incumbent bundling</b>: Highway expands KYD + monitoring</td><td>Position as an add-on; win on per-load price, check-call automation, and the small-broker service level</td><td>Loss reasons logged; &lt; 30% lost to "already have Highway"</td></tr>
+      <tr><td><b>Price-per-load assumption</b></td><td>Quote 3 tiers in pilots; record accept and push-back</td><td>Median accepted ≥ $4/load</td></tr>
+    </table></div>
+  </div>
+  <div class="foot"><span>Kayaan Freight GTM</span><span>11 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>Answering the CTO: the acquisition engine is the easy part. The hard part is product delivery inside the pilot, because a failed integration costs more than a lost lead. That's why the intake form filters by live TMS and the day-60 gate is about onboarding, not pipeline.</p><p>Answering the freight veteran: the liability message has to stay disciplined. Kayaan can document a reasonable-care process; it cannot promise a court outcome. I'd have counsel review the Readout and File templates before they ship.</p></details>
+</section>
+
+<!-- 12 WHY ME -->
+<section class="slide" id="s12">
+  <div class="kicker">Why me</div>
+  <h2>I've already built and run this kind of outbound engine end to end. I'd build Kayaan's in the first two weeks, then run it.</h2>
+  <div class="body">
+    <div class="grid2" style="grid-template-columns:1.2fr 1fr">
+      <div class="tw"><table>
+        <tr><th style="width:34%">Engine component</th><th>What I've actually done</th></tr>
+        <tr><td><b>Sourcing → enrichment → sequencing</b></td><td>Built an outbound engine in n8n with Clay, Apollo, CRM and email infrastructure for my agency, Appointive. It enriched 13,000+ B2B leads against ICP rules and fed about 30,000 emails a month.</td></tr>
+        <tr><td><b>Pipeline outcomes</b></td><td>Sustained about 22 positive replies and 5 to 6 booked calls a day across multichannel campaigns. Grew the agency to 10 paying clients and $18K to $23K MRR.</td></tr>
+        <tr><td><b>CRM + nurture automation</b></td><td>GoHighLevel lead nurture and AI-assisted appointment follow-up; full-funnel tracking (GA4, GTM, call and form conversions) for a client funnel.</td></tr>
+        <tr><td><b>Data engineering</b></td><td>Python, SQL, PostgreSQL, FastAPI; SQL and Python ETL at DXC Technology; built a CRM data-quality monitor and an LLM gateway with cost analytics.</td></tr>
+        <tr><td><b>For this pitch</b></td><td>Queried FMCSA's live datasets, built the scenario model and a working lead-scoring prototype (attached, mock data).</td></tr>
+      </table></div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card acc"><h3>What I'd ask for in week 1</h3><ul>
+          <li>CRM / Calendly export of every demo since launch</li>
+          <li>Pilot price tiers and real per-load variable cost</li>
+          <li>3 customer or pilot intros for interviews</li>
+          <li>Which TMS integrations are live today</li>
+          <li>One hour with the CEO on the agent relationships</li>
+        </ul></div>
+        <div class="card"><h3>What I won't pretend</h3><p>I haven't worked inside a brokerage. I'd close that gap with interviews and by sitting on calls in week 1, and I'd lean on the founders' operator credibility for demos. My edge is building and running the machine that gets them in front of the right brokers, and measuring every step of it.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><b>Arfaan Jeddy</b> · github.com/arfujj · linkedin.com/in/arfaanj</span><span>12 / 12</span></div>
+  <details class="notes"><summary>Speaker notes</summary><p>Close with proof, not adjectives. Everything in the left table is from my own work history and can be checked. The ask is specific: give me the data that replaces the assumptions in this deck and I'll have the first experiment live within three weeks.</p><p>Suggested close line: "If the day-30 numbers don't clear the gate, you've spent a few thousand dollars and learned which hook doesn't work. If they do, you have a repeatable way to put Shield in front of the 25,000 brokers who now need it."</p></details>
+</section>
+
+<p class="endnote"><a href="../">← Back to the one-page summary</a> · Prepared independently by Arfaan Jeddy from public sources. Kayaan has not reviewed or validated this plan. · <a href="spec.html">Full system spec, fact-check table and sources</a></p>
+</div></html>

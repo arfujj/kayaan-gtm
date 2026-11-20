@@ -1,0 +1,263 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="How Arfaan Jeddy would help Kayaan sell Shield to small freight brokers."><meta property="og:title" content="Arfaan Jeddy for Kayaan"><meta property="og:description" content="A plan to sell Kayaan Shield to small freight brokers: the idea, a 30-day test, the ARR math, and why me."><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
+<title>Arfaan for Kayaan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Overpass+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single road-trip column. Guide sign up top, the plan drawn as a lane with mile posts, a green "exit" band to close. */
+:root{
+  --bg:#F3F4F1; --paper:#FFFFFF; --ink:#141816; --ink-2:#525a55; --ink-3:#7c847f; --rule:#E2E5E0;
+  --sign:#0A6A44; --sign-deep:#075236; --on-sign:#FFFFFF; --accent:#0A6A44; --lane:#E9B92B; --mark:#FCEFB4; --tint:#EAF3EE;
+  --display:"Overpass","Arial Narrow",Arial,sans-serif; --mono:"Overpass Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1210; --paper:#151A17; --ink:#EDF1EE; --ink-2:#B3BBB6; --ink-3:#848d88; --rule:#28302C;
+  --sign:#0B6A44; --sign-deep:#084E33; --on-sign:#FFFFFF; --accent:#62CC9C; --lane:#E0B23A; --mark:#4A3F12; --tint:#13261D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1210; --paper:#151A17; --ink:#EDF1EE; --ink-2:#B3BBB6; --ink-3:#848d88; --rule:#28302C;
+  --sign:#0B6A44; --sign-deep:#084E33; --on-sign:#FFFFFF; --accent:#62CC9C; --lane:#E0B23A; --mark:#4A3F12; --tint:#13261D; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--display);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:48px 72px}
+.page{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1.5px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+b{font-weight:700}
+
+/* ---------- guide sign ---------- */
+.signpost{display:flex;flex-direction:column;align-items:flex-start}
+.exit-tab{background:var(--sign);color:var(--on-sign);border-radius:10px 10px 0 0;padding:4px 5px 0;margin-left:28px}
+.exit-tab span{display:block;border:2.5px solid var(--on-sign);border-bottom:0;border-radius:7px 7px 0 0;padding:5px 14px 3px;font-weight:800;font-size:14px;letter-spacing:.06em}
+.sign{width:100%;background:var(--sign);color:var(--on-sign);border-radius:16px;padding:7px;box-shadow:0 1px 0 var(--sign-deep),0 18px 40px -24px rgba(7,82,54,.55)}
+.sign-in{border:3px solid var(--on-sign);border-radius:11px;padding:26px 30px 24px;display:grid;grid-template-columns:auto 1fr;gap:6px 24px;align-items:center}
+.shield{width:62px;height:70px;grid-row:span 2}
+.shield path{fill:none;stroke:var(--on-sign);stroke-width:3}
+.shield text{fill:var(--on-sign);font-family:var(--display);font-weight:900;font-size:26px}
+.sign .over{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.82}
+.sign h1{margin:0;font-size:clamp(32px,6.4vw,52px);line-height:1;font-weight:800;letter-spacing:-.015em}
+.sign .dest{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:16px;padding-top:16px;border-top:2px solid rgba(255,255,255,.35);font-weight:700;font-size:19px}
+.sign .dest svg{width:28px;height:28px;flex:none}
+.sign .dest svg path{fill:none;stroke:var(--on-sign);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.byline{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;margin-top:16px;font-size:14.5px;color:var(--ink-2)}
+.byline b{color:var(--ink)}
+
+/* ---------- sections ---------- */
+.label{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 16px;display:flex;align-items:center;gap:12px}
+.label::after{content:"";flex:1;height:1px;background:var(--rule)}
+p{margin:0}
+.lead{font-size:clamp(20px,3vw,25px);line-height:1.45;font-weight:500;letter-spacing:-.005em;text-wrap:pretty}
+.lead i{font-style:italic}
+mark{background:linear-gradient(transparent 12%, var(--mark) 12%, var(--mark) 88%, transparent 88%);color:inherit;padding:0 2px;font-weight:700}
+
+/* ---------- the road ---------- */
+.road{list-style:none;margin:0;padding:0;position:relative}
+.road li:not(:last-child)::after{content:"";position:absolute;left:20.5px;top:58px;bottom:6px;width:3px;
+  background:repeating-linear-gradient(to bottom,var(--lane) 0 10px,transparent 10px 18px);border-radius:2px}
+.road li{position:relative;display:grid;grid-template-columns:44px 1fr;gap:0 20px;padding-bottom:26px}
+.road li:last-child{padding-bottom:0}
+.post{position:relative;z-index:1;width:44px;height:52px;background:var(--sign);color:var(--on-sign);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;box-shadow:0 0 0 4px var(--bg)}
+.post small{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em}
+.post strong{font-size:21px;font-weight:800;margin-top:3px}
+.road h3{margin:2px 0 4px;font-size:19px;font-weight:800;letter-spacing:-.005em}
+.road p{color:var(--ink-2)}
+.road q{quotes:"“" "”";color:var(--ink);font-style:italic}
+.aside{margin-top:22px;padding:14px 18px;border-radius:10px;background:var(--tint);color:var(--ink-2);font-size:15.5px}
+.aside b{color:var(--ink)}
+
+/* ---------- 30 days ---------- */
+.intro{color:var(--ink-2);margin-bottom:22px;max-width:60ch}
+.intro b{color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
+.stats div{padding:16px 16px 16px 0;display:flex;flex-direction:column;gap:6px}
+.stats div + div{padding-left:16px;border-left:1px solid var(--rule)}
+.stats strong{font-size:36px;font-weight:800;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stats span{font-size:14px;color:var(--ink-2);line-height:1.35}
+.fine{margin-top:12px;font-size:14px;color:var(--ink-3)}
+
+/* ---------- estimate ---------- */
+.estimate{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:22px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.estimate .tag{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.estimate .tag b{font-size:17px}
+.estimate .tag span{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.estimate div.n strong{display:block;font-size:32px;font-weight:800;line-height:1.05;color:var(--accent);font-variant-numeric:tabular-nums}
+.estimate div.n span{font-size:14.5px;color:var(--ink-2)}
+.estimate p.small{grid-column:1 / -1;font-size:14px;color:var(--ink-3);padding-top:14px;border-top:1px dashed var(--rule)}
+
+/* ---------- why me ---------- */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.proof div{display:flex;flex-direction:column;gap:6px}
+.proof strong{font-size:28px;font-weight:800;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.proof span{font-size:15px;color:var(--ink-2);line-height:1.45}
+.more{margin-top:24px;color:var(--ink-2);max-width:62ch}
+.more b{color:var(--ink)}
+
+.why-lead{font-size:18px;font-weight:600;margin-bottom:20px;max-width:60ch;text-wrap:pretty}
+.fit{margin:26px 0 0;display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+.fit div{display:grid;grid-template-columns:210px 1fr;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.fit dt{font-weight:800;font-size:16px;color:var(--ink);display:flex;flex-direction:column;gap:2px}
+.fit dt small{font-family:var(--mono);font-weight:400;font-size:11.5px;letter-spacing:.02em;color:var(--ink-3)}
+.fit dd i{color:var(--accent);font-style:normal;font-weight:600}
+.fit dd{margin:0;color:var(--ink-2);font-size:15.5px}
+.fit dd b{color:var(--ink)}
+/* ---------- closing exit band ---------- */
+.close{background:var(--sign);color:var(--on-sign);border-radius:16px;padding:7px}
+.close-in{border:3px solid var(--on-sign);border-radius:11px;padding:24px 28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px}
+.close h2{margin:0 0 4px;font-size:26px;font-weight:800;line-height:1.1}
+.close p{opacity:.9;font-size:15.5px;max-width:42ch}
+.close a.go{display:inline-flex;align-items:center;gap:10px;background:var(--on-sign);color:var(--sign-deep);text-decoration:none;font-weight:800;font-size:16px;padding:12px 20px;border-radius:999px;white-space:nowrap}
+.close a.go:focus-visible{outline:3px solid var(--lane);outline-offset:3px}
+.close .contact{flex-basis:100%;font-family:var(--mono);font-size:13.5px;opacity:.85;padding-top:14px;border-top:2px solid rgba(255,255,255,.3);user-select:all}
+
+@media (max-width:620px){
+  body{font-size:16px;padding-block:28px 56px}
+  .page{gap:44px}
+  .sign-in{padding:20px 18px 18px;gap:6px 16px}
+  .shield{width:48px;height:54px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stats div:nth-child(3){padding-left:0;border-left:0}
+  .stats div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .estimate{grid-template-columns:1fr}
+  .fit div{grid-template-columns:1fr}
+  .proof{grid-template-columns:1fr 1fr;gap:20px}
+}
+@media print{
+  @page{size:8.5in 11in;margin:.45in .5in}
+  :root{--bg:#fff}
+  body{background:#fff;padding:0;font-size:12.5px;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{max-width:none;gap:22px;zoom:.8}
+  .why{break-before:page;padding-top:4px}
+  .fit div{break-inside:avoid}
+  .sign{box-shadow:none}
+  .sign-in{padding:14px 20px 14px}
+  .shield{width:44px;height:50px}
+  .sign h1{font-size:34px}
+  .sign .dest{margin-top:8px;padding-top:8px;font-size:14px}
+  .exit-tab span{font-size:11px;padding:3px 10px 2px}
+  .byline{margin-top:8px;font-size:11.5px}
+  .label{margin-bottom:9px;font-size:10px}
+  .lead{font-size:15.5px}
+  .road li{padding-bottom:10px;grid-template-columns:34px 1fr;gap:0 14px}
+  .road li:not(:last-child)::after{left:15.5px;top:42px;bottom:4px}
+  .post{width:34px;height:38px}
+  .post strong{font-size:15px}
+  .post small{font-size:7px}
+  .road h3{font-size:14px;margin:0 0 1px}
+  .aside{margin-top:10px;padding:8px 12px;font-size:12px;background:#EAF3EE}
+  .intro{margin-bottom:10px}
+  .stats div{padding-block:9px}
+  .stats strong{font-size:24px}
+  .stats span{font-size:11.5px}
+  .fine{margin-top:6px;font-size:11px}
+  .estimate{padding:12px 16px;gap:10px}
+  .estimate div.n strong{font-size:21px}
+  .estimate div.n span,.estimate p.small{font-size:11.5px}
+  .estimate p.small{padding-top:8px}
+  .proof strong{font-size:22px}
+  .proof span{font-size:12px}
+  .why-lead{font-size:13.5px;margin-bottom:10px}
+  .fit{margin-top:10px}
+  .fit div{grid-template-columns:150px 1fr;padding:6px 0}
+  .fit dt{font-size:12.5px}
+  .fit dd{font-size:12px}
+  .close-in{padding:12px 18px;gap:8px 18px}
+  .close h2{font-size:18px}
+  .close p{font-size:12px}
+  .close a.go{font-size:12.5px;padding:7px 14px}
+  .close .contact{font-size:11px;padding-top:8px}
+}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
+</style>
+
+<main class="page">
+  <header class="signpost">
+    <div class="exit-tab" aria-hidden="true"><span>EXIT 20</span></div>
+    <div class="sign" role="img" aria-label="Highway guide sign: Kayaan Shield, small freight brokers. Exit 20, twenty free loads.">
+      <div class="sign-in">
+        <svg class="shield" viewBox="0 0 62 70" aria-hidden="true">
+          <path d="M4 10 Q17 2 31 8 Q45 2 58 10 L58 32 Q58 56 31 67 Q4 56 4 32 Z"/>
+          <path d="M4 22 L58 22" style="stroke-width:2.5"/>
+          <text x="31" y="52" text-anchor="middle">K</text>
+        </svg>
+        <span class="over">Kayaan Shield · Growth route</span>
+        <h1>Small freight brokers</h1>
+        <div class="dest">
+          <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M6 22 L22 6 M10 6 H22 V18"/></svg>
+          <span>20 free loads, then a paying customer</span>
+        </div>
+      </div>
+    </div>
+    <div class="byline"><span>A one-page note from <b>Arfaan Jeddy</b> on how I'd help Kayaan grow</span><span>November 2026</span></div>
+  </header>
+
+  <section>
+    <h2 class="label">The idea</h2>
+    <p class="lead">Since the Supreme Court's <i>Montgomery</i> ruling in May 2026, a freight broker can be sued for picking an unsafe carrier. Shield already records, on every load, that the broker checked the carrier, the driver and the truck. I'd sell that record as <mark>proof of care</mark> to brokers with 10 to 75 people, who feel this the most and have nobody doing compliance.</p>
+  </section>
+
+  <section>
+    <h2 class="label">What I'd do for you</h2>
+    <ol class="road">
+      <li><div class="post"><small>MILE</small><strong>1</strong></div>
+        <div><h3>Find the right brokers</h3><p>Build the list from the government's public broker database (25,081 active brokers today), then pick out the ones hiring dispatch staff, hit by theft, or close to an insurance renewal.</p></div></li>
+      <li><div class="post"><small>MILE</small><strong>2</strong></div>
+        <div><h3>Get them to answer</h3><p>Offer something useful first: <q>Send me 10 carriers you used last week and I'll send back a free safety check within 24 hours.</q> Then invite them to run Shield on 20 loads.</p></div></li>
+      <li><div class="post"><small>MILE</small><strong>3</strong></div>
+        <div><h3>Turn pilots into customers</h3><p>Agree on what success means before each pilot starts. Every pilot ends with a short report the broker can hand to their insurance agent.</p></div></li>
+      <li><div class="post"><small>MILE</small><strong>4</strong></div>
+        <div><h3>Add a referral channel</h3><p>Insurance agents now need their broker clients to look safe. They can send brokers to Kayaan before renewal.</p></div></li>
+    </ol>
+    <p class="aside"><b>In week one:</b> tighten the website to one clear message, swap two claims a freight veteran would doubt, and add a short intake form so demo time goes to real prospects.</p>
+  </section>
+
+  <section>
+    <h2 class="label">The first 30 days</h2>
+    <p class="intro">One small test, not a big campaign. About <b>$2,500</b> in tools and a few hours of founder time for demos.</p>
+    <div class="stats">
+      <div><strong>300</strong><span>brokers contacted, split into two test groups</span></div>
+      <div><strong>10</strong><span>real meetings booked</span></div>
+      <div><strong>4</strong><span>pilots started with agreed goals</span></div>
+      <div><strong>Day 30</strong><span>keep what worked, cut what didn't</span></div>
+    </div>
+    <p class="fine">These are targets, not promises. If the test misses them, we change the offer before spending more.</p>
+  </section>
+
+  <section>
+    <h2 class="label">What it could add up to</h2>
+    <div class="estimate">
+      <div class="tag"><b>If the test works</b><span>My estimate, in ARR</span></div>
+      <div class="n"><strong>~$50K</strong><span>new ARR added each month (about 1 to 2 brokers at ~$30K ARR each)</span></div>
+      <div class="n"><strong>~$66K</strong><span>ARR run rate by day 90, with pilots still in progress</span></div>
+      <div class="n"><strong>~4 mo</strong><span>for each customer to pay back what it cost to win them</span></div>
+      <p class="small">Built on assumptions (about 500 protected loads a month per broker at ~$5 a load), since Kayaan's pricing isn't public. With your real numbers I can replace this in a day.</p>
+    </div>
+  </section>
+
+  <section class="why">
+    <h2 class="label">Why me</h2>
+    <p class="why-lead">I've built and run every part of this plan before, and I measure it in revenue.</p>
+    <div class="proof">
+      <div><strong>$216K to $276K</strong><span>ARR built from zero at Appointive with an outbound engine I designed</span></div>
+      <div><strong>$386K</strong><span>revenue collected through a funnel I measure and optimize at Sterling</span></div>
+      <div><strong>13,000+</strong><span>B2B leads sourced, enriched and qualified</span></div>
+      <div><strong>25,081</strong><span>brokers already pulled from FMCSA for this plan</span></div>
+    </div>
+    <dl class="fit">
+      <div><dt>Appointive<small>Founder &amp; GTM Engineering Lead · 2024 to now</small></dt><dd>Built the full outbound engine (n8n, Clay, Apollo, CRM, email infrastructure): 13,000+ leads qualified, about 30,000 emails a month, around 22 positive replies and 5 to 6 booked calls a day. Grew it to 10 paying clients and <b>$216K to $276K in ARR</b>. <i>This is Miles 1 and 2 of the plan.</i></dd></div>
+      <div><dt>Sterling Periodontics<small>Marketing Analyst · 2026 to now</small></dt><dd>Built the measurement stack (GA4, Tag Manager, call and form tracking) and GoHighLevel follow-up with AI-assisted booking. Guide $15K+ a month in ad spend. The funnel brings in about 300 leads and 35 consultations a month and <b>$386K in collected revenue</b>. <i>This is Mile 3: turning interest into customers.</i></dd></div>
+      <div><dt>DXC Technology<small>Data Analyst · 2022 to 2024</small></dt><dd>Built dashboards for 4 enterprise accounts and cut SQL and Python pipeline processing time by 40%. Automated anomaly detection that improved SLA compliance by 25%. <i>This is the weekly reporting that shows what converts.</i></dd></div>
+      <div><dt>ChiEAC<small>Data Analyst · 2026</small></dt><dd>Found 3 underserved segments in service data across 12 neighborhoods, which guided expansion into 6 new ones. <i>This is how I'd pick and re-check the right broker segment.</i></dd></div>
+      <div><dt>For Kayaan<small>already done</small></dt><dd>Pulled all 25,081 active brokers from FMCSA's public data, built a working lead-scoring tool, and modeled the ARR math above.</dd></div>
+    </dl>
+  </section>
+
+  <section class="close">
+    <div class="close-in">
+      <div>
+        <h2>Want the details?</h2>
+        <p>Research, competitor map, the numbers and a 90-day roadmap are in the full plan.</p>
+      </div>
+      <a class="go" href="plan/">Open the full plan <span aria-hidden="true">→</span></a>
+      <div class="contact">Arfaan Jeddy · linkedin.com/in/arfaanj · github.com/arfujj</div>
+    </div>
+  </section>
+</main>
+</html>
